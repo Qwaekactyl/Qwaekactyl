@@ -1,0 +1,40 @@
+<% if (settings.status.enabled == true) { %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title><%= extra.dashboard.title %></title>
+    <% if (settings.api.arcio.enabled == true) { %>
+    <script async src="https://arc.io/widget.min.js#<%= settings.api.arcio.widgetid %>"></script>
+    <% } %>
+      
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="icon" href="https://media.discordapp.net/attachments/939526295434444850/939841449564962836/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <link rel="stylesheet" href="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/css/argon.css?v=1.2.0" type="text/css">
+</head>
+<body>
+       <%- include('./qwakeactyl/widgets') %>
+      <%- include('./qwakeactyl/mainnav') %>
+</section>
+      
+     
+  <center>
+     
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/davidjbradshaw/iframe-resizer@master/js/iframeResizer.min.js"></script>
+<iframe class="htframe" src="<%= settings.status.url %>" width="50%"height="50" scrolling="no" style="border:none;" sandbox="allow-scripts allow-same-origin allow-popups" onload="iFrameResize([{log:false}],'.htframe')"></iframe>
+      
+</center>
+        <br></br>
+        <footer>
+  
+          <%- include('./qwakeactyl/footer') %>
+           
+        </footer>
+         
+</body>
+</html>
+<% } %>

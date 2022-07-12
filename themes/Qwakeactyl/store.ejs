@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title><%= extra.dashboard.title %></title>
+    <% if (settings.api.arcio.enabled == true) { %>
+    <script async src="https://arc.io/widget.min.js#<%= settings.api.arcio.widgetid %>"></script>
+    <% } %>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="icon" href="https://media.discordapp.net/attachments/939526295434444850/939841449564962836/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <link rel="stylesheet" href="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/css/argon.css?v=1.2.0" type="text/css">
+    
+</head>
+
+<body>
+   <%- include('./qwakeactyl/mainnav') %>
+   <%- include('./qwakeactyl/header') %>
+     <%- include('./qwakeactyl/ads') %>
+             <%- include('./qwakeactyl/widgets') %>
+
+       <br></br>
+        <!-- Page content -->
+        <div class="container-fluid mt--6">
+            <div class="row">
+                <div class="col-xl-12">
+                    <!-- Dark Chart -->
+                    <div class="card">
+                        <div class="card-header border-0">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="mb-0">Store</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form action="/buyram">
+                                <div class="form-group">
+                                    <label for="buyram">RAM</label>
+                                    <select class="form-control" name="amount">
+                                        <option value=1><%= settings.api.client.coins.store.ram.per %>MB RAM -
+                                            <%= settings.api.client.coins.store.ram.cost %>
+                                            coin<%= settings.api.client.coins.store.ram.cost == 1 ? "" : "s" %></option>
+                                        <option value=2><%= settings.api.client.coins.store.ram.per * 2 %>MB RAM -
+                                            <%= settings.api.client.coins.store.ram.cost * 2 %> coins</option>
+                                        <option value=3><%= settings.api.client.coins.store.ram.per * 3 %>MB RAM -
+                                            <%= settings.api.client.coins.store.ram.cost * 3 %> coins</option>
+                                        <option value=4><%= settings.api.client.coins.store.ram.per * 4 %>MB RAM -
+                                            <%= settings.api.client.coins.store.ram.cost * 4 %> coins</option>
+                                        <option value=5><%= settings.api.client.coins.store.ram.per * 5 %>MB RAM -
+                                            <%= settings.api.client.coins.store.ram.cost * 5 %> coins</option>
+                                        <option value=6><%= settings.api.client.coins.store.ram.per * 6 %>MB RAM -
+                                            <%= settings.api.client.coins.store.ram.cost * 6 %> coins</option>
+                                        <option value=7><%= settings.api.client.coins.store.ram.per * 7 %>MB RAM -
+                                            <%= settings.api.client.coins.store.ram.cost * 7 %> coins</option>
+                                        <option value=8><%= settings.api.client.coins.store.ram.per * 8 %>MB RAM -
+                                            <%= settings.api.client.coins.store.ram.cost * 8 %> coins</option>
+                                        <option value=9><%= settings.api.client.coins.store.ram.per * 9 %>MB RAM -
+                                            <%= settings.api.client.coins.store.ram.cost * 9 %> coins</option>
+                                        <option value=10><%= settings.api.client.coins.store.ram.per * 10 %>MB RAM -
+                                            <%= settings.api.client.coins.store.ram.cost * 10 %> coins</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-outline-default">Buy</button>
+                            </form>
+                            <br><br><br><br>
+                            <form action="/buydisk">
+                                <div class="form-group">
+                                    <label for="buydisk">Disk</label>
+                                    <select class="form-control" name="amount">
+                                        <option value=1><%= settings.api.client.coins.store.disk.per %>MB Disk -
+                                            <%= settings.api.client.coins.store.disk.cost %>
+                                            coin<%= settings.api.client.coins.store.disk.cost == 1 ? "" : "s" %>
+                                        </option>
+                                        <option value=2><%= settings.api.client.coins.store.disk.per * 2 %>MB Disk -
+                                            <%= settings.api.client.coins.store.disk.cost * 2 %> coins</option>
+                                        <option value=3><%= settings.api.client.coins.store.disk.per * 3 %>MB Disk -
+                                            <%= settings.api.client.coins.store.disk.cost * 3 %> coins</option>
+                                        <option value=4><%= settings.api.client.coins.store.disk.per * 4 %>MB Disk -
+                                            <%= settings.api.client.coins.store.disk.cost * 4 %> coins</option>
+                                        <option value=5><%= settings.api.client.coins.store.disk.per * 5 %>MB Disk -
+                                            <%= settings.api.client.coins.store.disk.cost * 5 %> coins</option>
+                                        <option value=6><%= settings.api.client.coins.store.disk.per * 6 %>MB Disk -
+                                            <%= settings.api.client.coins.store.disk.cost * 6 %> coins</option>
+                                        <option value=7><%= settings.api.client.coins.store.disk.per * 7 %>MB Disk -
+                                            <%= settings.api.client.coins.store.disk.cost * 7 %> coins</option>
+                                        <option value=8><%= settings.api.client.coins.store.disk.per * 8 %>MB Disk -
+                                            <%= settings.api.client.coins.store.disk.cost * 8 %> coins</option>
+                                        <option value=9><%= settings.api.client.coins.store.disk.per * 9 %>MB Disk -
+                                            <%= settings.api.client.coins.store.disk.cost * 9 %> coins</option>
+                                        <option value=10><%= settings.api.client.coins.store.disk.per * 10 %>MB Disk -
+                                            <%= settings.api.client.coins.store.disk.cost * 10 %> coins</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-outline-default">Buy</button>
+                            </form>
+                            <br><br><br><br>
+                            <form action="/buycpu">
+                                <div class="form-group">
+                                    <label for="buycpu">CPU</label>
+                                    <select class="form-control" name="amount">
+                                        <option value=1><%= settings.api.client.coins.store.cpu.per %>% CPU -
+                                            <%= settings.api.client.coins.store.cpu.cost %>
+                                            coin<%= settings.api.client.coins.store.cpu.cost == 1 ? "" : "s" %></option>
+                                        <option value=2><%= settings.api.client.coins.store.cpu.per * 2 %>% CPU -
+                                            <%= settings.api.client.coins.store.cpu.cost * 2 %> coins</option>
+                                        <option value=3><%= settings.api.client.coins.store.cpu.per * 3 %>% CPU -
+                                            <%= settings.api.client.coins.store.cpu.cost * 3 %> coins</option>
+                                        <option value=4><%= settings.api.client.coins.store.cpu.per * 4 %>% CPU -
+                                            <%= settings.api.client.coins.store.cpu.cost * 4 %> coins</option>
+                                        <option value=5><%= settings.api.client.coins.store.cpu.per * 5 %>% CPU -
+                                            <%= settings.api.client.coins.store.cpu.cost * 5 %> coins</option>
+                                        <option value=6><%= settings.api.client.coins.store.cpu.per * 6 %>% CPU -
+                                            <%= settings.api.client.coins.store.cpu.cost * 6 %> coins</option>
+                                        <option value=7><%= settings.api.client.coins.store.cpu.per * 7 %>% CPU -
+                                            <%= settings.api.client.coins.store.cpu.cost * 7 %> coins</option>
+                                        <option value=8><%= settings.api.client.coins.store.cpu.per * 8 %>% CPU -
+                                            <%= settings.api.client.coins.store.cpu.cost * 8 %> coins</option>
+                                        <option value=9><%= settings.api.client.coins.store.cpu.per * 9 %>% CPU -
+                                            <%= settings.api.client.coins.store.cpu.cost * 9 %> coins</option>
+                                        <option value=10><%= settings.api.client.coins.store.cpu.per * 10 %>% CPU -
+                                            <%= settings.api.client.coins.store.cpu.cost * 10 %> coins</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-outline-default">Buy</button>
+                            </form>
+                            <br><br><br><br>
+                            <form action="/buyservers">
+                                <div class="form-group">
+                                    <label for="buyservers">Servers</label>
+                                    <select class="form-control" name="amount">
+                                        <option value=1><%= settings.api.client.coins.store.servers.per %> server -
+                                            <%= settings.api.client.coins.store.servers.cost %>
+                                            coin<%= settings.api.client.coins.store.servers.cost == 1 ? "" : "s" %>
+                                        </option>
+                                        <option value=2><%= settings.api.client.coins.store.servers.per * 2 %> servers -
+                                            <%= settings.api.client.coins.store.servers.cost * 2 %> coins</option>
+                                        <option value=3><%= settings.api.client.coins.store.servers.per * 3 %> servers -
+                                            <%= settings.api.client.coins.store.servers.cost * 3 %> coins</option>
+                                        <option value=4><%= settings.api.client.coins.store.servers.per * 4 %> servers -
+                                            <%= settings.api.client.coins.store.servers.cost * 4 %> coins</option>
+                                        <option value=5><%= settings.api.client.coins.store.servers.per * 5 %> servers -
+                                            <%= settings.api.client.coins.store.servers.cost * 5 %> coins</option>
+                                        <option value=6><%= settings.api.client.coins.store.servers.per * 6 %> servers -
+                                            <%= settings.api.client.coins.store.servers.cost * 6 %> coins</option>
+                                        <option value=7><%= settings.api.client.coins.store.servers.per * 7 %> servers -
+                                            <%= settings.api.client.coins.store.servers.cost * 7 %> coins</option>
+                                        <option value=8><%= settings.api.client.coins.store.servers.per * 8 %> servers -
+                                            <%= settings.api.client.coins.store.servers.cost * 8 %> coins</option>
+                                        <option value=9><%= settings.api.client.coins.store.servers.per * 9 %> servers -
+                                            <%= settings.api.client.coins.store.servers.cost * 9 %> coins</option>
+                                        <option value=10><%= settings.api.client.coins.store.servers.per * 10 %> servers
+                                            - <%= settings.api.client.coins.store.servers.cost * 10 %> coins</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-outline-default">Buy</button>
+                            </form>
+                        </div>
+                        <script>
+                            async function submitForm() {
+                                let name = encodeURIComponent(document.getElementById("name").value);
+                                let egg = encodeURIComponent(document.getElementById("egg").value);
+                                let ram = encodeURIComponent(document.getElementById("ram").value);
+                                let disk = encodeURIComponent(document.getElementById("disk").value);
+                                let cpu = encodeURIComponent(document.getElementById("cpu").value);
+                                let location = encodeURIComponent(document.getElementById("location").value);
+                                document.location.href =
+                                    `/create?name=${name}&egg=${egg}&ram=${ram}&disk=${disk}&cpu=${cpu}&location=${location}`;
+                            };
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+    <%- include('./qwakeactyl/footer') %>
+        </div>
+    </div>
+    <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/js-cookie/js.cookie.js"></script>
+    <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+    <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/chart.js/dist/Chart.extension.js"></script>
+    <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/js/argon.js?v=1.2.0"></script>
+</body>
+
+</html

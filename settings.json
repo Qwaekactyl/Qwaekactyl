@@ -1,0 +1,305 @@
+{
+    "version": "1.0.2",
+    "defaulttheme": "Qwakeactyl",
+    "website": {
+      "port": 80,
+      "secret": "asassafafasfdkskciaosufy9wq7r214sfdsfasfasfasfadf",
+      "maintenance": false,
+"webhookurl":"https://discord.com/api/webhooks/991240409948889100/uSWDMvldOFMhiSCzM1Bweeas1LJDk08eUv-LpKNETh0eJKqN8xeZV6ZT4s_Pq0SRKFO4",
+      "note": "this iwebhook url is for contact us",
+      
+      "sitekey": "6LfefasgAAAAADHxYTgoHC3OGd81qZFFBKYqW1D4",
+      "secretkey":"6LfefasgAAAAAAF0Q6CscJ_SOLnZEGb9hQ4e5BX8",
+      
+      "note": "site key and secret key u will get from https://www.google.com/u/3/recaptcha/admin"
+    },
+    "pterodactyl": {
+      "domain": "https://pre.icnodes.gq", 
+      "key": "ptla_k7jDpCu6BG0IVNbE8rMBZz4aKTjQLZDEbk89jB24KQJ"
+    },
+    "linkvertise": {
+    "userid": "10000",
+    "coins": 5
+    },    
+    "google_ads": {
+      "enabled": false,
+      "script": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6507690462743601",
+      "note": "This allows you to put adsense, adsterra, etc easily into Qwakeactyl."
+    },
+    "custom_ads":{
+      "enabled": true,
+      "pic": "https://media.discordapp.net/attachments/980692892895039568/991577874660327425/standard.gif",
+      "link": "https://xepert.ml/",
+      "width": "468",
+      "height": "60",
+      "note": "this is an custom ads"
+    },
+
+   "widget": {
+      "enabled": true,
+      "server_id": "",
+      "channel_id": "",
+      "note": "This allows you to use widget bot client panel."
+    },
+    "status":{
+      "enabled": true,
+      "url": "https://wl.hetrixtools.com/r/6d26e8ed5f6de1373c2e66f86abad707/"
+    },
+      "giftres":{
+      "enabled": true,
+      "note": "this will allow u to use gift rescources."
+        
+    },
+
+    
+      "discordserver":{
+      "enabled": true,
+      "invitelink": ""
+    },
+      "donate":{
+      "enabled": true,
+      "link": ""
+    },
+ 
+   
+    "database": "database.sqlite",
+    "api": {
+      "client": {
+         "api": {
+           "enabled": true,
+           "code": "ptla_k7jDpCu6BG0IVNbE8rMBZz4aKTjQLZDEbk89jB24KQJ"
+         },
+         "j4r": {
+          "enabled": true,
+          "servers": ["",""],
+          "every": {
+              "cpu": 5,
+              "ram": 512,
+              "disk": 2048,
+              "servers": 1
+          },
+           
+           "j4rads": [
+               {
+                   "name": "lmao",
+                  "invite": "https://discord.gg/ic"
+                },
+               {
+                   "name": "lmao",
+                   "invite": "https://discord.gg/ic"
+                }
+           ]
+        },
+         "bot": {
+           "token": "",
+           "joinguild": {
+             "_comment": "The Discord bot must be in these servers and have invite permissions.",
+             "enabled": false,
+             "guildid": [""],
+             "forcejoin": false,
+             "registeredrole": null
+          }
+        },
+        "webhook": {
+          "_comment": "URL of the webhook to send messages to.",
+          "webhook_url": "",
+          "auditlogs": {
+            "_comment": "This feature allows you to log actions, and get an overview of a users actions (only works if done with qwakeactyl, not ptero)",
+            "enabled": false,
+            "_comment2": "The types of notifications disabled. Values: ADMIN, LOGIN, SERVER, COUPONREDEEM",
+            "disabled": []
+          }
+        },
+        "passwordgenerator": {
+          "signup": true,
+          "length": 8
+        },
+        "allow": {
+          "newusers": true,
+          "regen": true,
+          "server": {
+            "create": true,
+            "modify": true,
+            "delete": true
+          },
+          "overresourcessuspend": false,
+          "renewsuspendsystem": {
+            "_comment": "This feature requires a restart in order to work. Also, this requires every server to start suspended, or else this feature would not work for some servers.",
+            "enabled": false,
+            "time": 3600,
+            "cost": 0
+          }
+        },
+        "oauth2": {
+          "_comment": "Go to https://discord.dev/ and create an application to set these up.",
+          "id": "949531589010919515",
+          "secret": "W9ifQh4PVHVd9nHU3o9I9bbCAicb_A5w",
+          "link": "https://qwakeactyl.itscrazykns.repl.co",
+          "callbackpath": "/callback",
+          "prompt": true,
+  
+          "ip": {
+            "trust x-forwarded-for": true,
+            "block": [],
+  
+            "_comment": "'duplicate check' is an anti-alt check by IPs.",
+            "duplicate check": false,
+  
+            "_comment2": "'cookie alt check' is an anti-alt check by cookies.",
+            "cookie alt check": true
+          }
+        },
+        "ratelimits": {
+          "enabled": true,
+  
+          "trust x-forwarded-for": true,
+  
+          "requests": 30,
+          "per second": 60
+        },
+        "packages": {
+          "default": "default",
+          "list": {
+            "default": {
+              "ram": 2024,
+              "disk": 2024,
+              "cpu": 90,
+              "servers": 1
+            }
+          }
+        },
+        
+        "locations": {
+          "1": {
+            "name": "IN",
+  
+            "_comment": "Make 'package' be null to allow anyone with enough resources in their plan to create a server with this location. Also, make the 'package' variable an array, like [], with the location names with quotes to make a user be required to have a plan in order to use the package.",
+            "package": null
+          }
+        },
+        "eggs": {
+          "paper": {
+            "display": "Paper",
+            "minimum": {
+              "ram": 1024,
+              "disk": 1024,
+              "cpu": 70
+            },
+            "maximum": {
+              "ram": null,
+              "disk": null,
+              "cpu": null
+            },
+            "info": {
+              "egg": 3,
+              "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+              "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+              "environment": {
+                "SERVER_JARFILE": "server.jar",
+                "BUILD_NUMBER": "latest"
+              },
+              "feature_limits": {
+                "databases": 1,
+                "backups": 1,
+                "allocation": 1
+              }
+            }
+          },
+          "lavalink": {
+            "display": "Lavalink",
+            "minimum": {
+              "ram": 512,
+              "disk": 512,
+              "cpu": 75
+            },
+            "maximum": {
+              "ram": null,
+              "disk": null,
+              "cpu": null
+            },
+            "info": {
+              "egg": 15,
+              "docker_image": "quay.io/parkervcp/pterodactyl-images:debian_openjdk-13",
+              "startup": "java -jar Lavalink.jar",
+              "environment": {
+                "SERVER_JARFILE": "Lavalink.jar"
+              },
+              "feature_limits": {
+                "databases": 1,
+                "backups": 1
+              }
+            }
+          },
+          "bungeecord": {
+            "display": "Bungeecord",
+            "minimum": {
+              "ram": 512,
+              "disk": 512,
+              "cpu": 75
+            },
+            "maximum": {
+              "ram": null,
+              "disk": null,
+              "cpu": null
+            },
+            "info": {
+              "egg": 1,
+              "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+              "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}",
+              "environment": {
+                "SERVER_JARFILE": "bungeecord.jar",
+                "BUNGEE_VERSION": "latest"
+              },
+              "feature_limits": {
+                "databases": 1,
+                "backups": 1
+              }
+            }
+          }
+        },
+        "coins": {
+          "enabled": true,
+          "store": {
+            "_comment": "The cost and per is not intended to used with 0. This is not intended to sell resources for coins. Make sure coins are enabled too, or else there can be errors.",
+            "enabled": true,
+            "ram": {
+              "cost": 250,
+              "per": 25
+            },
+            "disk": {
+              "cost": 100,
+              "per": 100
+            },
+            "cpu": {
+              "cost": 150,
+              "per": 5
+            },
+            "servers": {
+              "cost": 200,
+              "per": 1
+            }
+          }
+        }
+      },
+      "arcio": {
+        "_comment": "You can make an arc.io widget on https://arc.io. You can get money using arc.io.",
+        "enabled": true,
+        "widgetid": "",
+  
+          "afk page": {
+            "_comment": "This will not effect any current arc.io sessions, and will require a restart to kick everyone out of the websocket sesison.",
+            "_comment2": "Make sure coins are enabled if you choose to enable this option!",
+            "enabled": true,
+  
+            "_comment3": "If you change the path, you need to restart for it to take full effect.",
+            "path": "afkwspath",
+  
+            "_comment4": "This afk page will give the users [coins variable] coins every [every variable] seconds.",
+            "every": 60,
+  
+            "_comment5": "The coins variable is meant to not be under 1. There may be bugs if the coins variable is less than 1.",
+            "coins": 2
+          }
+      }
+    }
+  }

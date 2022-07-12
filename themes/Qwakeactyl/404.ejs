@@ -1,0 +1,87 @@
+<title><%= extra.error.title %></title>
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
+
+<div class="container">
+   <div class="box">
+    <div class="animation">
+     <div class="one spin-one"></div>
+     <div class="two spin-two"></div>
+     <div class="three spin-one"></div>
+    </div>
+  <h1>404</h1>
+  <p>Oops Seems Like You Are Lost</p>
+  <a href="/dashboard">Home</a>
+  </div>
+</div>
+
+<style>
+  body {
+  font-family: 'Noto Sans', sans-serif;
+  color:#616161 /*#757575*/;
+  background-color:#eeeeee;
+ }
+
+.container {
+  margin: auto;
+  max-width: 1024px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position:relative;
+}
+
+.box {
+  width: auto ;
+  height: 500px;
+  background: #fff;
+  margin-top:50px;
+  margin-left: 100px;
+  margin-right: 100px;
+  border-radius:5px;
+  box-shadow: 6px 18px 18px rgba(0, 0, 0, 0.08), -6px 18px 18px rgba(0, 0, 0, 0.08);
+}
+
+.animation{
+  margin-top:20%;
+  display:inline-block;
+  margin-bottom:5%;
+}
+
+h1{
+  font-size:32px;
+  font-weight:400;
+  text-transform:uppercase;
+  margin:0;
+  position: relative;
+  top: -100px;
+}
+p{
+  font-size:16px;
+  font-weight:700;
+  margin:0;
+  position: relative;
+  top: -90px;
+}
+
+a{
+  color: #f6921e;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left:5px;
+  position:relative;
+
+  top: -70px;
+}
+
+
+
+.one {
+  background: url('https://img.freepik.com/free-vector/error-404-concept-illustration_114360-1811.jpg?w=2000');
+  width:300px;
+  height:230px;
+  background-size:100% 100%;
+  position: relative;
+  top: -100px;
+  }  
+</style>

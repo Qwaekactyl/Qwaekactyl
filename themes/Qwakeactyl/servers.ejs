@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title><%= extra.dashboard.title %></title>
+    <% if (settings.api.arcio.enabled == true) { %>
+    <script async src="https://arc.io/widget.min.js#<%= settings.api.arcio.widgetid %>"></script>
+    <% } %>
+   
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="icon" href="https://media.discordapp.net/attachments/939526295434444850/939841449564962836/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <link rel="stylesheet" href="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/css/argon.css?v=1.2.0" type="text/css">
+</head>
+
+<body>
+   <%- include('./qwakeactyl/mainnav') %>
+   <%- include('./qwakeactyl/header') %>
+        <!-- Page content -->
+        <div class="container-fluid mt--6">
+            <div class="row">
+                <div class="col-xl-12">
+                    <!-- Dark Chart -->
+                    <div class="card">
+                        <div class="card-header border-0">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="mb-0">Your Servers</h3>
+                                </div>
+                                <div class="col text-right">
+                                    <a href="/create" class="btn btn-sm btn-primary">Create New</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Memory</th>
+                                        <th scope="col">Disk</th>
+                                        <th scope="col">CPU</th>
+                                        <th scope="col">Edit</th>
+                                        <th scope="col">Delete</th>
+                                        <% if (settings.api.client.allow.renewsuspendsystem.enabled) { %>
+                                        <th scope="col">Renew</th>                                    
+                                        <% } %>
+                                    </tr>
+                                </thead>
+                                <% for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) { %>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <%= pterodactyl.relationships.servers.data[i].attributes.name.length > 15 ? pterodactyl.relationships.servers.data[i].attributes.name.slice(0, 12) + "..." : pterodactyl.relationships.servers.data[i].attributes.name %>
+                                        </td>
+                                        <td>
+                                            <%= pterodactyl.relationships.servers.data[i].attributes.limits.memory %>MB
+                                        </td>
+                                        <td>
+                                            <%= pterodactyl.relationships.servers.data[i].attributes.limits.disk %>MB
+                                        </td>
+                                        <td>
+                                            <%= pterodactyl.relationships.servers.data[i].attributes.limits.cpu %>%
+                                        </td>
+                                        <td>
+                                            <a href="/servers/edit?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>">
+                                                <button class="btn btn-icon btn-primary" type="button">
+                                                    <span class="btn-inner--icon"><i class="fas fa-edit"></i></span>
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/delete?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>">
+                                                <button class="btn btn-icon btn-danger" type="button">
+                                                    <span class="btn-inner--icon"><i class="fas fa-trash"></i></span>
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <% if (settings.api.client.allow.renewsuspendsystem.enabled) { %>
+                                        <td>
+                                            <a href="/renew?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>">
+                                                <button class="btn btn-icon btn-warning" type="button">
+                                                    <span class="btn-inner--icon"><i class="fas fa-sync-alt"></i></span>
+                                                </button>
+                                            </a>
+                                        </td>
+                                          
+                                        <% } %>
+                                          <td>
+                                          <a href="<%= settings.pterodactyl.domain %>/server/<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>" target="_blank" rel="noopener noreferrer" class="btn btn-success"><i class="fas fa-link"></i></a>
+                                            </td>
+                                    </tr>
+                                </tbody>
+                                <% } %>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                                  <%- include('./qwakeactyl/ads') %>
+                <!-- Footer -->
+    <%- include('./qwakeactyl/footer') %>
+            </div>
+        </div>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/js-cookie/js.cookie.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/chart.js/dist/Chart.min.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/chart.js/dist/Chart.extension.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/js/argon.js?v=1.2.0"></script>
+</body>
+</html>

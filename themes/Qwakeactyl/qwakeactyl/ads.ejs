@@ -1,0 +1,36 @@
+<% if (settings.google_ads.enabled == true) { %>
+         <div class="row ">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Addvertisement</h4>
+                    <div class="table-responsive">
+                      <script async src="<%= settings.google_ads.script %>"
+     crossorigin="anonymous"></script>
+                      
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+<% } %>
+  <% if (settings.custom_ads.enabled == true) { %>
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+         <div class="row ">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Addvertisement</h4>
+                    <div class="table-responsive">
+                     
+                    <a target="_blank" href="<%= settings.custom_ads.link %>">
+<img border="0" alt="custom ads" src="<%= settings.custom_ads.pic %>" width="<%= settings.custom_ads.width %>" height="<%= settings.custom_ads.height %>">
+</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    </div>
+<% } %>

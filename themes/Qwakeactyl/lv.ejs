@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title><%= extra.dashboard.title %></title>
+    <% if (settings.api.arcio.enabled == true) { %>
+    <script async src="https://arc.io/widget.min.js#<%= settings.api.arcio.widgetid %>"></script>
+    <% } %> 
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="icon" href="https://media.discordapp.net/attachments/939526295434444850/939841449564962836/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <link rel="stylesheet" href="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/css/argon.css?v=1.2.0" type="text/css">
+     
+</head>
+   
+<body>
+  
+  <%- include('./qwakeactyl/mainnav') %>
+  <%- include('./qwakeactyl/header') %>
+    <%- include('./qwakeactyl/widgets') %>
+      <%- include('./qwakeactyl/ads') %>
+        <br></br>
+        <!-- Page content -->
+<h2>Linkvertise</h2>
+           <p class="text-gray">Earn coins by completing Linkvertise links.</p>
+            <% if (req.query.err) { %>
+              <div style="border-radius: 15px;" class="alert">
+                  <% if (req.query.err == "MUSTCOMPLETECAPTCHA") { %>
+                    You must complete the captcha to prove you are human!
+                <% } else if (req.query.err == "INVALIDCAPTCHARESPONSE") { %>
+                    You submitted an invalid captcha response, try again.
+                <% } %>
+              </div>
+            <% } %>
+            <% if (req.query.success) { %>
+              <div class="alert" style="background-color: #00b950; border-radius: 15px;">
+                Success! <%= settings.linkvertise%> coins were added to your account.
+            </div>
+            <% } %>
+              <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card">
+                    <div class="card-body" style="display: none;" id="generate-panel">
+                      <p>Every time you complete a linkvertise link, you will earn <%= settings.linkvertise%> coins!<br>Generate a link below:<br><br>
+                        <button class="btn btn-primary btn-lg" onclick="generate()">Generate Link</button></p></center>
+									  </div>
+                    <div class="card-body" id="loading-panel">
+                      <center><h3>Loading...</h3></center>
+                    </div>
+                    <div class="card-body" id="error-panel" style="display: none;">
+                      <center><h3>An error occured! Refresh the page and try again</h3></center>
+                    </div>
+                    <div class="card-body" id="cooldown-panel" style="display: none;">
+                      <center>
+                        <h3>You are on cooldown before you can complete another linkvertise link!</h3>
+                        <p>Please wait <span id="cooldown-seconds"></span> seconds before you can complete another link.</p>
+                      </center>
+                    </div>
+                    <div class="card-body" id="dailylimit-panel" style="display: none;">
+                      <center>
+                        <h3>You have reached the maximum number of links you can complete today!</h3>
+                        <p>You can complete more after <span id="daily-timeleft"></span>.</p>
+                      </center>
+                    </div>
+                    <script type="text/javascript">
+                      const loadingPanel = document.getElementById('loading-panel')
+                      fetch(`/api/lvcooldown`).then(res => res.json())
+                      .then(json => {
+                        if (json.cooldown === null) {
+                          const genPanel = document.getElementById('generate-panel')
+                          loadingPanel.style.display = 'none'
+                          return genPanel.style.display = ''
+                        } else if (json.dailyLimit) {
+                          const dailyPanel = document.getElementById('dailylimit-panel')
+                          dailyPanel.style.display = ''
+                          loadingPanel.style.display = 'none'
+                          const timeLeft = document.getElementById('daily-timeleft')
+                          timeLeft.innerHTML = json.readable
+                        } else if (json.error) {
+                          const errorPanel = document.getElementById('error-panel')
+                          loadingPanel.style.display = 'none'
+                          errorPanel.style.display = ''
+                        } else {
+                          loadingPanel.style.display = 'none'
+                          const cooldownPanel = document.getElementById('cooldown-panel')
+                          const cooldownTimer = document.getElementById('cooldown-seconds')
+                          setInterval(() => {
+                            const timeLeft = json.cooldown - Date.now()
+                            if (timeLeft < 0) return window.location.replace('/lv')
+                            cooldownTimer.innerHTML = Math.floor(timeLeft / 1000)
+                          }, 1000)
+                          cooldownPanel.style.display = ''
+                        }
+                      })
+                      .catch(() => {
+                        loadingPanel.style.display = 'none'
+                        const errorPanel = document.getElementById('error-panel')
+                        errorPanel.style.display = ''
+                      })
+                    </script>
+                  <script type="text/javascript">
+                    function generate() {
+                      window.location.replace(`/lv/gen`)
+                    }
+                  </script>
+              </div>
+            </div>
+            </div></div></div>
+                <!-- Footer -->
+            </div>
+        </div>
+        <%- include('./qwakeactyl/footer') %>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/js-cookie/js.cookie.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/chart.js/dist/Chart.min.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/vendor/chart.js/dist/Chart.extension.js"></script>
+        <script src="https://cdn.qwakeactyl.ml/files/assets/qwakeactyl/js/argon.js?v=1.2.0"></script>
+</body>
+
+</html>
+
+<style>
+</style>
