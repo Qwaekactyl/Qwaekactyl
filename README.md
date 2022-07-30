@@ -1,9 +1,9 @@
 # Qwaekactyl
 
-[![License](https://img.shields.io/gitlab/license/qwakeactyl/qwakeactyl?color=light%20green)
-[![Discord Members](https://img.shields.io/discord/991938583285989527?label=Discord%20Online)
-[![Contributers](https://img.shields.io/github/contributors/Qwaekactyl/Qwaekactyl?color=red)
-[![version](https://img.shields.io/github/v/tag/Qwaekactyl/Qwaekactyl?label=version)
+![License](https://img.shields.io/gitlab/license/qwakeactyl/qwakeactyl?color=light%20green)
+![Discord Members](https://img.shields.io/discord/991938583285989527?label=Discord%20Online)
+![Contributers](https://img.shields.io/github/contributors/Qwaekactyl/Qwaekactyl?color=red)
+![version](https://img.shields.io/github/v/tag/Qwaekactyl/Qwaekactyl?label=version)
 
 ![Qwaekactyl Home Page](https://media.discordapp.net/attachments/990890523483058216/991598758624247858/unknown.png)
 ![Qwaekactyl Login Page](https://media.discordapp.net/attachments/990890523483058216/991597051148255353/unknown.png)
