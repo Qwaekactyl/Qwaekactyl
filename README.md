@@ -1,6 +1,6 @@
 # Qwaekactyl
 
-[![TOP.GG Badge](https://discord.com/api/guilds/991938583285989527/widget.png?style=shield)](https://discord.gg/g4MfV6N)
+![Discord Members](https://img.shields.io/discord/991938583285989527?label=Discord%20Online&style=for-the-badge)
 
 ![Qwaekactyl Home Page](https://media.discordapp.net/attachments/990890523483058216/991598758624247858/unknown.png)
 ![Qwaekactyl Login Page](https://media.discordapp.net/attachments/990890523483058216/991597051148255353/unknown.png)
