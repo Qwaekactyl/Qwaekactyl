@@ -84,7 +84,7 @@ only for windows installer
 
 # start command
 ```js
-$ npm start
+ npm start
 ```
 
 <hr>
