@@ -2,7 +2,7 @@
  
 <hr>
 
-# Qwakeactyl-LTS | The Best Dashboard For Splitting Resources In Pterodactyl Panel
+# Qwakeactyl V2.2 LTS | The Best Dashboard For Splitting Resources In Pterodactyl Panel
 **NOTE - This Is A Long Term Support Version We Will Keep Updating And Providing Support For This Version**
 
 Making a free or paid host and need a way for users to sign up, earn coins, manage servers? Try out Qwakeactyl.
