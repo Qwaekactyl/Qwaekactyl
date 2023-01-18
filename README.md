@@ -2,7 +2,9 @@
  
 <hr>
 
-# Qwakeactyl | a fork of dashactyl v0.4
+# Qwakeactyl-LTS | The Best Dashboard For Splitting Resources In Pterodactyl Panel
+**NOTE - This Is A Long Term Support Version We Will Keep Updating And Providing Support For This Version**
+
 Making a free or paid host and need a way for users to sign up, earn coins, manage servers? Try out Qwakeactyl.
 To get started, scroll down and follow the guide
 
@@ -18,21 +20,22 @@ All features:
 - Admin (set/add/remove coins & resources, create/revoke coupons & etc)
 - API (for a lot things)
 - Legal (tos/pp in footer & its own page)
-- user friendly
-- widget
-- status
-- donate nav
-- discord nav
+- User Friendly
+- Arcio Widget Supported
+- Donate Nav
+- Discord nav
+- Gift Resources
+- Admin Area For Admins
 
-# what's New
-- widget Added
-- fixed bug
-- Fixed server creation error
-- resloved API
-- Added google and custom ads option
-- Added status
-- New Login Page 
-- Removed drak white theme
+# What's New
+- Fixed Join For Resources Api
+- Fixed Footer
+
+# Upcoming Features
+- Qwaekactyl Manager
+- Email Login Support
+- Linkvertise (Coin Earning System)
+- 
 
 # Warning
 
@@ -50,7 +53,7 @@ Node.js [Download](https://nodejs.org/en/download/)
 
 only for windows installer
 
-# install in VPS
+# Install In VPS
 
 <h2>Installing Dependencies</h2>
 
@@ -59,7 +62,7 @@ only for windows installer
 `curl -fsSL https://deb.nodesource.com/setup_14.x | sudo bash -`<br>
 `apt install nodejs`<br>
 `npm -v`<br>
-`git clone https://github.com/Qwakeactyl/Qwakeactyl.git`<br>
+`git clone https://github.com/Qwaekactyl/Qwaekactyl.git`<br>
 `cd Qwakeactyl`<br>
 `npm install`<br>
 `apt install nginx`<br>
@@ -67,7 +70,7 @@ only for windows installer
 `sudo apt install -y python3-certbot-nginx`
 
 
-# start command
+# Start Command
 ```js
 $ npm start
 ```
@@ -84,9 +87,9 @@ $ npm start
 # Credits
 This theme is taken from [creativetim](https://github.com/creativetimofficial).
 
-This project Is managed & made by [IC|Developmet](https://github.com/Team-IC) Developers
+This project Is managed & made by [Qwaekactyl Inc](https://discord.gg/Qz7qX6mH). (For Support Join This Server)
 
-This project was not possible without [dashactylv0.4](https://github.com/Votion-Development/Dashactyl-0.4) .
+
 
 
 
