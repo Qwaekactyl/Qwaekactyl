@@ -6,36 +6,16 @@ const fs = require("fs");
 const fetch = require('node-fetch');
 const chalk = require("chalk");
 const arciotext = (require("./api/arcio.js")).text;
+require("./bot")
 
-const sleep = ms => new Promise(res => setTimeout(res, ms));
+console.log(chalk.green("[Qwakeactyl] Files loading..."));
 
-console.log('\x1b[36m%s\x1b[0m',`
-      [===========================================]
-                       Qwaekactyl
-        https://github.com/Qwaekactyl/Qwaekactyl
-                Developed by  
-             < Just a Kartik IC/>#2735  
-            ||**AshishOp.java**||#0666
-               ItzCrazyKns#8996
-                    Achievements =)
-      [===========================================]
-      `)
-console.log("\x1b[32m", "System loading, please wait...")
-console.log('\x1b[36m%s\x1b[0m', "Qwaekactyl: Starting...");
-
-// cheks if cdn is online or not
- console.log(chalk.green("[Qwaekactyl] CDN Loading..."));
-var http = require('http');
-http.get('http://cdn.qwakeactyl.ml',function (res) {
-  console.log(chalk.green("[Qwaekactyl] CDN Loaded..."));
-  console.log(chalk.green("[Qwaekactyl] Files loading..."));
-
-console.log(chalk.green("[Qwaekactyl] Files loaded..."));
+console.log(chalk.green("[Qwakeactyl] Files loaded..."));
 
 // Load settings.
 
 const settings = require("./settings.json");
-console.log(chalk.green("[Qwaekactyl] Settings loading..."));
+console.log(chalk.green("[Qwakeactyl] Settings loading..."));
 
 const defaultthemesettings = {
   index: "index.ejs",
@@ -47,7 +27,7 @@ const defaultthemesettings = {
   variables: {}
 };
 
-console.log(chalk.green("[Qwaekactyl] Settings loaded..."));
+console.log(chalk.green("[Qwakeactyl] Settings loaded..."));
 
 module.exports.renderdataeval =
   `(async () => {
@@ -92,41 +72,41 @@ module.exports.renderdataeval =
 
 const db = require("./db.js");
 
-console.log(chalk.green("[Qwaekactyl] Database loading..."))
+console.log(chalk.green("[Qwakeactyl] Database loading..."))
 
 module.exports.db = db;
 
-console.log(chalk.green("[Qwaekactyl] Database loaded..."))
+console.log(chalk.green("[Qwakeactyl] Database loaded..."))
 
 // Load websites.
 
 const express = require("express");
-console.log(chalk.green("[Qwaekactyl] api's loading..."))
+console.log(chalk.green("[Qwakeactyl] api's loading..."))
 const app = express();
-console.log(chalk.green("[Qwaekactyl] api's loaded..."))
+console.log(chalk.green("[Qwakeactyl] api's loaded..."))
 
 // Load express addons.
 
 const expressWs = require('express-ws')(app);
-console.log(chalk.green("[Qwaekactyl] Express addons loading..."))
+console.log(chalk.green("[Qwakeactyl] Express addons loading..."))
 const ejs = require("ejs");
 const session = require("express-session");
 const indexjs = require("./index.js");
-console.log(chalk.green("[Qwaekactyl] Express addons loaded..."))
+console.log(chalk.green("[Qwakeactyl] Express addons loaded..."))
 
 
 // Sets up saving session data.
 
 const sqlite = require("better-sqlite3");
-console.log(chalk.green("[Qwaekactyl] Season data loading..."))
+console.log(chalk.green("[Qwakeactyl] Season data loading..."))
 const SqliteStore = require("better-sqlite3-session-store")(session);
 const session_db = new sqlite("sessions.db");
-console.log(chalk.green("[Qwaekactyl] Season data loaded..."))
+console.log(chalk.green("[Qwakeactyl] Season data loaded..."))
 
 // Load the website.
 
 module.exports.app = app;
-console.log(chalk.green("[Qwaekactyl] Website loading..."))
+console.log(chalk.green("[Qwakeactyl] Website loading..."))
 
 app.use(session({
   secret: settings.website.secret,
@@ -150,13 +130,13 @@ app.use(express.json({
   verify: undefined
 }));
 console.log(chalk.yellow("=================================================="))
-console.log(chalk.blue("[Qwaekactyl] ©️ IC DEVELOPMENT:  \n Links:   \n [Github] https://github.com/Team-IC/Qwakeactyl \n [Discord] https://discord.gg/vNvUyEPpCg"));
+console.log(chalk.blue("[Qwakeactyl] ©️ IC DEVELOPMENT:  \n Links:   \n [Github] https://github.com/Team-IC/Qwakeactyl \n [Discord] https://discord.gg/ic"));
 console.log(chalk.yellow("=================================================="))
-console.log(chalk.gray("[Contributors] \n < Just a Kartik IC/>#2735 \n ||**AshishOp.java**||#0666] \n ItzCrazyKns#8996"));
+console.log(chalk.gray("[Contributors] \n [Just a Kartik#6927 \n ItzCrazyKns#9198 \n ||**AshishOp.java**||#0666]"));
 console.log(chalk.yellow("=================================================="))
 
 const listener = app.listen(settings.website.port, function() {
-  console.log(chalk.green("[Qwaekactyl] Loaded Website on the port " + listener.address().port +" "));
+  console.log(chalk.green("[Qwakeactyl] Loaded Website on the port " + listener.address().port +" "));
 });
 
 
@@ -385,9 +365,3 @@ function getCookie(req, cname) {
   }
   return "";
 }
-
-}).on('error', function(e) {
-  //if cdn is down then
-    console.log(chalk.red(`[Qwaekactyl] The Cdn Is Down Or Under Maintanance`));
-  
-});

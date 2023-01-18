@@ -1,6 +1,4 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+        <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
         <div class="scrollbar-inner">
             <div class="sidenav-header  align-items-center">
                 <a class="navbar-brand" href="javascript:void(0)">
@@ -13,7 +11,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="/dashboard">
-                                <i class="fa fa-tv text-primary"></i>
+                                <i class="ni ni-tv-2 text-primary"></i>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
                         </li>
@@ -29,9 +27,7 @@
                                 <span class="nav-link-text">Servers</span>
                             </a>
                         </li>
-
-                   
-                            <% if (settings.api.arcio["afk page"].enabled == true) { %>
+                        </li><% if (settings.api.arcio["afk page"].enabled == true) { %>
                           <li class="nav-item">
                             <a class="nav-link" href="/afk">
                                 <i class="fas fa-coins text-yellow"></i>
@@ -46,7 +42,6 @@
                                 <span class="nav-link-text">Gift Resources</span>
                             </a>
                         </li>
-                    
                             <% } %>
                        <% if (settings.status.enabled == true) { %>
                         <li class="nav-item">
@@ -95,16 +90,16 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/j4r">
+                                <i class="fas fa-hand-holding-usd text-yellow"></i>
+                                <span class="nav-link-text">Join For Resources</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" style="cursor:pointer;" data-toggle="modal"
                                 data-target="#modal-notification">
                                 <i class="fas fa-key text-orange"></i>
                                 <span class="nav-link-text">Password Reset</span>
-                            </a>
-                        </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="/contact-us">
-                                <i class="fas fa-address-book text-blue"></i>
-                                <span class="nav-link-text">Contact Us</span>
                             </a>
                         </li>
                       <li class="nav-item">
@@ -168,4 +163,3 @@
 
             <!-- Modal Password Warning END-->
     </nav>
-      

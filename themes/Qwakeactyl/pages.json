@@ -2,7 +2,6 @@
   "index": "index.ejs",
   "notfound": "404.ejs",
   "nopermission": "403.ejs",
-  "maintenance": "maintenance.ejs",
   "redirect": {
     "callback": "/dashboard",
     "failedcallback": "/",
@@ -64,10 +63,7 @@
     "tos": "TOS.ejs",
     "pp": "pp.ejs",
     "test": "t.ejs",
-    "status":"status.ejs",
-    "lv": "lv.ejs",
-    "contact-us":"contact.ejs",
-    "maintenance": "maintance.ejs"
+    "status":"status.ejs"
         
   },
   "mustbeloggedin": [
@@ -80,71 +76,68 @@
     "/redeem",
     "/gift",
     "/j4r",
-    "/status",
-    "/lv",
-    "/contact-us"
+    "/status"
   ],
   "mustbeadmin": [
     "/admin"
     
 
   ],
-
   "generateafktoken": [
     "/afk"
   ],
   "variables": {
     "footerad": true,
-    "faviconlink": "https://o.remove.bg/downloads/23bbf119-a4b7-4345-888b-a8c787c27f9b/download__2_-removebg-preview.png",
-    "name": "Qwaekactyl",
+    "faviconlink": "https://repository-images.githubusercontent.com/465712507/543d1735-6fc9-4292-8066-6b34965e1dec",
+    "name": "Qwakactyl",
     "home": {
-      "title": "Qwaekactyl",
+      "title": "Qwakactyl",
       "buttontext": {
         "loggedin": {
-          "text": "Qwaekactyl",
+          "text": "Qwakactyl",
           "link": "/dashboard"
         },
         "loggedout": {
           "_note": "This below supports HTML encoding.",
-          "text": "<img src=\"https://seeklogo.com/images/D/discord-black-logo-733DD6B9B0-seeklogo.com.png\" width=\"25\" /> Login with Discord",
+          "text": "<img src=\"https://i.imgur.com/EYGXn9D.png\" width=\"25\" /> Login with Discord",
           "link": "/login"
-        } 
+        }
       }
     },
       "dashboard": {
-        "title": "Dashboard - Qwaekactyl"
+        "title": "Dashboard - Qwakactyl"
       },
     "servers": {
       "title": {
-        "create": "servers - Qwaekactyl",
-        "modify": "Server Modify - Qwaekactyl"
+        "create": "servers - Qwakactyl",
+        "modify": "Server Modify - Qwakactyl"
       }
     },
     "error": {
-      "title": "404 - Qwaekactyl"
+      "title": "404 - Qwakactyl"
     },
     "admin": {
       "title": {
-        "default": "Admin - Qwaekactyl"
+        "default": "Admin - Qwakactyl"
       }
     },
     "store": {
-      "title": "Store - Qwaekactyl"
+      "title": "Store - Qwakactyl"
     },
     "arcio": {
-      "title": "AFK - Qwaekactyl"
+      "title": "AFK - Qwakactyl"
     },
     "maintenance": {
-      "title": "Downtime - Qwaekactyl" 
+      "title": "Downtime - Qwakactyl" 
     },
     "redeem": {
-      "title": "Redeem - Qwaekactyl"
+      "title": "Redeem - Qwakactyl"
     },
     "j4r": {
-      "tittle": "Join for Resources - Qwaekactyl"
+      "tittle": "Join for Resources - Qwakactyl"
     },
     "gift": {
-      "tittle": "Gift Resources - Qwaekactyl"
+      "tittle": "Gift Resources - Qwakactyl"
     }
   }
 }

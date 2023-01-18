@@ -1,8 +1,4 @@
-<%- include('./links') %>
-<% if (settings.website.maintenance == true) { %>
-   <meta http-equiv="refresh" content="0; url=/maintenance" />
 
-    <% } %>
   
 <div class="main-content" id="panel">
         <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
@@ -118,7 +114,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Storage</h5>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Disk</h5>
                                             <span class="h2 font-weight-bold mb-0"><%= disk %>MB /
                                                 <%= (packages ? packages.disk : 0) + extraresources.disk %>MB</span>
                                         </div>
@@ -166,7 +162,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Cores</h5>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">CPU</h5>
                                             <span class="h2 font-weight-bold mb-0"><%= cpu %>% /
                                                 <%= (packages ? packages.cpu : 0) + extraresources.cpu %>%</span>
                                         </div>

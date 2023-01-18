@@ -117,24 +117,70 @@ module.exports.load = async function(app, db) {
 
           res.cookie('accountid', userinfo.id);
         }
-        let j4r = newsettings.api.client.j4r.every;
-        let newj4r = {
-                "cpu": 0,
-                "ram": 0,
-                "disk": 0,
-                "servers": 0
+         if (newsettings.api.client.j4r.enabled) {
+          if (guildsinfo.message == '401: Unauthorized') return res.send("Please allow us to know what servers you are in to let the J4R system work properly. <a href='/login'>Login again</a>")
+          let userj4r = await db.get(`j4rs-${userinfo.id}`) ?? []
+          await guildsinfo
+
+          let ram = await db.get(`ram-${userinfo.id}`) ?? 0
+          let disk = await db.get(`disk-${userinfo.id}`) ?? 0
+          let cpu = await db.get(`cpu-${userinfo.id}`) ?? 0
+          let coins = await db.get(`coins-${userinfo.id}`) ?? 0
+          let usr1 = await db.get("extra-" + userinfo.id)
+              let extra1;
+     		 	 if (typeof usr1 == "object") {
+        			extra1 = usr1;
+      				} else {
+        			extra1 = {
+         			ram: 0,
+          			disk: 0,
+          			cpu: 0,
+          			servers: 0
+        			}
+      			}
+          // Checking if the user has completed any new j4rs
+          for (const guild of newsettings.api.client.j4r.ads) {
+            if ((guildsinfo.find(g => g.id === guild.id)) && (!userj4r.find(g => g.id === guild.id))) {
+              userj4r.push({
+                id: guild.id,
+				ram: guild.ram,
+				disk: guild.disk,
+				cpu: guild.cpu,
+                coins: guild.coins
+              })
+ 				
+			  let ram2 = parseFloat(guild.ram);
+			  let disk2 = parseFloat(guild.disk);
+			  let cpu2 = parseFloat(guild.cpu);
+			  extra1.ram = extra1.ram + ram2
+		      extra1.disk = extra1.disk + disk2
+			  extra1.cpu = extra1.cpu + cpu2
+
             }
-        if (newsettings.api.client.j4r.enabled == true) {
-            if (guildsinfo.message == '401: Unauthorized') return res.send("Please allow us to know what servers you are in to let the J4R system work properly.")
-        	await guildsinfo.forEach(async (guild) => {
-                if (newsettings.api.client.j4r.servers.indexOf(guild.id) >= 0) {
-                    newj4r.cpu = newj4r.cpu + j4r.cpu
-                    newj4r.ram = newj4r.ram + j4r.ram
-                    newj4r.disk = newj4r.disk + j4r.disk
-                    newj4r.servers = newj4r.servers + j4r.servers
-                }
-        	})
-            db.set("j4r-" + userinfo.id, newj4r)
+
+			for (const j4r of userj4r) {
+            if (!guildsinfo.find(g => g.id === j4r.id)) {
+              userj4r = userj4r.filter(g => g.id !== j4r.id)
+              let ram2 = parseFloat(guild.ram);
+			  let disk2 = parseFloat(guild.disk);
+			  let cpu2 = parseFloat(guild.cpu);
+			  extra1.ram = extra1.ram - ram2
+		      extra1.disk = extra1.disk - disk2
+			  extra1.cpu = extra1.cpu - cpu2
+            }
+
+          }
+
+          }
+
+		
+
+          
+          await db.set("extra-" + userinfo.id, extra1)
+          await db.set(`j4rs-${userinfo.id}`, userj4r)
+          
+		 
+
         }
 
         if (newsettings.api.client.bot.joinguild.enabled == true) {

@@ -1,7 +1,7 @@
 {
-  "name": "qwaekactyl",
+  "name": "qwakeactyl",
   "version": "0.4.5",
-  "description": "Qwaekactyl a fork of Dashactyl is a professional panel for allowing users to split resources for servers on the Pterodactyl Panel.",
+  "description": "Qwakeactyl a fork of Dashactyl is a professional panel for allowing users to split resources for servers on the Pterodactyl Panel.",
   "main": "index.js",
   "dependencies": {
     "@fullcalendar/core": "^5.10.1",

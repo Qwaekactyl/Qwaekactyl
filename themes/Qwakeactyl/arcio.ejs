@@ -11,7 +11,11 @@
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="icon" href="https://media.discordapp.net/attachments/939526295434444850/939841449564962836/logo.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-               <%- include('./qwakeactyl/widgets') %>
+    <link rel="stylesheet" href="/assets/qwakeactyl/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="/assets/qwakeactyl/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/qwakeactyl/css/argon.css?v=1.2.0" type="text/css">
+      
+            <%- include('./qwakeactyl/widgets') %>
 
 </head>
 
@@ -20,36 +24,30 @@
    <%- include('./qwakeactyl/header') %>
                       <%- include('./qwakeactyl/ads') %>
         <!-- Page content -->
-                       
         <div class="card">
-
-
 									<div class="card-header">
-										<div class="card-title">Earn Coins By Doing Afk/Playing Games</div>
-                      <style>
-                        .htframe21 {
-                          height: 500px;
-                          width: 100%;
-                          display: flex;
-                         
-                        }
-                      </style>
-                
+										<div class="card-title">Earn Coins</div>
 									</div>
 									<div class="card-body">
 										<center><p>Every <% if (settings.api.arcio["afk page"].every !== 1) { %><%= settings.api.arcio["afk page"].every %> seconds<% } else { %>second<% } %>, you will get <%= settings.api.arcio["afk page"].coins == 1 ? "a" : settings.api.arcio["afk page"].coins %> coin<%= settings.api.arcio["afk page"].coins == 1 ? "" : "s" %>.</p></center>
 										<center><p>You will gain coins again in <span id="arciotimer"><%= settings.api.arcio["afk page"].every %></span> seconds.</p></center>
-										<center><p>You have Earned <span id="arciogainedcoins">0</span> coins currently</p></center>
-                      
+										<center><p>You have gained <span id="arciogainedcoins">0</span> coins currently</p></center>
 										<script>
-										  <%- arcioafktext %>
-										</script> 
-                      <iframe class="htframe21"  src="https://krunker.io/" </iframe> 
-                    </div 
-           
+											<%- arcioafktext %>
+										</script>
+									</div>
+        
                 <!-- Footer -->
- 
+  <%- include('./qwakeactyl/footer') %>
             </div>
         </div>
+        <script src="/assets/qwakeactyl/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="/assets/qwakeactyl/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/qwakeactyl/vendor/js-cookie/js.cookie.js"></script>
+        <script src="/assets/argon/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="/assets/qwakeactyl/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+        <script src="/assets/qwakeactyl/vendor/chart.js/dist/Chart.min.js"></script>
+        <script src="/assets/qwakeactyl/vendor/chart.js/dist/Chart.extension.js"></script>
+        <script src="/assets/qwakeactyl/js/argon.js?v=1.2.0"></script>
 </body>
 </html>

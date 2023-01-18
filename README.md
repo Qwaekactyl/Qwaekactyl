@@ -1,18 +1,8 @@
-# Qwaekactyl
-
-![License](https://img.shields.io/gitlab/license/qwakeactyl/qwakeactyl?color=light%20green)
-![Discord Members](https://img.shields.io/discord/991938583285989527?label=Discord%20Online)
-![Contributers](https://img.shields.io/github/contributors/Qwaekactyl/Qwaekactyl?color=red)
-![version](https://img.shields.io/github/v/tag/Qwaekactyl/Qwaekactyl?label=version)
-
-![Qwaekactyl Home Page](https://media.discordapp.net/attachments/990890523483058216/991598758624247858/unknown.png)
-![Qwaekactyl Login Page](https://media.discordapp.net/attachments/990890523483058216/991597051148255353/unknown.png)
+![Qwakeactyl](https://cdn.discordapp.com/attachments/947690427941785600/949198396118433792/unknown.png)
+ 
 <hr>
 
-# Discord
-[discord server](https://discord.gg/k26zKJVf)
-
-# Qwaekactyl V2 | The Best Control Panel For Pterodactyl
+# Qwakeactyl | a fork of dashactyl v0.4
 Making a free or paid host and need a way for users to sign up, earn coins, manage servers? Try out Qwakeactyl.
 To get started, scroll down and follow the guide
 
@@ -28,30 +18,25 @@ All features:
 - Admin (set/add/remove coins & resources, create/revoke coupons & etc)
 - API (for a lot things)
 - Legal (tos/pp in footer & its own page)
-- Maintenance Enable/Disable
-- Contact Us (Report Bugs And Etc Directly To The Developers)
 - user friendly
 - widget
 - status
 - donate nav
 - discord nav
-- Linkvertise
 
 # what's New
- - Glassmorphism Effect
- - Fixed Status Page
- - Resloved API
- - Added Contact Us using discord webhook
- - Added Goggle Recaptcha
- - Added New Login Page
- - Added New maintenance 
- - Added linkvertise
- - Added new 404 Page
- - All Files css, scss& js files are now at Qwaekactyl Cdn which makes less load and faster speed 
+- widget Added
+- fixed bug
+- Fixed server creation error
+- resloved API
+- Added google and custom ads option
+- Added status
+- New Login Page 
+- Removed drak white theme
 
 # Warning
 
-We cannot force you to keep the "Powered by Qwaekactyl" in the footer, but please consider keeping it. It helps getting more visibility to the project and so getting better. We won't do technical support for installations without the notice in the footer.
+We cannot force you to keep the "Powered by Qwakeactyl" in the footer, but please consider keeping it. It helps getting more visibility to the project and so getting better. We won't do technical support for installations without the notice in the footer.
 
 # Disclaimer
 
@@ -74,8 +59,8 @@ only for windows installer
 `curl -fsSL https://deb.nodesource.com/setup_14.x | sudo bash -`<br>
 `apt install nodejs`<br>
 `npm -v`<br>
-`git clone https://github.com/Qwaekactyl/Qwaekactyl.git`<br>
-`cd Qwaekactyl`<br>
+`git clone https://github.com/Qwakeactyl/Qwakeactyl.git`<br>
+`cd Qwakeactyl`<br>
 `npm install`<br>
 `apt install nginx`<br>
 `sudo apt install certbot`<br>
@@ -84,28 +69,24 @@ only for windows installer
 
 # start command
 ```js
- npm start
+$ npm start
 ```
 
 <hr>
 
 # Themes
 
-![Normal (Main)](https://media.discordapp.net/attachments/990890523483058216/991598758624247858/unknown.png)
+![normal](https://cdn.discordapp.com/attachments/947690427941785600/949198396118433792/unknown.png)
 
 
 
 
 # Credits
+This theme is taken from [creativetim](https://github.com/creativetimofficial).
 
 This project Is managed & made by [IC|Developmet](https://github.com/Team-IC) Developers
 
-This project was not possible without [Dashactyl](https://github.com/Votion-Development/Dashactyl) .
-
-# Contributors
-<a href = "https://github.com/Qwaekactyl/Qwaekactyl/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo=Qwaekactyl/Qwaekactyl"/>
-</a>
+This project was not possible without [dashactylv0.4](https://github.com/Votion-Development/Dashactyl-0.4) .
 
 
 
