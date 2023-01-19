@@ -3,21 +3,22 @@
   "defaulttheme": "Qwakeactyl",
   "website": {
     "port": 80,
-    "secret": ""
+    "secret": "",
+    "maintenance": false
   },
   "pterodactyl": {
     "domain": "",
     "key": ""
   },
   "google_ads": {
-    "enabled": true,
-    "script": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6507690462743601",
+    "enabled": false,
+    "script": "",
     "note": "This allows you to put adsense, adsterra, etc easily into Qwakeactyl."
   },
   "custom_ads":{
-    "enabled": true,
-    "pic": "https://media.discordapp.net/attachments/926024973431234611/931103990689710110/standard_1.gif",
-    "link": "https://xepert.ml/",
+    "enabled": false,
+    "pic": "",
+    "link": "",
     "width": "468",
     "height": "60",
     "note": "this is an custom ads"
@@ -29,8 +30,8 @@
     "note": "This allows you to use widget bot client panel."
   },
   "status":{
-    "enabled": true,
-    "url": "https://wl.hetrixtools.com/r/6d26e8ed5f6de1373c2e66f86abad707/"
+    "enabled": false,
+    "url": ""
   },
     "giftres":{
     "enabled": true,
@@ -58,22 +59,22 @@
         "enabled": true,
         "ads": [
           {
-            "name": "EWN Private Hosting",
-            "invite": "https://discord.gg/YqmHxzBb",
-            "id": "1058549923202740255",
-            "ram": "512",
+            "name": "Name",
+            "invite": "Discord Invite",
+            "id": "Server Id",
+            "ram": 512,
             "disk": 512,
             "cpu": 20,
             "coins": 100
           },
           {
-            "name": "MineCube",
-            "invite": "https://discord.gg/4XMkMXD7b6",
-            "id": "1064872660363903017",
-            "ram": "512",
+            "name": "Name",
+            "invite": "Discord Invite",
+            "id": "Server Id",
+            "ram": 512,
             "disk": 512,
             "cpu": 20,
-             "coins": 100
+            "coins": 100
           }
         ]
       },
