@@ -1,0 +1,50 @@
+{
+  "name": "topojson",
+  "version": "3.0.2",
+  "description": "An extension to GeoJSON that encodes topology.",
+  "keywords": [
+    "topojson",
+    "geojson"
+  ],
+  "homepage": "https://github.com/topojson/topojson",
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "Mike Bostock",
+    "url": "https://bost.ocks.org/mike"
+  },
+  "main": "dist/topojson.node.js",
+  "unpkg": "dist/topojson.js",
+  "jsdelivr": "dist/topojson.js",
+  "module": "index",
+  "jsnext:main": "index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/topojson/topojson.git"
+  },
+  "bin": {
+    "geo2topo": "node_modules/topojson-server/bin/geo2topo",
+    "toposimplify": "node_modules/topojson-simplify/bin/toposimplify",
+    "topo2geo": "node_modules/topojson-client/bin/topo2geo",
+    "topomerge": "node_modules/topojson-client/bin/topomerge",
+    "topoquantize": "node_modules/topojson-client/bin/topoquantize"
+  },
+  "scripts": {
+    "pretest": "rm -rf dist && mkdir dist && node rollup.node",
+    "test": "tape 'test/**/*-test.js'",
+    "prepublishOnly": "npm run test && rollup -c --banner \"$(preamble)\" && uglifyjs -b beautify=false,preamble=\"'$(preamble)'\" dist/topojson.js -c negate_iife=false -m -o dist/topojson.min.js",
+    "postpublish": "git push && git push --tags && cp -v README.md LICENSE.md dist/topojson.js dist/topojson.min.js ../topojson-bower && cd ../topojson-bower && git add README.md LICENSE.md topojson.js topojson.min.js && git commit -m \"${npm_package_version}\" && git tag -am \"${npm_package_version}\" v${npm_package_version} && git push && git push --tags && cd - && cp dist/topojson.js ../d3.github.com/topojson.v3.js && cp dist/topojson.min.js ../d3.github.com/topojson.v3.min.js && cd ../d3.github.com && git add topojson.v3.js topojson.v3.min.js && git commit -m \"topojson ${npm_package_version}\" && git push && cd - && zip -j dist/topojson.zip -- LICENSE.md README.md dist/topojson.js dist/topojson.min.js"
+  },
+  "devDependencies": {
+    "package-preamble": "0.1",
+    "rollup": "0.49",
+    "rollup-plugin-ascii": "0.0",
+    "rollup-plugin-node-resolve": "3",
+    "tape": "4",
+    "uglify-js": "3"
+  },
+  "dependencies": {
+    "topojson-client": "3.0.0",
+    "topojson-server": "3.0.0",
+    "topojson-simplify": "3.0.2"
+  }
+}
