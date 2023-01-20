@@ -1,11 +1,11 @@
-![Qwakeactyl](https://media.discordapp.net/attachments/997875810025349190/1065315121125146684/image.png)
+![Qwaekactyl](https://media.discordapp.net/attachments/997875810025349190/1065315121125146684/image.png)
  
 <hr>
 
-# Qwakeactyl V2.2 LTS | The Best Dashboard For Splitting Resources In Pterodactyl Panel
+# Qwaekactyl V2.2 LTS | The Best Dashboard For Splitting Resources In Pterodactyl Panel
 **NOTE - This Is A Long Term Support Version We Will Keep Providing Support For This Version**
 
-Making a free or paid host and need a way for users to sign up, earn coins, manage servers? Try out Qwakeactyl.
+Making a free or paid host and need a way for users to sign up, earn coins, manage servers? Try out Qwaekactyl.
 To get started, scroll down and follow the guide
 
 All features:
@@ -39,7 +39,7 @@ All features:
 
 # Warning
 
-We cannot force you to keep the "Powered by Qwakeactyl" in the footer, but please consider keeping it. It helps getting more visibility to the project and so getting better. We won't do technical support for installations without the notice in the footer.
+We cannot force you to keep the "Powered by Qwaekactyl" in the footer, but please consider keeping it. It helps getting more visibility to the project and so getting better. We won't do technical support for installations without the notice in the footer.
 
 # Disclaimer
 
@@ -63,7 +63,7 @@ only for windows installer
 `apt install nodejs`<br>
 `npm -v`<br>
 `git clone https://github.com/Qwaekactyl/Qwaekactyl.git`<br>
-`cd Qwakeactyl`<br>
+`cd Qwaekactyl`<br>
 `npm install`<br>
 `apt install nginx`<br>
 `sudo apt install certbot`<br>
