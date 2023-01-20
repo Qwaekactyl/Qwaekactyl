@@ -3,7 +3,12 @@
   "defaulttheme": "Qwaekactyl",
   "website": {
     "port": 80,
-    "secret": ""
+    "secret": "",
+    "note_secret": "you have to put any letters in secret to secure your website ex-alrf",
+
+    "sitekey": "",
+    "secretkey":"",
+    "note_recaptcha": "site key and secret key u will get from https://www.google.com/u/3/recaptcha/admin"
   },
   "pterodactyl": {
     "domain": "",
