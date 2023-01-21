@@ -1,28 +1,28 @@
 {
-  "version": "1.0.2",
+  "version": "2.2",
   "defaulttheme": "Qwaekactyl",
   "website": {
     "port": 80,
     "secret": "",
-    "note_secret": "you have to put any letters in secret to secure your website ex-alrf",
+    "maintenance": false,
 
     "sitekey": "",
-    "secretkey":"",
-    "note_recaptcha": "site key and secret key u will get from https://www.google.com/u/3/recaptcha/admin"
+    "secretkey": "",
+    "note": "You Can Get These From https://www.google.com/recaptcha/admin"
   },
   "pterodactyl": {
     "domain": "",
     "key": ""
   },
   "google_ads": {
-    "enabled": true,
-    "script": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6507690462743601",
+    "enabled": false,
+    "script": "",
     "note": "This allows you to put adsense, adsterra, etc easily into Qwakeactyl."
   },
   "custom_ads":{
-    "enabled": true,
-    "pic": "https://media.discordapp.net/attachments/926024973431234611/931103990689710110/standard_1.gif",
-    "link": "https://xepert.ml/",
+    "enabled": false,
+    "pic": "",
+    "link": "",
     "width": "468",
     "height": "60",
     "note": "this is an custom ads"
@@ -35,7 +35,7 @@
   },
   "status":{
     "enabled": true,
-    "url": "https://wl.hetrixtools.com/r/6d26e8ed5f6de1373c2e66f86abad707/"
+    "url": ""
   },
     "giftres":{
     "enabled": true,

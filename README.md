@@ -35,6 +35,7 @@ All features:
 - Qwaekactyl Manager
 - Email Login Support
 - Linkvertise (Coin Earning System)
+- 
 
 # Warning
 
@@ -84,9 +85,11 @@ $ npm start
 
 
 # Credits
-This theme is taken from [Creativetim](https://github.com/creativetimofficial).
+This theme is taken from [creativetim](https://github.com/creativetimofficial).
 
 This project Is managed & made by [Qwaekactyl Inc](https://discord.gg/Qz7qX6mH). (For Support Join This Server)
+
+This project was not possible without [Dashactyl](https://github.com/Votion-Development/Dashactyl)
 
 
 

@@ -63,7 +63,8 @@
     "tos": "TOS.ejs",
     "pp": "pp.ejs",
     "test": "t.ejs",
-    "status":"status.ejs"
+    "status":"status.ejs",
+    "maintenance": "maintenance.ejs"
         
   },
   "mustbeloggedin": [
