@@ -23,9 +23,8 @@
     "available-typed-arrays": "^1.0.4",
     "balanced-match": "^1.0.2",
     "base64-js": "^1.5.1",
-    "better-sqlite3": "^7.4.1",
+    "better-sqlite3": "^8.0.1",
     "better-sqlite3-session-store": "^0.0.2",
-    "bindings": "^1.5.0",
     "bl": "^4.1.0",
     "body-parser": "^1.19.0",
     "brace-expansion": "^1.1.11",
@@ -191,11 +190,11 @@
     "source-map": "^0.6.1",
     "source-map-support": "^0.5.19",
     "statuses": "^1.5.0",
+    "string_decoder": "^1.1.1",
     "string-template": "^1.0.0",
     "string-width": "^1.0.2",
     "string.prototype.trimend": "^1.0.4",
     "string.prototype.trimstart": "^1.0.4",
-    "string_decoder": "^1.1.1",
     "stringz": "^2.1.0",
     "strip-ansi": "^3.0.1",
     "strip-json-comments": "^2.0.1",
@@ -225,7 +224,6 @@
     "ws": "^5.2.3",
     "yallist": "^4.0.0"
   },
-  "devDependencies": {},
   "scripts": {
     "dashactyl": "node .",
     "start": "node ."
