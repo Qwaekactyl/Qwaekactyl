@@ -1,0 +1,76 @@
+#!/usr/bin/env node
+
+var fs = require("fs"),
+    path = require("path"),
+    commander = require("commander"),
+    topojson = Object.assign(require("../"), require("topojson-client"));
+
+commander
+    .version(require("../package.json").version)
+    .usage("[options] <file>")
+    .option("-o, --out <file>", "output file name; defaults to “-” for stdout", "-")
+    .option("-p, --planar-area <value>", "minimum planar triangle area (absolute)")
+    .option("-P, --planar-quantile <value>", "minimum planar triangle area (quantile)")
+    .option("-s, --spherical-area <value>", "minimum spherical excess (absolute)")
+    .option("-S, --spherical-quantile <value>", "minimum spherical excess (quantile)")
+    .option("-f, --filter-detached", "remove small, detached rings (islands) after simplifying", false)
+    .option("-F, --filter-all", "remove small rings (slivers) after simplifying", false)
+    .parse(process.argv);
+
+if (commander.planarArea == null
+    && commander.planarQuantile == null
+    && commander.sphericalArea == null
+    && commander.sphericalQuantile == null) {
+  commander.planarArea = Number.MIN_VALUE;
+} else if ((commander.planarArea != null)
+    + (commander.planarQuantile != null)
+    + (commander.sphericalArea != null)
+    + (commander.sphericalQuantile != null) > 1) {
+  console.error();
+  console.error("  error: multiple area thresholds specified");
+  console.error();
+  process.exit(1);
+}
+
+if (commander.args.length < 1) commander.args[0] = "-";
+
+var out = commander.out === "-" ? process.stdout : fs.createWriteStream(commander.out);
+
+out.on("error", function(error) {
+  if (error.code === "EPIPE" || error.errno === "EPIPE") {
+    process.exit(0);
+  }
+});
+
+read(commander.args[0]).then(write).catch(abort);
+
+function read(file) {
+  return new Promise(function(resolve, reject) {
+    var chunks = [], stream = file === "-" ? process.stdin : fs.createReadStream(file);
+    stream
+        .on("data", function(chunk) { chunks.push(chunk); })
+        .on("end", function() { resolve(JSON.parse(Buffer.concat(chunks))); })
+        .on("error", reject);
+  });
+}
+
+function write(topology) {
+  var system = commander.sphericalArea != null || commander.sphericalQuantile != null ? "spherical" : "planar",
+      transform = topology.transform;
+  topology = topojson.presimplify(topology, topojson[system + "TriangleArea"]);
+  if (commander[system + "Quantile"] != null) {
+    commander[system + "Area"] = topojson.quantile(topology, +commander[system + "Quantile"]);
+    console.warn("equivalent --" + system + "-area " + commander[system + "Area"]);
+  }
+  topology = topojson.simplify(topology, commander[system + "Area"]);
+  if (commander.filterAll || commander.filterDetached) {
+    topology = topojson.filter(topology, (commander.filterAll ? topojson.filterWeight : topojson.filterAttachedWeight)(topology, commander[system + "Area"], topojson[system + "RingArea"]));
+  }
+  if (transform) topology = topojson.quantize(topology, transform);
+  out.write(JSON.stringify(topology));
+  out[out === process.stdout ? "write" : "end"]("\n");
+}
+
+function abort(error) {
+  console.error(error.stack);
+}
