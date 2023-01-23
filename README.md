@@ -91,6 +91,9 @@ This project Is managed & made by [Qwaekactyl Inc](https://discord.gg/Qz7qX6mH).
 
 This project was not possible without [Dashactyl](https://github.com/Votion-Development/Dashactyl)
 
+Thanks to Developers of this project Asish,Kartik,Kns for developing this projects
+Team-IC
+
 
 
 
