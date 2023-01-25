@@ -35,7 +35,6 @@ All features:
 - Qwaekactyl Manager
 - Email Login Support
 - Linkvertise (Coin Earning System)
-- 
 
 # Warning
 
