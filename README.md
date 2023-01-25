@@ -87,9 +87,12 @@ $ npm start
 # Credits
 This theme is taken from [creativetim](https://github.com/creativetimofficial).
 
-This project Is managed & made by [Qwaekactyl Inc](https://discord.gg/Qz7qX6mH). (For Support Join This Server)
+This project Is managed & made by [Qwaekactyl Inc](https://discord.gg/rDm8VHdyER). (For Support Join This Server)
 
 This project was not possible without [Dashactyl](https://github.com/Votion-Development/Dashactyl)
+
+Thanks to Developers of this project Asish,Kartik,Kns for developing this projects
+Team-IC
 
 
 
