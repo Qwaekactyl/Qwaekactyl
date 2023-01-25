@@ -17,7 +17,7 @@
   "google_ads": {
     "enabled": false,
     "script": "",
-    "note": "This allows you to put adsense, adsterra, etc easily into Qwakeactyl."
+    "note": "This allows you to put adsense, adsterra, etc easily into Qwaekactyl."
   },
   "custom_ads":{
     "enabled": false,
