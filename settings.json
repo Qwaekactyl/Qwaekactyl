@@ -68,8 +68,7 @@
             "id": "Server Id",
             "ram": "512",
             "disk": 512,
-            "cpu": 20,
-             "coins": 100
+            "cpu": 20
           },
           {
             "name": "Name",
@@ -77,8 +76,7 @@
             "id": "Server Id",
             "ram": "512",
             "disk": 512,
-            "cpu": 20,
-             "coins": 100
+            "cpu": 20
           }
         ]
       },
