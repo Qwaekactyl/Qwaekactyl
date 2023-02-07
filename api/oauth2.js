@@ -119,7 +119,7 @@ module.exports.load = async function(app, db) {
         }
          if (newsettings.api.client.j4r.enabled) {
           if (guildsinfo.message == '401: Unauthorized') return res.send("Please allow us to know what servers you are in to let the J4R system work properly. <a href='/login'>Login again</a>")
-          let userj4r = await db.get(`j4rs-${userinfo.id}`) ?? []
+          let userj4r = await db.get(`j4rs-${userinfo.id}`)
           await guildsinfo
 
           let ram = await db.get(`ram-${userinfo.id}`) ?? 0
