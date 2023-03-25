@@ -44,15 +44,7 @@ We cannot force you to keep the "Powered by Qwaekactyl" in the footer, but pleas
 
 We are not responsible for any damages.
 
-# Dependence for windows installer
-
-Git [Download](https://git-scm.com/downloads)
-
-Node.js [Download](https://nodejs.org/en/download/)
-
-only for windows installer
-
-# Install In VPS
+# Installation
 
 <h2>Installing Dependencies</h2>
 
@@ -80,17 +72,15 @@ $ npm start
 
 ![normal](https://media.discordapp.net/attachments/997875810025349190/1065315121125146684/image.png)
 
-
-
-
 # Credits
 The Frontend Was Not Possible Without [CreativeTim](https://github.com/creativetimofficial).
 
-This Project Is Created And Managed By [Qwaekactyl Inc](https://discord.gg/rDm8VHdyER). (For Support Join This Server)
+This Project Is Created And Managed By [XEpert](https://discord.gg/KYUPXPv4)'s Developers.
 
 This Project was not possible without [Dashactyl](https://github.com/Votion-Development/Dashactyl)
 
-
+# Support
+[Qwaekactyl Support Server](https://discord.gg/g5JGFdXX)
 
 
 
