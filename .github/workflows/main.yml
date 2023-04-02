@@ -1,0 +1,29 @@
+name: Qwaekactyl
+
+on: [workflow_dispatch,push,pull_request]
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:      
+    
+      - name: 📃Installating dependencies
+        run: sudo apt-get update -y && sudo apt-get install nodejs -y
+        
+      - name: 🔍Check out repository code
+        uses: actions/checkout@v3
+        
+      - name: 📁Installing Dependencies
+        run: npm install && npm install pm2 -g
+
+      - name: 🟢Starting Server
+        run: pm2 start index.js
+
+      - name: 📡Integrating Cloudflare
+        run: cd ~ && wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -O cloudflared.deb && sudo apt install ./cloudflared.deb
+        
+      - name: 🔗Hosting
+        run: sudo cloudflared tunnel --url localhost:2554 &
+        
+      - name: ✅Online for 1 mins
+        run: sleep 60

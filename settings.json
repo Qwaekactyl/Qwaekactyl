@@ -2,8 +2,7 @@
   "version": "2.2",
   "defaulttheme": "Qwaekactyl",
   "website": {
-    "port": 80,
-    "secret": "",
+    "port": 2554,
     "maintenance": false,
 
     "sitekey": "",

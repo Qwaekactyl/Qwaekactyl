@@ -109,8 +109,8 @@ module.exports.app = app;
 console.log(chalk.green("[Qwaekactyl] Website loading..."))
 
 app.use(session({
-  secret: settings.website.secret,
-  resave: true,
+  secret: "Qwaekactyl",
+  resave: false,
   saveUninitialized: true,
   store: new SqliteStore({
     client: session_db, 
@@ -130,9 +130,9 @@ app.use(express.json({
   verify: undefined
 }));
 console.log(chalk.yellow("=================================================="))
-console.log(chalk.blue("[Qwaekactyl Inc] ©️ :  \n Links:   \n [Github] https://github.com/Qwaekactyl/Qwaekactyl \n [Discord] https://discord.gg/Qz7qX6mH"));
+console.log(chalk.blue("[XEpert] ©️ :  \n Links:   \n [Github] https://github.com/Qwaekactyl/Qwaekactyl \n [Discord] https://discord.gg/6S2qvVZ3"));
 console.log(chalk.yellow("=================================================="))
-console.log(chalk.gray("[Contributors] \n [Just a Kartik#6927 \n ItzCrazyKns#9198 \n ||**AshishOp.java**||#0666]"));
+console.log(chalk.gray("[Contributors] \n [Just a Kartik#6927 \n ItzCrazyKns#0355 \n ||**AshishOp.java**||#0666]"));
 console.log(chalk.yellow("=================================================="))
 
 const listener = app.listen(settings.website.port, function() {
