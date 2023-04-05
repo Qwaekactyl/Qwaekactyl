@@ -80,7 +80,7 @@ This Project Is Created And Managed By [XEpert](https://discord.gg/KYUPXPv4)'s D
 This Project was not possible without [Dashactyl](https://github.com/Votion-Development/Dashactyl)
 
 # Support
-[Qwaekactyl Support Server](https://discord.gg/g5JGFdXX)
+[Qwaekactyl Support Server](https://discord.gg/ubVuhS8wjV)
 
 
 
