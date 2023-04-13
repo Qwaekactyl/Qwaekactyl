@@ -48,7 +48,7 @@ We are not responsible for any damages.
 
 <h2>Installing Dependencies</h2>
 
-```bash
+```yaml
 $ sudo apt update && sudo apt upgrade
 $ sudo apt install git
 $ curl -fsSL https://deb.nodesource.com/setup_14.x | sudo bash -
