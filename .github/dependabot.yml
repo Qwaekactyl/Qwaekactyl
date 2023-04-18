@@ -7,5 +7,5 @@ updates:
     labels:
       - "dependencies"
     ignore:
-      - "chalk"
-      - "node-fetch"
+      - dependency-name: "chalk"
+      - dependency-name: "node-fetch"
