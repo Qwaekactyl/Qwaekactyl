@@ -76,8 +76,8 @@ $ sudo apt install -y python3-certbot-nginx
 
 ```bash
 $ certbot certonly -d <your domain>
-$ type 1 and enter to get ssl
 ```
+> Now  type 1 and enter to get ssl
 
 3. Now Doing above all works now you have to setup nginx config. 
 
@@ -87,7 +87,7 @@ $ type 1 and enter to get ssl
    $ nano /etc/nginx/sites-enabled/imp.conf
    ```
    > using this cmd a blank file will open for edit and now paste the give config by editing your domain
-   ```php
+   ```bash
 server {
     listen 80;
     server_name <your domain>;
