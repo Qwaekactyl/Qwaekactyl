@@ -85,7 +85,9 @@ module.exports.load = async function (app, db) {
     
   app.post("/api/setcoins", async (req, res) => {	
     let settings = await check(req, res);	
-    if (!settings) return;	
+    if (!settings) return;
+    let newsettings = JSON.parse(fs.readFileSync("./settings.json").toString());
+    if(!newsettings.api.client.coins.enabled) return res.send({status:"coins are disabled"})
     if (typeof req.body !== "object") return res.send({status: "body must be an object"});	
     if (Array.isArray(req.body)) return res.send({status: "body cannot be an array"});	
     let id = req.body.id;	
@@ -101,7 +103,30 @@ module.exports.load = async function (app, db) {
     }	
     res.send({status: "success"});	
   });
-    
+
+  app.post("/api/addcoins", async (req, res) => {	
+    let settings = await check(req, res);	
+    if (!settings) return;
+    let newsettings = JSON.parse(fs.readFileSync("./settings.json").toString());
+    if(!newsettings.api.client.coins.enabled) return res.send({status:"coins are disabled"})
+    if (typeof req.body !== "object") return res.send({status: "body must be an object"});	
+    if (Array.isArray(req.body)) return res.send({status: "body cannot be an array"});	
+    let id = req.body.id;	
+    let coins = req.body.coins;	
+    if (typeof id !== "string") return res.send({status: "id must be a string"});	
+    if (!(await db.get("users-" + id))) return res.send({status: "invalid id"});	
+    if (typeof coins !== "number") return res.send({status: "coins must be number"});	
+    if (coins < 0 || coins > 999999999999999) return res.send({status: "too small or big coins"});	
+    const currentCoins = await db.get("coins-" + id)
+    if(!currentCoins) {
+      await db.set("coins-" + id, coins);	
+    } else {
+      coins = parseInt(currentCoins) + parseInt(coins)
+      await db.set("coins-" + id, coins);	
+    }
+    res.send({status: "success", updatedcoins: coins});	
+  });
+  
   app.get("/api/updateCoins", async (req, res) => {
     if (!req.session.pterodactyl) return res.redirect("/login");
     let newsettings = JSON.parse(fs.readFileSync("./settings.json").toString());

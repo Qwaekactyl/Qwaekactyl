@@ -62,6 +62,72 @@ $ sudo apt install certbot
 $ sudo apt install -y python3-certbot-nginx
 ```
 
+# Setup your domain to client panel
+
+1. You have to install some packages
+
+```bash
+$ apt install nginx
+$ sudo apt install certbot
+$ sudo apt install -y python3-certbot-nginx
+````
+
+2. When these packages are installed, You have to add ssl to your domain :- using following commands
+
+```bash
+$ certbot certonly -d <your domain>
+```
+> Now  type 1 and enter to get ssl
+
+3. Now Doing above all works now you have to setup nginx config. 
+
+   > use this command first
+   ```bash
+   $ systemctl stop nginx
+   $ nano /etc/nginx/sites-enabled/imp.conf
+   ```
+   > using this cmd a blank file will open for edit and now paste the give config by editing your domain
+# Nginx Proxy Config
+```Nginx
+server {
+    listen 80;
+    server_name <domain>;
+    return 301 https://$server_name$request_uri;
+}
+server {
+    listen 443 ssl http2;
+location /afkwspath {
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection "upgrade";
+  proxy_pass "http://localhost:<port>/afkwspath";
+}
+    
+    server_name <domain>;
+ssl_certificate /etc/letsencrypt/live/<domain>/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/<domain>/privkey.pem;
+    ssl_session_cache shared:SSL:10m;
+    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers  HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+location / {
+      proxy_pass http://localhost:<port>/;
+      proxy_buffering off;
+      proxy_set_header X-Real-IP $remote_addr;
+  }
+}
+```
+
+> Now press ^x and press y
+
+4. Now your config is setup now u have to run nginx
+
+```bash
+$ systemctl start nginx
+```
+> Doing this you have successfully setup your domain ssl and point your domain to running client panel
+> Note :- make sure you have point your domain to your vps ip.
+
 # Start Command
 ```bash
 $ npm start

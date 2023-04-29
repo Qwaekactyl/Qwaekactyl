@@ -6,7 +6,6 @@ const fs = require("fs");
 const fetch = require('node-fetch');
 const chalk = require("chalk");
 const arciotext = (require("./api/arcio.js")).text;
-require("./bot")
 
 console.log(chalk.green("[Qwaekactyl] Files loading..."));
 
