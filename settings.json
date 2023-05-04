@@ -132,11 +132,22 @@
           "block": [],
 
           "_comment": "'duplicate check' is an anti-alt check by IPs.",
-          "duplicate check": false,
+          "duplicate check": true,
 
           "_comment2": "'cookie alt check' is an anti-alt check by cookies.",
           "cookie alt check": true
         }
+      },
+      "xauth": {
+        "enabled": true,
+        "_comment": "You can get these details from 'https://auth.xepert.tech'.",
+
+        "callback": "/api/xauth/callback",
+        "_commen2t": "Dont change this if you dont know what you are doing.",
+
+        "clientid": "", 
+
+        "clientsecret": ""
       },
       "ratelimits": {
         "enabled": true,
