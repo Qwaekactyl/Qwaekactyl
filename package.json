@@ -12,6 +12,7 @@
     "express-session": "^1.17.3",
     "express-ws": "^5.0.2",
     "fs": "^0.0.1-security",
+    "javascript-obfuscator": "^4.0.2",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.9"
   },

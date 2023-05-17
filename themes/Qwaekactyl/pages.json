@@ -95,13 +95,22 @@
       "title": "Qwaekactyl",
       "buttontext": {
         "loggedin": {
-          "text": "Qwaekactyl",
+          "text": {
+            "discord": "Continue",
+            "xauth": "Continue"
+          },
           "link": "/dashboard"
         },
         "loggedout": {
           "_note": "This below supports HTML encoding.",
-          "text": "<img src=\"https://i.imgur.com/EYGXn9D.png\" width=\"25\" /> Login with Discord",
-          "link": "/login"
+          "text": {
+            "discord": "<img src=\"https://i.imgur.com/EYGXn9D.png\" width=\"25\" /> Login with Discord",
+            "xauth": "Login With Xauth"
+          },
+          "link": {
+            "discord": "/login",
+            "xauth": "/api/xauth/login"
+          }
         }
       }
     },

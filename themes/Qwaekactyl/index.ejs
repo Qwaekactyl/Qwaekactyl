@@ -21,10 +21,14 @@
         body {
             background-image: url("https://cdn.discordapp.com/attachments/943921350152704000/947028915073978368/istockphoto-1320110490-612x612.jpg") !important;
             background-repeat: no-repeat !important;
+            color: white;
             height: 100% !important;
             background-position: center !important;
             background-repeat: no-repeat !important;
             background-size: cover !important;
+        }
+        .bg-blue {
+            background-color: blue;
         }
     </style>
 </head>
@@ -37,7 +41,11 @@
             <h2>Welcome Back!! </h2>
             <p>Login to access Dashboard Area</p>
             </center>
-            <div class="form-group"><a href="<%= userinfo ? extra.home.buttontext.loggedin.link : extra.home.buttontext.loggedout.link %>"  class="btn btn-primary btn-block" ><%- userinfo ? extra.home.buttontext.loggedin.text : extra.home.buttontext.loggedout.text %></a>
+            <div class="form-group"><a href="<%= userinfo ? extra.home.buttontext.loggedin.link.discord : extra.home.buttontext.loggedout.link.discord %>"  class="btn btn-primary bg-primary btn-block" ><%- userinfo ? extra.home.buttontext.loggedin.text.discord : extra.home.buttontext.loggedout.text.discord %></a>
+            <% if(settings.api.client.xauth.enabled) { %> 
+                <div class="form-group"><a href="<%= userinfo ? extra.home.buttontext.loggedin.link.xauth : extra.home.buttontext.loggedout.link.xauth %>"  class="btn btn-primary bg-primary btn-block" ><%- userinfo ? extra.home.buttontext.loggedin.text.xauth : extra.home.buttontext.loggedout.text.xauth %></a>
+            <% } %>
+            
             <br>
             <center>
             <p> Made by Qwaekactyl INC</p>
