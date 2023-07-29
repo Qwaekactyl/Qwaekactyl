@@ -1,39 +1,51 @@
 {
-  "name": "qwaekactyl",
-  "version": "2.2.0",
-  "description": "Qwaekactyl is a open source dashboard to manage your servers running on pterodactyl.",
+  "name": "Qwaekactyl",
+  "version": "3.0",
+  "description": "A Dashboard For Splitting Resources And Servers In Pterodactyl",
   "main": "index.js",
-  "dependencies": {
-    "better-sqlite3": "^8.2.0",
-    "better-sqlite3-session-store": "^0.1.0",
-    "chalk": "^4.1.2",
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "express-session": "^1.17.3",
-    "express-ws": "^5.0.2",
-    "fs": "^0.0.1-security",
-    "javascript-obfuscator": "^4.0.2",
-    "node-cache": "^5.1.2",
-    "node-fetch": "^2.6.9"
-  },
   "scripts": {
     "test": "node index.js",
-    "start": "npm i && node index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Qwaekactyl/Qwaekactyl.git"
   },
   "keywords": [
-    "qwaekactyl",
-    "dashactyl",
-    "dashboard",
-    "pterodactyl"
+    "pterodactyl-dashboard",
+    "hyperactyl",
+    "dashactyl"
   ],
-  "author": "XEpert",
+  "author": "Qwaekactyl",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Qwaekactyl/Qwaekactyl/issues"
   },
-  "homepage": "https://github.com/Qwaekactyl/Qwaekactyl#readme"
+  "homepage": "https://github.com/Qwaekactyl/Qwaekactyl#readme",
+  "dependencies": {
+    "@fullcalendar/core": "^6.1.4",
+    "better-sqlite3": "^8.1.0",
+    "better-sqlite3-session-store": "^0.1.0",
+    "body-parser": "^1.20.2",
+    "chalk": "^4.1.0",
+    "ejs": "^3.1.8",
+    "email-validator": "^2.0.4",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.8.0",
+    "express-session": "^1.17.3",
+    "express-ws": "^5.0.2",
+    "fetch": "^1.1.0",
+    "fs": "^0.0.1-security",
+    "googleapis": "^111.0.0",
+    "javascript-obfuscator": "^4.0.2",
+    "jwt-decode": "^3.1.2",
+    "moment": "^2.29.4",
+    "mongodb": "^5.7.0",
+    "node-cache": "^5.1.2",
+    "node-fetch": "^2.6.9",
+    "nodemailer": "^6.9.4",
+    "source-map-support": "^0.5.21",
+    "stripe": "^12.14.0",
+    "uuid": "^9.0.0"
+  }
 }

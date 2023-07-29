@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./theme-main/head') %>
+  <body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+    <%- include('./theme_assets/mainnav') %>
+ 
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <%- include('./theme_assets/header') %>
+    
+    
+          
+          
+          <!-- End Row -->
+          <div class="row">
+            <div class="col">
+              <div class="card-style">
+                <div class="card-header">
+                  <div class="card-title">Create Server</div>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center"></div>
+
+                  <div class="input-style-1">
+                    <label>Server Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name">
+                  </div>
+                  <br>
+                  <div class="select-style-1">
+                    <label>Location</label>
+                    <div class="select-position">
+                      <select class="form-control" id="location">
+                        <% for (let [name, value] of Object.entries(settings.api.client.locations)) { %>
+                          <option value="<%= name %>"><%= value.name %></option>
+                        <% } %>
+                      </select>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="select-style-1">
+                    <label>Egg</label>
+                    <div class="select-position">
+                      <select class="form-control" id="egg">
+                        <% for (let [name, value] of Object.entries(settings.api.client.eggs)) { %>
+                          <option value="<%= name %>"><%= value.display %></option>
+                        <% } %>
+                      </select>
+                    </div>
+                  </div>            
+                  <br>
+                  <div class="input-style-1">
+                    <label>Ram</label>
+                    <input type="text" class="form-control" id="ram" placeholder="RAM">
+                  </div>
+                  <br>
+                  <div class="input-style-1">
+                    <label>Disk</label>
+                    <input type="text" class="form-control" id="disk" placeholder="DISK">
+                  </div>
+                  <br>
+                  <div class="input-style-1">
+                    <label>Cpu</label>
+                    <input type="text" class="form-control" id="cpu" placeholder="CPU">
+                  </div>
+                  <br>
+                  <button id="createButton" onclick="submitForm()" class="main-btn primary-btn btn-hover btn-sm">Create</button>
+              <br></div>
+              <script>
+                  async function submitForm() {
+                      let name = encodeURIComponent(document.getElementById("name").value);
+                      let egg = encodeURIComponent(document.getElementById("egg").value);
+                      let ram = encodeURIComponent(document.getElementById("ram").value);
+                      let disk = encodeURIComponent(document.getElementById("disk").value);
+                      let cpu = encodeURIComponent(document.getElementById("cpu").value);
+                      let location = encodeURIComponent(document.getElementById("location").value);
+                      document.location.href = `/create?name=${name}&egg=${egg}&ram=${ram}&disk=${disk}&cpu=${cpu}&location=${location}`;
+                  };
+              </script>
+              </div>
+          </div>
+      </div>
+</div>
+                    <!-- end table -->
+                  </div>
+                <!-- End Chart -->
+              </div>
+            </div>
+            <!-- End Col -->
+            
+          <!-- End Row -->
+          
+      <!-- ========== section end ========== -->
+
+      <!-- ========== footer start =========== -->
+      <%- include('./theme_assets/footer') %>
+      <!-- ========== footer end =========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/Chart.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/moment.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/fullcalendar.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/jvectormap.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/world-merc.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/polyfill.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/main.js"></script>
+<script>
+  async function submitForm() {
+    let name = encodeURIComponent(document.getElementById("name").value);
+    let egg = encodeURIComponent(document.getElementById("egg").value);
+    let ram = encodeURIComponent(document.getElementById("ram").value);
+    let disk = encodeURIComponent(document.getElementById("disk").value);
+    let cpu = encodeURIComponent(document.getElementById("cpu").value);
+    let location = encodeURIComponent(document.getElementById("location").value);
+    let button = document.getElementById("createButton");
+    button.disabled = true; // disable the button
+    document.location.href = `/create?name=${name}&egg=${egg}&ram=${ram}&disk=${disk}&cpu=${cpu}&location=${location}`;
+    // You may need to re-enable the button if there was an error or if the form needs to be submitted again
+  };
+</script>
+
+    
+  </body>
+</html>

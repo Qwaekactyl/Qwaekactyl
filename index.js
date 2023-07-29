@@ -1,19 +1,17 @@
 "use strict";
 
-// Load packages.
-
 const fs = require("fs");
 const fetch = require('node-fetch');
 const chalk = require("chalk");
 const arciotext = (require("./api/arcio.js")).text;
+const rateLimit = require('express-rate-limit');
+const bodyParser = require("body-parser")
 
+console.log(chalk.green("[Qwaekactyl] Starting Qwaekactyl"));
 console.log(chalk.green("[Qwaekactyl] Files loading..."));
 
-console.log(chalk.green("[Qwaekactyl] Files loaded..."));
 
-// Load settings.
-
-const settings = require("./settings.json");
+const settings = require("./settings");
 console.log(chalk.green("[Qwaekactyl] Settings loading..."));
 
 const defaultthemesettings = {
@@ -50,10 +48,11 @@ module.exports.renderdataeval =
         servers: 0
       }),
       packages: req.session.userinfo ? newsettings.api.client.packages.list[await db.get("package-" + req.session.userinfo.id) ? await db.get("package-" + req.session.userinfo.id) : newsettings.api.client.packages.default] : null,
-      coins: newsettings.api.client.coins.enabled == true ? (req.session.userinfo ? (await db.get("coins-" + req.session.userinfo.id) ? await db.get("coins-" + req.session.userinfo.id) : 0) : null) : null,
+      coins: newsettings.api.client.coins.enabled == true ? (req.session.userinfo ? (await db.get("coins-" + req.session.userinfo.id) ? await db.get("coins-" + req.session.userinfo.id) : 0) : 0) : 0,
       pterodactyl: req.session.pterodactyl,
       theme: theme.name,
-      extra: theme.settings.variables
+      extra: theme.settings.variables,
+      referid: req.session.userinfo ? await db.get("referiduser-" + req.session.userinfo.id) : null
     };
     if (newsettings.api.arcio.enabled == true && req.session.arcsessiontoken) {
       renderdata.arcioafktext = JavaScriptObfuscator.obfuscate(\`
@@ -67,49 +66,54 @@ module.exports.renderdataeval =
     return renderdata;
   })();`;
 
-// Load database
 
 const db = require("./db.js");
 
 console.log(chalk.green("[Qwaekactyl] Database loading..."))
 
 module.exports.db = db;
-
 console.log(chalk.green("[Qwaekactyl] Database loaded..."))
 
-// Load websites.
+const session = require("express-session");
+console.log(chalk.green("[Qwaekactyl] session loading..."))
+console.log(chalk.green("[Qwaekactyl] session DB loading..."))
+const sqlite = require("better-sqlite3");
+
+const SqliteStore = require("better-sqlite3-session-store")(session);
+const session_db = new sqlite("sessions.db");
+console.log(chalk.green("[Qwaekactyl] session loaded..."))
+console.log(chalk.green("[Qwaekactyl] session DB loaded..."))
 
 const express = require("express");
-console.log(chalk.green("[Qwaekactyl] api's loading..."))
+console.log(chalk.green("[Qwaekactyl] express loading..."))
 const app = express();
-console.log(chalk.green("[Qwaekactyl] api's loaded..."))
+console.log(chalk.green("[Qwaekactyl] express loaded..."))
 
-// Load express addons.
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use(bodyParser.json())
+
+app.set('trust proxy', true);
 
 const expressWs = require('express-ws')(app);
 console.log(chalk.green("[Qwaekactyl] Express addons loading..."))
+
 const ejs = require("ejs");
-const session = require("express-session");
+
 const indexjs = require("./index.js");
 console.log(chalk.green("[Qwaekactyl] Express addons loaded..."))
 
 
-// Sets up saving session data.
 
-const sqlite = require("better-sqlite3");
-console.log(chalk.green("[Qwaekactyl] Season data loading..."))
-const SqliteStore = require("better-sqlite3-session-store")(session);
-const session_db = new sqlite("sessions.db");
-console.log(chalk.green("[Qwaekactyl] Season data loaded..."))
-
-// Load the website.
 
 module.exports.app = app;
 console.log(chalk.green("[Qwaekactyl] Website loading..."))
 
+
 app.use(session({
-  secret: "Qwaekactyl",
-  resave: false,
+  secret: 'qwaekactyl-kartik-2023',
+  resave: true,
   saveUninitialized: true,
   store: new SqliteStore({
     client: session_db, 
@@ -120,23 +124,16 @@ app.use(session({
   })
 }));
 
-app.use(express.json({
-  inflate: true,
-  limit: '500kb',
-  reviver: null,
-  strict: true,
-  type: 'application/json',
-  verify: undefined
-}));
-console.log(chalk.yellow("=================================================="))
-console.log(chalk.blue("[XEpert] ©️ :  \n Links:   \n [Github] https://github.com/Qwaekactyl/Qwaekactyl \n [Discord] https://discord.gg/6S2qvVZ3"));
-console.log(chalk.yellow("=================================================="))
-console.log(chalk.gray("[Contributors] \n [Just a Kartik#6927 \n ItzCrazyKns#0355 \n ||**AshishOp.java**||#0666]"));
-console.log(chalk.yellow("=================================================="))
 
-const listener = app.listen(settings.website.port, function() {
-  console.log(chalk.green("[Qwaekactyl] Loaded Website on the port " + listener.address().port +" "));
-});
+
+
+
+
+  
+app.listen(settings.website.port, function() {
+console.log(chalk.green("[Qwaekactyl]") + chalk.white(" Qwaekactyl CP Started "));
+console.log(chalk.green("[Qwaekactyl]") + chalk.white(" Any Issue?? our contact support here :- https://discord.gg/rZWa97Yp2N" ));
+ });
 
 
 let ipratelimit = {};
@@ -200,7 +197,7 @@ app.use(async (req, res, next) => {
         ip = (ip ? ip : "::1").replace(/::1/g, "::ffff:127.0.0.1").replace(/^.*:/, '');
       
         if (ipratelimit[ip] && ipratelimit[ip] >= newsettings.api.client.ratelimits.requests) {
-          // possibly add a custom theme for this in the future
+
           res.send(`<html><head><title>You are being rate limited.</title></head><body>You have exceeded rate limits.</body></html>`);
           return;
         }
@@ -222,23 +219,30 @@ app.use(async (req, res, next) => {
   next();
 });
 
-// Load the API files.
+function loadApiFiles(directory, app, db) {
+  const files = fs.readdirSync(directory);
 
-let apifiles = fs.readdirSync('./api').filter(file => file.endsWith('.js'));
+  for (const file of files) {
+    const filePath = `${directory}/${file}`;
+    if (fs.statSync(filePath).isDirectory()) {
+      loadApiFiles(filePath, app, db);
+    } else if (file.endsWith('.js')) {
+      const apiFile = require(`./${filePath}`);
+      apiFile.load(app, db);
+    }
+  }
+}
 
-apifiles.forEach(file => {
-  let apifile = require(`./api/${file}`);
-	apifile.load(app, db);
-});
+loadApiFiles('./api', app, db);
 
 app.all("*", async (req, res) => {
-  if (req.session.pterodactyl) if (req.session.pterodactyl.id !== await db.get("users-" + req.session.userinfo.id)) return res.redirect("/login?prompt=none");
+  if (req.session.pterodactyl) if (req.session.pterodactyl.id !== await db.get("users-" + req.session.userinfo.id)) return res.redirect("/");
   let theme = indexjs.get(req);
 
   let newsettings = JSON.parse(require("fs").readFileSync("./settings.json"));
   if (newsettings.api.arcio.enabled == true) if (theme.settings.generateafktoken.includes(req._parsedUrl.pathname)) req.session.arcsessiontoken = Math.random().toString(36).substring(2, 15);
   
-  if (theme.settings.mustbeloggedin.includes(req._parsedUrl.pathname)) if (!req.session.userinfo || !req.session.pterodactyl) return res.redirect("/login" + (req._parsedUrl.pathname.slice(0, 1) == "/" ? "?redirect=" + req._parsedUrl.pathname.slice(1) : ""));
+  if (theme.settings.mustbeloggedin.includes(req._parsedUrl.pathname)) if (!req.session.userinfo || !req.session.pterodactyl) return res.redirect("/");
   if (theme.settings.mustbeadmin.includes(req._parsedUrl.pathname)) {
     ejs.renderFile(
       `./themes/${theme.name}/${theme.settings.notfound}`, 
@@ -249,7 +253,7 @@ app.all("*", async (req, res) => {
       delete req.session.password;
       if (!req.session.userinfo || !req.session.pterodactyl) {
         if (err) {
-          console.log(chalk.red(`[WEBSITE] An error has occured on path ${req._parsedUrl.pathname}:`));
+          console.log(chalk.red(`[Qwaekactyl] An error has occured on path ${req._parsedUrl.pathname}:`));
           console.log(err);
           return res.send("An error has occured while attempting to load this page. Please contact an administrator to fix this.");
         };
@@ -266,7 +270,7 @@ app.all("*", async (req, res) => {
       );
       if (await cacheaccount.statusText == "Not Found") {
         if (err) {
-          console.log(chalk.red(`[WEBSITE] An error has occured on path ${req._parsedUrl.pathname}:`));
+          console.log(chalk.red(`[Qwaekactyl] An error has occured on path ${req._parsedUrl.pathname}:`));
           console.log(err);
           return res.send("An error has occured while attempting to load this page. Please contact an administrator to fix this.");
         };
@@ -277,7 +281,7 @@ app.all("*", async (req, res) => {
       req.session.pterodactyl = cacheaccountinfo.attributes;
       if (cacheaccountinfo.attributes.root_admin !== true) {
         if (err) {
-          console.log(chalk.red(`[WEBSITE] An error has occured on path ${req._parsedUrl.pathname}:`));
+          console.log(chalk.red(`[Qwaekactyl] An error has occured on path ${req._parsedUrl.pathname}:`));
           console.log(err);
           return res.send("An error has occured while attempting to load this page. Please contact an administrator to fix this.");
         };
@@ -292,7 +296,7 @@ app.all("*", async (req, res) => {
         delete req.session.newaccount;
         delete req.session.password;
         if (err) {
-          console.log(`[WEBSITE] An error has occured on path ${req._parsedUrl.pathname}:`);
+          console.log(`[Qwaekactyl] An error has occured on path ${req._parsedUrl.pathname}:`);
           console.log(err);
           return res.send("An error has occured while attempting to load this page. Please contact an administrator to fix this.");
         };
@@ -310,7 +314,7 @@ app.all("*", async (req, res) => {
     delete req.session.newaccount;
     delete req.session.password;
     if (err) {
-      console.log(chalk.red(`[WEBSITE] An error has occured on path ${req._parsedUrl.pathname}:`));
+      console.log(chalk.red(`[Qwaekactyl] An error has occured on path ${req._parsedUrl.pathname}:`));
       console.log(err);
       return res.send("An error has occured while attempting to load this page. Please contact an administrator to fix this.");
     };
@@ -347,7 +351,7 @@ module.exports.ratelimits = async function(length) {
   cache = cache + length
 }
 
-// Get a cookie.
+
 function getCookie(req, cname) {
   let cookies = req.headers.cookie;
   if (!cookies) return null;
@@ -364,3 +368,10 @@ function getCookie(req, cname) {
   }
   return "";
 }
+try {
+  // code that might throw an error
+} catch (error) {
+  // code to handle the error
+  console.error(error);
+}
+

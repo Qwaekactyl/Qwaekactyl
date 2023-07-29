@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./theme-main/head') %>
+  <body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+    <%- include('./admin_assets/mainnav') %>
+ 
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <%- include('./admin_assets/header') %>
+    
+    
+          
+          
+          <!-- End Row -->
+          <div class="row">
+            <div class="col">
+              <div class="card-style">
+                <div class="card-header">
+                  <div class="card-title">Qwakeactyl Info</div>
+                </div>
+                <div class="card-body">
+                    
+                  <div class="d-flex justify-content-between align-items-center"></div>
+                    
+                  <h6 id="latest">Updating...</h6>
+                  <p>Created And Managed By Qwaekactyl Team</p><br>
+                    <a href="https://github.com/Qwakeactyl/Qwakeactyl" class="main-btn primary-btn btn-sm btn-hover"><i class="fa-brands fa-github"></i> Github </a> <a>  </a>
+                    <a href="https://discord.gg/eZ2QXSVdR5" class="main-btn dark-btn btn-sm btn-hover"><i class="fa-brands fa-discord"></i> Discord </a>
+                    <script>
+                        async function getversion() {
+                            let latestversion = await fetch("/api/version")
+                            .then(response => response.json())
+                            .then(json => {
+                              document.getElementById("latest").innerHTML = `You Are Running ${(json.name == json.current_version) ? 'The Latest Version ' + json.name + ' Of Qwakeactyl' : 'An Old Version ' + json.current_version  + ' Of Qwakeactyl'}`;
+                            })
+                           
+                        }
+                        getversion()
+                    </script>
+              </div>
+          </div>
+          
+      </div>
+      <%- include('./theme_assets/footer') %>
+</div>
+     
+</main>
+    <!-- ======== main-wrapper end =========== -->
+
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/Chart.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/moment.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/fullcalendar.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/jvectormap.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/world-merc.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/polyfill.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/main.js"></script>
+
+    
+  </body>
+</html>

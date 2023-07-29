@@ -19,7 +19,7 @@ module.exports.load = async function(app, db) {
 
     let newpassword = makeid(newsettings.api.client.passwordgenerator["length"]);
     req.session.password = newpassword;
-
+    await db.set("passwords-" + req.session.userinfo.id)
     await fetch(
       settings.pterodactyl.domain + "/api/application/users/" + req.session.pterodactyl.id,
       {

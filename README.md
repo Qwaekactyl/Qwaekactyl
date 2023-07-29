@@ -1,9 +1,8 @@
-![Qwaekactyl](https://media.discordapp.net/attachments/997875810025349190/1065315121125146684/image.png)
- 
+![Qwakeactyl](https://media.discordapp.net/attachments/1134455968156106762/1134456211371208744/image.png?width=823&height=443)
+
 <hr>
 
-# Qwaekactyl V2.2 LTS | The Best Dashboard For Splitting Resources In Pterodactyl Panel
-**NOTE - This Is A Long Term Support Version We Will Keep Providing Support For This Version**
+# Qwaekactyl V3.0| The Best Dashboard For Splitting Resources In Pterodactyl Panel
 
 Making a free or paid host and need a way for users to sign up, earn coins, manage servers? Try out Qwaekactyl.
 To get started, scroll down and follow the guide
@@ -23,18 +22,27 @@ All features:
 - User Friendly
 - Arcio Widget Supported
 - Donate Nav
-- Discord nav
+- Social nav
 - Gift Resources
 - Admin Area For Admins
+- Status Page for Hetrixtool
+- Node Status Page
+- Multi Login (Email,Discord,Google,Apple)
 
 # What's New
-- Fixed Join For Resources Api
-- Fixed Footer
+- New User UI
+- New Admin UI
+- Recoded all API
+- Added New Status Page
+- Added Multi Login
+- New Donate Page
+- Added Alert email Notification for user On login
+- Added New Multi Socail Media
+- Added Referral System
+- Added Fastest CDN
+- Added New Greating Msg on Dashboard
+- Fixed Many Bugs
 
-# Upcoming Features
-- Qwaekactyl Manager
-- Email Login Support
-- Linkvertise (Coin Earning System)
 
 # Warning
 
@@ -137,18 +145,14 @@ $ npm start
 
 # Themes
 
-![normal](https://media.discordapp.net/attachments/997875810025349190/1065315121125146684/image.png)
+![normal](https://media.discordapp.net/attachments/1134455968156106762/1134800093946585138/image.png?width=831&height=443)
 
 # Credits
-The Frontend Was Not Possible Without [CreativeTim](https://github.com/creativetimofficial).
 
-This Project Is Created And Managed By [XEpert](https://discord.gg/KYUPXPv4)'s Developers.
+This Project Is Created And Managed By [Qwaekactyl](https://discord.gg/KYUPXPv4)'s Developers.
 
 This Project was not possible without [Dashactyl](https://github.com/Votion-Development/Dashactyl)
 
 # Support
 [Qwaekactyl Support Server](https://discord.gg/ubVuhS8wjV)
-
-
-
 

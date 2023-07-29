@@ -1,103 +1,82 @@
 {
-  "version": "2.2",
-  "defaulttheme": "Qwaekactyl",
+  "version": "3.0",
+  "defaulttheme": "qwaekactyl",
   "website": {
-    "port": 2554,
-    "maintenance": false,
-
-    "sitekey": "",
-    "secretkey": "",
-    "note": "You Can Get These From https://www.google.com/recaptcha/admin"
+    "port": 1358
   },
   "pterodactyl": {
     "domain": "",
     "key": ""
   },
-  "google_ads": {
-    "enabled": false,
-    "script": "",
-    "note": "This allows you to put adsense, adsterra, etc easily into Qwaekactyl."
+
+  "email": {
+    "name": "Your_Hosting_name",
+    "auth_user": "Your_Email_id",
+    "auth_pass": "Your_pass",
+    "service": "Gmail",
+    "from": "Your_email_id",
+    "_comment": "This is needed to setup cuz it will alert the users on Login Activity. Also service= like SMTP"
   },
-  "custom_ads":{
-    "enabled": false,
-    "pic": "",
-    "link": "",
-    "width": "468",
-    "height": "60",
-    "note": "this is an custom ads"
-  },
- "widget": {
-    "enabled": false,
-    "server_id": "",
-    "channel_id": "",
-    "note": "This allows you to use widget bot client panel."
-  },
-  "status":{
+  "custom_ads": {
     "enabled": true,
-    "url": ""
+    "redirect": "https://cp.rudracloud.xyz",
+    "pic": "https://media.discordapp.net/attachments/1132626761885159424/1134460142017073202/standard_8.gif?width=374&height=48"
   },
-    "giftres":{
+  "nodes_status": {
+    "enabled": true
+  },
+  "status": {
+    "enabled": true,
+    "url": "https://wl.hetrixtools.com/r/96fc16e54a58951ceb91488408941911/"
+  },
+  "maintenance": {
+    "enabled": false
+  },
+  "giftres": {
     "enabled": true,
     "note": "this will allow u to use gift rescources."
   },
-  
-    "discordserver":{
-    "enabled": true,
-    "invitelink": ""
-  },
-    "donate":{
-    "enabled": true,
-    "link": ""
+
+  "socialmedia": {
+    "instagram": {
+      "enabled": true,
+      "link": "https://www.instagram.com/your_instagram_link"
+    },
+    "twitter": {
+      "enabled": true,
+      "link": "https://twitter.com/your_twitter_link"
+    },
+    "facebook": {
+      "enabled": true,
+      "link": "https://www.facebook.com/your_facebook_link"
+    },
+    "trustpilot": {
+      "enabled": true,
+      "link": "https://www.trustpilot.com/review/your_trustpilot_link"
+    },
+    "youtube": {
+      "enabled": true,
+      "link": "https://www.youtube.com/user/your_youtube_link"
+    },
+    "linkedin": {
+      "enabled": true,
+      "link": "https://www.linkedin.com/in/your_linkedin_link"
+    },
+    "discord": {
+      "enabled": true,
+      "link": "https://discord.gg/your_discord_invite"
+    }
+
   },
 
- 
+
+
   "database": "database.sqlite",
   "api": {
     "client": {
-       "api": {
-         "enabled": false,
-         "code": ""
-       },
-       "j4r": {
+      "manager": {
         "enabled": true,
-        "ads": [
-          {
-            "name": "Name",
-            "invite": "Discord Server Id",
-            "id": "Server Id",
-            "ram": "512",
-            "disk": 512,
-            "cpu": 20
-          },
-          {
-            "name": "Name",
-            "invite": "Discord Server Id",
-            "id": "Server Id",
-            "ram": "512",
-            "disk": 512,
-            "cpu": 20
-          }
-        ]
-      },
-       "bot": {
-         "token": "",
-         "joinguild": {
-           "_comment": "The Discord bot must be in these servers and have invite permissions.",
-           "enabled": false,
-           "guildid": [""],
-           "forcejoin": false,
-           "registeredrole": null
-        }
-      },
-      "webhook": {
-        "_comment": "URL of the webhook to send messages to.",
-        "webhook_url": "",
-        "auditlogs": {
-          "_comment": "This feature allows you to log actions, and get an overview of a users actions (only works if done with qwakeactyl, not ptero)",
-          "enabled": false,
-          "_comment2": "The types of notifications disabled. Values: ADMIN, LOGIN, SERVER, COUPONREDEEM",
-          "disabled": []
-        }
+        "code": "Change_to_random"
       },
       "passwordgenerator": {
         "signup": true,
@@ -115,8 +94,8 @@
         "renewsuspendsystem": {
           "_comment": "This feature requires a restart in order to work. Also, this requires every server to start suspended, or else this feature would not work for some servers.",
           "enabled": false,
-          "time": 3600,
-          "cost": 0
+          "time": 3700,
+          "cost": 10000
         }
       },
       "oauth2": {
@@ -128,24 +107,43 @@
         "prompt": true,
 
         "ip": {
-          "trust x-forwarded-for": true,
+          "trust x-forwarded-for": false,
           "block": [],
 
-          "_comment": "'duplicate check' is an anti-alt check by IPs.",
-          "duplicate check": true,
+          "_comment": "duplicate check' is an anti-alt check by IPs.",
+          "duplicate check": false,
 
-          "_comment2": "'cookie alt check' is an anti-alt check by cookies.",
+          "_comment2": "cookie alt check' is an anti-alt check by cookies.",
           "cookie alt check": true
         }
       },
-      "xauth": {
+      "google": {
         "enabled": true,
-        "_comment": "You can get these details from 'https://auth.xepert.tech'.",
 
-        "callback": "/api/xauth/callback",
-        "_commen2t": "Dont change this if you dont know what you are doing.",
+        "_comment1": "you can get these details from https://console.cloud.google.com/",
+        "clientid": "",
 
-        "clientid": "", 
+        "link": "",
+        "_comment2": "this link is the link of your dashboard example - cp.rudracloud.xyz",
+
+        "clientsecret": ""
+      },
+      "ratelimits": {
+        "enabled": true,
+
+        "trust x-forwarded-for": true,
+
+        "requests": 30,
+        "per second": 60
+      },
+      "apple": {
+        "enabled": true,
+        "_comment": "You can get these details from 'https://developer.apple.com/'.",
+
+        "link": "",
+        "_commen2t": "Redirect URL ;)",
+
+        "clientid": "",
 
         "clientsecret": ""
       },
@@ -168,10 +166,10 @@
           }
         }
       },
-      
+
       "locations": {
-        "1": {
-          "name": "IN",
+        "2": {
+          "name": "US",
 
           "_comment": "Make 'package' be null to allow anyone with enough resources in their plan to create a server with this location. Also, make the 'package' variable an array, like [], with the location names with quotes to make a user be required to have a plan in order to use the package.",
           "package": null
@@ -191,7 +189,7 @@
             "cpu": null
           },
           "info": {
-            "egg": 3,
+            "egg": 2,
             "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
             "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
             "environment": {
@@ -258,10 +256,10 @@
         }
       },
       "coins": {
-        "enabled": false,
+        "enabled": true,
         "store": {
           "_comment": "The cost and per is not intended to used with 0. This is not intended to sell resources for coins. Make sure coins are enabled too, or else there can be errors.",
-          "enabled": false,
+          "enabled": true,
           "ram": {
             "cost": 250,
             "per": 25
@@ -286,20 +284,19 @@
       "enabled": false,
       "widgetid": "",
 
-        "afk page": {
-          "_comment": "This will not effect any current arc.io sessions, and will require a restart to kick everyone out of the websocket sesison.",
-          "_comment2": "Make sure coins are enabled if you choose to enable this option!",
-          "enabled": false,
+      "afk page": {
+        "_comment2": "Make sure coins are enabled if you choose to enable this option!",
+        "enabled": true,
 
-          "_comment3": "If you change the path, you need to restart for it to take full effect.",
-          "path": "afkwspath",
+        "_comment3": "If you change the path, you need to restart for it to take full effect.",
+        "path": "afkwspath",
 
-          "_comment4": "This afk page will give the users [coins variable] coins every [every variable] seconds.",
-          "every": 60,
+        "_comment4": "This afk page will give the users [coins variable] coins every [every variable] seconds.",
+        "every": 60,
 
-          "_comment5": "The coins variable is meant to not be under 1. There may be bugs if the coins variable is less than 1.",
-          "coins": 1
-        }
+        "_comment5": "The coins variable is meant to not be under 1. There may be bugs if the coins variable is less than 1.",
+        "coins": 1
+      }
     }
   }
 }

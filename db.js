@@ -1,5 +1,4 @@
-
-const settings = require("./settings.json");
+const settings = require("./settings");
 const db = require('better-sqlite3')(settings.database);
 
 db.prepare(`CREATE TABLE IF NOT EXISTS "keyv" ("key" VARCHAR(255) PRIMARY KEY, "value" TEXT)`).run();

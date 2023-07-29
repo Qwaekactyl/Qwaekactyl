@@ -1,0 +1,175 @@
+{
+  "index": "index.ejs",
+  "notfound": "404.ejs",
+  "nopermission": "403.ejs",
+  "redirect": {
+    "callback": "/dashboard",
+    "failedcallback": "/",
+    "logout": "/",
+    "deleteserver": "/servers",
+    "updateservers": "/dashboard",
+    "createserver": "/servers",
+    "failedcreateserver": "/servers/new",
+    "modifyserver": "/servers",
+    "failedmodifyserver": "/servers/edit",
+    "setplan": "/admin",
+    "failedsetplan": "/admin",
+    "getip": "/admin",
+    "failedgetip": "/admin",
+    "createserverdisabled": "/servers?err=disabled",
+    "modifyserverdisabled": "/servers?err=disabled",
+    "deleteserverdisabled": "/servers?err=disabled",
+    "regenpassword": "/dashboard",
+    "setresources": "/admin",
+    "failedsetresources": "/admin",
+    "giftresources": "/gift",
+    "failedgiftresources": "/gift",
+    "renewserver": "/servers",
+    "failedrenewserver": "/servers",
+    "setcoins": "/admin",
+    "failedsetcoins": "/admin",
+    "purchaseram": "/store",
+    "failedpurchaseram": "/store",
+    "purchasedisk": "/store",
+    "failedpurchasedisk": "/store",
+    "purchasecpu": "/store",
+    "failedpurchasecpu": "/store",
+    "purchaseservers": "/store",
+    "failedpurchaseservers": "/store",
+    "arcioerror": "/dashboard",
+    "missingorinvalidcouponcode": "/redeem",
+    "successfullyredeemedcoupon": "/redeem",
+    "couponcreationfailed": "/admin",
+    "couponcreationsuccess": "/admin",
+    "couponrevokefailed": "/admin",
+    "couponrevokesuccess": "/admin",
+    "removeaccountfailed": "/admin",
+    "removeaccountsuccess": "/admin",
+    "updatedreferid": "/refer",
+    "invalidreferupdatedetails": "/refer",
+    "reffered": "/refer",
+    "suspended": "/admin/servers"
+  },
+  "pages": {
+    "dashboard": "dashboard.ejs",
+    "servers": "servers.ejs",
+    "servers/new": "create.ejs",
+    "servers/edit": "edit.ejs",
+    "admin": "admin.ejs",
+    "store": "store.ejs",
+    "afk": "arcio.ejs",
+    "redeem": "redeem.ejs",
+    "aboutus": "aboutus.ejs",
+    "j4r": "j4r.ejs",
+    "tos": "TOS.ejs",
+    "pp": "pp.ejs",
+    "refer": "refer.ejs",
+    "register": "register.ejs",
+    "nodes": "node-status.ejs",
+    "admin/users": "admin-users.ejs",
+    "admin/users/view": "admin-users-view.ejs",
+    "admin/resources": "admin-resources.ejs",
+    "admin/servers": "admin-servers.ejs",
+    "admin/servers/view": "admin-servers-view.ejs",
+    "donate": "donate.ejs",
+    "gift": "gift.ejs",
+    "wait": "maintance.ejs",
+    "status": "hetrix.ejs"
+
+
+  },
+  "mustbeloggedin": [
+    "/dashboard",
+    "/servers",
+    "/servers/new",
+    "/servers/edit",
+    "/store",
+    "/afk",
+    "/redeem",
+    "/gift",
+    "/j4r",
+    "/status",
+    "/nodes",
+    "/refer",
+    "/gift"
+  ],
+  "mustbeadmin": [
+    "/admin",
+    "/admin/users",
+    "/admin/users/view",
+    "/admin/resources",
+    "/admin/servers",
+    "/admin/servers/view"
+  ],
+  "generateafktoken": [
+    "/afk"
+  ],
+  "variables": {
+    "footerad": true,
+    "faviconlink": "https://media.discordapp.net/attachments/1132626761885159424/1132626831661596712/109157827.png?width=160&height=160",
+    "name": "Qwakeactyl",
+    "home": {
+      "title": "Qwaekactyl",
+      "buttontext": {
+        "loggedin": {
+          "text": {
+            "discord": "Continue",
+            "apple": "Continue",
+            "google": "Continue",
+            "email": "Continue",
+            "link": "/dashboard"
+
+          },
+          "link": "/dashboard"
+        },
+        "loggedout": {
+          "_note": "This below supports HTML encoding.",
+          "text": {
+            "discord": "<img src=\"https://i.imgur.com/EYGXn9D.png\" width=\"25\" /> Login with Discord",
+            "apple": "<img width='20px' style='margin-bottom:3px; margin-right:5px' alt='Google sign-in' src='https://media.discordapp.net/attachments/1132626761885159424/1134438293128355930/488px-Apple_logo_black.png?width=360&height=443' />Login with Apple</a>",
+            "google": "<img width='20px' style='margin-bottom:3px; margin-right:5px' alt='Google sign-in' src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png' />Login with Google </a>",
+            "email": "Login Using Email"
+          },
+          "link": {
+            "discord": "/auth/discord",
+            "apple": "/auth/apple",
+            "google": "/auth/google",
+            "email": "#"
+          }
+        }
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard - Qwakeactyl"
+    },
+    "servers": {
+      "title": {
+        "create": "servers - Qwakeactyl",
+        "modify": "Server Modify - Qwakeactyl"
+      }
+    },
+    "error": {
+      "title": "404 - Qwakeactyl"
+    },
+    "admin": {
+      "title": {
+        "default": "Admin - Qwakeactyl"
+      }
+    },
+    "redeem": {
+      "title": "Redeem - Qwakeactyl"
+    },
+    "j4r": {
+      "tittle": "Join for Resources - Qwakeactyl"
+    },
+    "store": {
+      "title": "Store - Qwakeactyl"
+    },
+    "arcio": {
+      "title": "AFK - Qwakeactyl"
+    },
+    "referal": {
+      "title": "REFERAL - Qwakeactyl"
+    }
+  }
+}

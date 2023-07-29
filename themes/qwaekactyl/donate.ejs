@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+  <html lang="en">
+<%- include('./theme-main/head') %>
+  <body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+    <%- include('./theme_assets/mainnav') %>
+  <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <%- include('./theme_assets/header') %>
+    
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  </head>
+  <body>
+   <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  </head>
+<body>
+    <center>
+      <div class="alert alert-info" role="alert">
+        This donation page can accept UPI and Stripe donations.
+      </div>
+    </center>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h3 class="text-center">Donate Now</h3>
+          <form id="donateForm">
+            <div class="form-group">
+              <label for="donationAmount">Donation Amount</label>
+              <input type="number" class="form-control" id="donationAmount" placeholder="Enter Amount to Donate" required>
+            </div>
+            <div class="form-group">
+              <label for="currency">Currency</label>
+              <select class="form-control" id="currency">
+                <option value="INR">INR</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <!-- add more options as needed -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="paymentMode">Payment Mode</label>
+              <select class="form-control" id="paymentMode">
+                <option value="UPI">UPI</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Donate</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+<script>
+   
+  
+    $('#donateForm').on('submit', function(e) {
+        e.preventDefault();
+        var amount = $('#donationAmount').val();
+        var currency = $('#currency').val();
+        var paymentMode = $('#paymentMode').val();
+
+        if (amount && Number(amount) > 0) {
+            if(paymentMode === "UPI") {
+                $.get('https://api.exchangerate-api.com/v4/latest/' + currency, function(data) {
+                    var conversionRate = data.rates['INR'];
+                    var amountInr = amount * conversionRate;
+                    var currentWebsiteUrl = window.location.href;
+                    var paymentUrl = "https://api.qwaekactyl.xyz/api/upi-payment?name=Kartik&upiId=kartiktiwari1@fam&website=" + encodeURIComponent(currentWebsiteUrl) + "&amount=" + encodeURIComponent(amountInr);
+                    window.location.href = paymentUrl;
+                });
+            }
+        }
+    });
+</script>
+              <%- include('./theme_assets/footer') %>
+
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/Chart.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/moment.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/fullcalendar.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/jvectormap.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/world-merc.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/polyfill.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/main.js"></script>
+  </body>
+</html>

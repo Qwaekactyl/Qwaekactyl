@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./theme-main/head') %>
+  <body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+    <%- include('./theme_assets/mainnav') %>
+ 
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <%- include('./theme_assets/header') %>
+    
+    
+          
+          
+          <!-- End Row -->
+          <div class="row">
+            <div class="col">
+              <div class="card-style">
+                <div class="card-header">
+                  <div class="card-title">Referrel</div>
+
+                </div>
+                <div class="card-body">
+                  <% if (req.query.err) { %>
+                    <div class="alert-box danger-alert">
+                      <div class="alert">
+                        <% if (req.query.err == "INVALIDDETAILS") { %>
+                          <p>You Have Not Filled All The Details Correctly.</p>
+                        <% } %>
+                      </div>
+                    </div>    
+                  <% } else if (req.query.success) { %> 
+                    <div class="alert-box success-alert">
+                      <div class="alert">
+                        <% if (req.query.success == "UPDATEDREFERID") { %>
+                          <p>Your Refer ID Has Been Successfuly Updated To <%= referid %> </p>
+                        <% } %>
+                      </div>
+                    </div> 
+                  <% } %>
+                  <div class="d-flex justify-content-between align-items-center"></div>
+                        <div class="text"><p class="text-medium">Earn Coins By Inviting Your Friends</p></div>
+                        <a> </a>
+                        
+                        <div class="input-style-1">
+                          <label>ReferId:</label>
+                          
+                          <input type="text" id="id" value="<%= referid %>" />
+                          
+                      </div>
+
+                      
+                        <a href="#0" class="main-btn primary-btn btn-sm btn-hover" onclick="Update();"> Update Refer ID</a>
+                     
+              </div>
+          </div>
+          <a></a>
+
+          <div class="card-style">
+                <div class="card-header">
+                  <div class="card-title">Use Refer Code</div>
+
+                </div>
+                <div class="card-body">
+                  <% if (req.query.err) { %>
+                    <div class="alert-box danger-alert">
+                      <div class="alert">
+                        <% if (req.query.err == "INVALIDDETAILS") { %>
+                          <p>You Have Not Filled All The Details Correctly.</p>
+                        <% } %>
+                      </div>
+                    </div>    
+                  <% } else if (req.query.success) { %> 
+                    <div class="alert-box success-alert">
+                      <div class="alert">
+                        <% if (req.query.success == "UPDATEDREFERID") { %>
+                          <p>Your Refer ID Has Been Successfuly Updated To <%= referid %> </p>
+                        <% } %>
+                      </div>
+                    </div> 
+                  <% } %>
+                  <div class="d-flex justify-content-between align-items-center"></div>
+                        <div class="text"><p class="text-medium">Use Your Friend's Referal Code So Both Of You Will Get Some coins</p></div>
+                        <a> </a>
+                        
+                        <div class="input-style-1">
+                          <label>ReferId:</label>
+                          
+                          <input type="text" id="referid" value="" placeholder="Enter Your Friend's Refer Id" />
+                          
+                      </div>
+
+                      
+                        <a class="main-btn idk primary-btn btn-sm btn-hover" onclick="use();">Use Code</a>
+                     
+              </div>
+          </div>
+
+      </div>
+</div>
+                    <!-- end table -->
+                  </div>
+                <!-- End Chart -->
+              </div>
+            </div>
+            <!-- End Col -->
+            
+          <!-- End Row -->
+            <script>
+              async function Update() {
+                let referid = encodeURIComponent(document.getElementById("id").value);
+                document.location.href = `/client/api/referal/update?userid=<%=req.session.userinfo.id%>&referid=${referid}&currentid=<%=referid%>`;
+            };
+            async function use() {
+              let referid = encodeURIComponent(document.getElementById("referid").value);
+              document.location.href = `/client/api/referal/use?userid=<%=req.session.userinfo.id%>&referid=${referid}`;
+          };
+            </script>
+      <!-- ========== section end ========== -->
+
+    <%- include('./theme_assets/footer') %>
+      <!-- ========== footer end =========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="/assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="/assetsnew/js/Chart.min.js"></script>
+    <script src="/assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="/assetsnew/js/moment.min.js"></script>
+    <script src="/assetsnew/js/fullcalendar.js"></script>
+    <script src="/assetsnew/js/jvectormap.min.js"></script>
+    <script src="/assetsnew/js/world-merc.js"></script>
+    <script src="/assetsnew/js/polyfill.js"></script>
+    <script src="/assetsnew/js/main.js"></script>
+
+    
+  </body>
+</html>

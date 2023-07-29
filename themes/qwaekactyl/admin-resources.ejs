@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="https://cdn.qwaekactyl.xyz/v3//assetsnew/images/favicon.svg"
+      type="image/x-icon"
+    />
+    <title><%= extra.admin.title.default %></title>
+    <% if (settings.api.arcio.enabled == true) { %>
+    <script async src="https://arc.io/widget.min.js#<%= settings.api.arcio.widgetid %>"></script>
+    <% } %>
+    
+    <script src="https://kit.fontawesome.com/9f45c806ba.js" crossorigin="anonymous"></script>
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel="stylesheet" href="https://cdn.qwaekactyl.xyz/v3//assetsnew/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.qwaekactyl.xyz/v3//assetsnew/css/lineicons.css" />
+    <link rel="stylesheet" href="https://cdn.qwaekactyl.xyz/v3//assetsnew/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="https://cdn.qwaekactyl.xyz/v3//assetsnew/css/fullcalendar.css" />
+    <link rel="stylesheet" href="https://cdn.qwaekactyl.xyz/v3//assetsnew/css/fullcalendar.css" />
+    <link rel="stylesheet" href="https://cdn.qwaekactyl.xyz/v3//assetsnew/css/main.css" />
+  </head>
+  <body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+    <%- include('./admin_assets/mainnav') %>
+ 
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <%- include('./admin_assets/header') %>
+    
+    
+          
+          
+          <!-- End Row -->
+          <div class="row">
+            <div class="col">
+
+          <div class="card-style">
+            <div class="card-header">
+              <div class="card-title">Change Someone's Extra Resources</div>
+              
+            </div>
+            <div class="card-body">
+                <div class="alert-box danger-alert">
+                    <% if (req.query.err) { %>
+                        <% if (req.query.err !== "none") { %>
+                            <div class="alert">
+                                <h6>
+                                <% if (req.query.err == "MISSINGID") { %>
+                                    You have not provided the Discord user ID.
+                                <% } else if (req.query.err == "INVALIDID" || req.query.err == "MISSINGID") { %>
+                                    You have provided a Discord user ID that does not exist, or has not signed up on the dashboard.
+                <% } else if (req.query.err == "CREATECOUPONINVALIDCHARACTERS") { %>
+                One of the characters you entered in coupon creation was invalid, please try again.
+                <% } else if (req.query.err == "REVOKECOUPONCANNOTFINDCODE") { %>
+                One of the characters you entered in coupon revoke was invalid, please try again.
+                <% } else if (req.query.err == "CREATECOUPONEMPTY") { %>
+                While creating your coupon you did not specify to give any resources or coins.
+                <% } else if (req.query.err == "CREATECOUPONLESSTHANONE") { %>
+                While creating your coupon you tried to give less then one in RAM, DISK, CPU and/or coins.
+                                <% } else if (req.query.err == "MISSINGVARIABLES") { %>
+                                    You have not provided either ram, disk, cpu, and/or servers.
+                                <% } else if (req.query.err == "REMOVEACCOUNTMISSINGID") { %>
+                                    You have not specified an id to remove from the panel
+                                <% } else if (req.query.err == "MISSINGCOINS") { %>
+                                    You have not provided the coin amount.
+                                <% } else if (req.query.err == "RAMSIZE" || req.query.err == "DISKSIZE" || req.query.err == "CPUSIZE" || req.query.err == "SERVERSIZE") { %>
+                                    The RAM, disk, CPU and servers number cannot be less than 0 nor above 999999999999999.
+                                <% } else if (req.query.err == "INVALIDCOINNUMBER") { %>
+                                    The coin amount must be a number.
+                                <% } else if (req.query.err == "COINSIZE") { %>
+                                    The coin amount canno tbe less than 0 and must be above 999999999999999.
+                                <% } else if (req.query.err == "NOIP") { %>
+                                    There is no IP saved for that user.
+                                <% } else if(req.query.err == "NONE" && req.query.ip !== undefined) { %>
+                                    IP: <%= req.query.ip %>
+                                <% } else { %>
+                                    Stop admin abusing.
+                                <% } %>
+                                </h6></div>
+                        <% } %>
+                    <% } %>
+                  </div>
+                
+            <% if (req.query.code) { %>
+                <div class="alert-box info-alert">
+                    <div class="alert">
+                      <h6>
+                        You have created a coupon code with the name of: <%= req.query.code %>
+                      </h6>
+                    </div>
+                  </div>
+            <% } %>
+                <form action="/setresources">
+                    <div class="input-style-1">
+                        <label>User Id</label>
+                        <input type="text" name="id" placeholder="User Id" />
+                    </div>
+                    <div class="input-style-1">
+                        <label>Cpu</label>
+                        <input type="number" name="cpu" placeholder="Cpu" />
+                    </div>
+                    <div class="input-style-1">
+                        <label>Ram</label>
+                        <input type="number" name="ram" placeholder="Ram" />
+                    </div>
+                    <div class="input-style-1">
+                        <label>Disk</label>
+                        <input type="number" name="disk" placeholder="Disk" />
+                    </div>
+                    <div class="input-style-1">
+                        <label>Servers</label>
+                        <input type="text" name="servers" placeholder="Servers" />
+                    </div>
+                    <button type="submit" class="main-btn primary-btn btn-hover btn-sm">Change</button>
+                </form>
+          </div>
+      </div><br>
+      <div class="card-style">
+        <div class="card-header">
+          <div class="card-title">Change Someone's Package</div>
+          
+        </div>
+        <div class="card-body">
+            <div class="input-style-1">
+                <label>User Id</label>
+                <input type="text" id="id" placeholder="Userid" />
+            </div>
+
+            <div class="select-style-1">
+                <label>Package</label>
+                <div class="select-position">
+                  <select id="package">
+                    <option value="">Default Plan (Currently: <%= settings.api.client.packages.default %>)</option>
+                                    <% for (let [name, value] of Object.entries(settings.api.client.packages.list)) { %>
+                                        <option value="<%= name %>"><%= name %> (RAM: <%= value.ram %>MB, Disk: <%= value.disk %>MB, CPU: <%= value.cpu %>%, Servers: <%= value.servers %>)</option>
+                                    <% } %>
+                  </select>
+                </div>
+              </div>
+                <button type="submit" onclick="submitForm()" class="main-btn primary-btn btn-hover btn-sm">Change</button>
+
+                <script>
+                    async function submitForm() {
+                        let id = encodeURIComponent(document.getElementById("id").value);
+                        let packagename = encodeURIComponent(document.getElementById("package").value);
+                        window.location.href = "/setplan?id=" + id + "&package=" + packagename
+                    }
+                </script>
+      </div>
+  </div><br>
+  <div class="card-style">
+    <div class="card-header">
+      <div class="card-title">Set Someone's Coins</div>
+      
+    </div>
+    <div class="card-body">
+        <form action="/setcoins">
+            <div class="input-style-1">
+                <label>User Id</label>
+                <input type="text" name="id" placeholder="User Id" />
+            </div>
+            <div class="input-style-1">
+                <label>Coins</label>
+                <input type="number" name="coins" placeholder="coins" />
+            </div>
+
+            <button type="submit" class="main-btn primary-btn btn-hover btn-sm">Set</button>
+        </form>
+  </div>
+</div><br>
+<div class="card-style">
+    <div class="card-header">
+      <div class="card-title">Add Coins To A User</div>
+      
+    </div>
+    <div class="card-body">
+        <form action="/addcoins">
+            <div class="input-style-1">
+                <label>User Id</label>
+                <input type="text" name="id" placeholder="User Id" />
+            </div>
+            <div class="input-style-1">
+                <label>Coins</label>
+                <input type="number" name="coins" placeholder="coins" />
+            </div>
+
+            <button type="submit" class="main-btn primary-btn btn-hover btn-sm">Add</button>
+        </form>
+  </div>
+</div><br>
+<div class="card-style">
+<div class="card-header">
+  <div class="card-title">Create Coupon</div>
+  
+</div>
+<div class="card-body">
+    <form action="/create_coupon">
+        <div class="input-style-1">
+            <label>Code</label>
+            <input type="text" name="code" placeholder="Coupon Code (Leave This Empty To Generate A Random Code)" />
+        </div>
+        <div class="input-style-1">
+            <label>Cpu</label>
+            <input type="number" name="cpu" placeholder="Cpu" />
+        </div>
+        <div class="input-style-1">
+            <label>Ram</label>
+            <input type="number" name="ram" placeholder="Ram" />
+        </div>
+        <div class="input-style-1">
+            <label>Disk</label>
+            <input type="number" name="disk" placeholder="Disk" />
+        </div>
+        <div class="input-style-1">
+            <label>Servers</label>
+            <input type="text" name="servers" placeholder="Servers" />
+        </div>
+        <div class="input-style-1">
+            <label>Cpu</label>
+            <input type="number" name="coins" placeholder="Coins" />
+        </div>
+        <button type="submit" class="main-btn primary-btn btn-hover btn-sm">Create</button>
+    </form>
+</div>
+</div><br>
+<div class="card-style">
+    <div class="card-header">
+      <div class="card-title">Create Coupon</div>
+      
+    </div>
+    <div class="card-body">
+        <form action="/revoke_coupon">
+            <div class="input-style-1">
+                <label>Code</label>
+                <input type="text" name="code" placeholder="Coupon Code" />
+            </div>
+            <button type="submit" class="main-btn primary-btn btn-hover btn-sm">Revoke</button>
+        </form>
+    </div>
+    </div><br>
+    <div class="card-style">
+        <div class="card-header">
+          <div class="card-title">Userinfo</div>
+          
+        </div>
+        <div class="card-body">
+            <form action="/userinfo">
+                <div class="input-style-1">
+                    <label>User Id</label>
+                    <input type="text" name="id" placeholder="Id" />
+                </div>
+                <button type="submit" class="main-btn primary-btn btn-hover btn-sm">Get Info</button>
+            </form>
+        </div>
+        </div>
+      </div>
+</div>
+                    <!-- end table -->
+                  </div>
+                <!-- End Chart -->
+              </div>
+            </div>
+            <!-- End Col -->
+            
+          <!-- End Row -->
+          
+      <!-- ========== footer start =========== -->
+      <%- include('./theme_assets/footer') %>
+      <!-- ========== footer end =========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src=https://cdn.qwaekactyl.xyz/v3//assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/Chart.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/moment.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/fullcalendar.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/jvectormap.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/world-merc.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/polyfill.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/main.js"></script>
+
+    
+  </body>
+</html>

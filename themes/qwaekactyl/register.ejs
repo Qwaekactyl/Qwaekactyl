@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="https://cdn.qwaekactyl.xyz/v3/login/stylelogin.css">
+    <link href="https://cdn.team-ic.dev/files/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+    <title><%= extra.home.title %></title>
+    <% if (settings.api.arcio.enabled == true) { %>
+        <script async src="https://arc.io/widget.min.js#<%= settings.api.arcio.widgetid %>"></script>
+    <% } %>
+    <link rel="icon" type="image/png" href="<%= extra.faviconlink %>"/>
+    <style>
+        body {
+            background-image: url("https://cdn.discordapp.com/attachments/943921350152704000/947028915073978368/istockphoto-1320110490-612x612.jpg") !important;
+            background-repeat: no-repeat !important;
+            color: white;
+            height: 100% !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+        .bg-blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-dark" style="height: 100vh">
+        <form>
+            <h2 class="sr-only">Login Form</h2>
+            <center>
+                <h2>Welcome Back!!</h2>
+                <p>Login to access Dashboard Area</p>
+            </center>
+          <% if (!userinfo || !extra.home.buttontext.loggedin.link) { %>
+               <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password">
+            </div>
+              
+          <div class="form-group">
+                <a href="<%= userinfo ? extra.home.buttontext.loggedin.link : extra.home.buttontext.loggedout.link.email %>" class="btn btn-primary bg-primary btn-block" onclick="submitForm(event)">
+                    <%- userinfo ? extra.home.buttontext.loggedin.text.email : extra.home.buttontext.loggedout.text.email %>
+                </a>
+           
+            <br>
+            <center>
+                <a href="/" style="color:white">Already have an account? Signin</a>
+            </center>
+          <div class="or-line"></div>
+
+            </div>
+            <div class="form-group">
+                <a href="<%= userinfo ? extra.home.buttontext.loggedin.link : extra.home.buttontext.loggedout.link.discord %>"
+                   class="btn btn-primary bg-primary btn-block">
+                    <%- userinfo ? extra.home.buttontext.loggedin.text.discord : extra.home.buttontext.loggedout.text.discord %>
+                </a>
+                 
+                <% if(settings.api.client.apple.enabled) { %>
+                 
+                <a href="<%= userinfo ? extra.home.buttontext.loggedin.link : extra.home.buttontext.loggedout.link.apple %>"
+                   class="btn btn-primary bg-primary btn-block">
+                    <%- userinfo ? extra.home.buttontext.loggedin.text.apple : extra.home.buttontext.loggedout.text.apple %>
+                </a>
+                <% } %>
+                     <% } %>
+                <% if(settings.api.client.google.enabled) { %>
+                <a href="<%= userinfo ? extra.home.buttontext.loggedin.link : extra.home.buttontext.loggedout.link.google %>"
+                   class="btn btn-primary bg-primary btn-block">
+                    <%- userinfo ? extra.home.buttontext.loggedin.text.google : extra.home.buttontext.loggedout.text.google %>
+                </a>
+                <% } %>
+            </div>
+    
+            <br>
+            <center>
+                <a href="https://github.com/Qwaekactyl/Qwaekactyl" style="color:white">Made by Qwaekactyl</a>
+            </center>
+        </form>
+    </div>
+
+   <script>
+        async function submitForm(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+
+            // Get the values of the fields
+            let username = encodeURIComponent(document.getElementById("username").value);
+            let email = encodeURIComponent(document.getElementById("email").value);
+            let password = encodeURIComponent(document.getElementById("password").value);
+
+            // Check if all fields are filled
+            if (!username || !email || !password) {
+                alert("Please fill all the required fields.");
+                return;
+            }
+
+            document.location.href = `/auth/email/register?email=${email}&password=${password}&username=${username}`;
+        };
+    </script>
+</body>
+
+</html>
+<style>
+        /* Style for the horizontal line */
+        .or-line {
+            border: none;
+            border-top: 2px solid #ccc;
+            margin: 10px 0;
+        }
+
+        /* Style for the "or" text */
+        .or-text {
+            display: inline-block;
+            background-color: #f9f9f9;
+            padding: 0 10px;
+            color: #888;
+        }
+    </style>

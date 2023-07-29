@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('./theme-main/head') %>
+  <body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+    <%- include('./theme_assets/mainnav') %>
+ 
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <%- include('./theme_assets/header') %>
+    
+    
+          
+          
+          <!-- End Row -->
+          <div class="row">
+            <div class="col">
+              <div class="card-style">
+                <div class="card-header">
+                  <div class="card-title">Redeem A Coupon</div>
+                </div>
+                <div class="card-body">
+                    <% if (req.query.success) { %>
+                        <div class="alert-box info-alert">
+                            <div class="alert">
+                              <h6>
+                                You have Successfuly Redeemed Coupon: <%= req.query.code %>
+                              </h6>
+                            </div>
+                          </div>
+                    <% } %>
+                  <div class="d-flex justify-content-between align-items-center"></div>
+
+                  <div class="input-style-1">
+                    <label>Coupon Code</label>
+                    <input type="text" class="form-control" id="code" placeholder="Code">
+                  </div>
+                  <br>
+                  
+                  <button onclick="submitForm()" class="main-btn primary-btn btn-hover btn-sm">Redeem</button>
+              <br></div>
+              <script>
+                  async function submitForm() {
+                      let code = encodeURIComponent(document.getElementById("code").value);
+                      document.location.href = `/coupon_redeem?code=${code}`;
+                  };
+              </script>
+              </div>
+          </div>
+      </div>
+</div>
+                    <!-- end table -->
+                  </div>
+                <!-- End Chart -->
+              </div>
+            </div>
+            <!-- End Col -->
+            
+          <!-- End Row -->
+          
+      <!-- ========== section end ========== -->
+
+      <!-- ========== footer start =========== -->
+      <%- include('./theme_assets/footer') %>
+      <!-- ========== footer end =========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="/assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="/assetsnew/js/Chart.min.js"></script>
+    <script src="/assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="/assetsnew/js/moment.min.js"></script>
+    <script src="/assetsnew/js/fullcalendar.js"></script>
+    <script src="/assetsnew/js/jvectormap.min.js"></script>
+    <script src="/assetsnew/js/world-merc.js"></script>
+    <script src="/assetsnew/js/polyfill.js"></script>
+    <script src="/assetsnew/js/main.js"></script>
+
+    
+  </body>
+</html>

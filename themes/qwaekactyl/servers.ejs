@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('./theme-main/head') %>
+  <body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+    <%- include('./theme_assets/mainnav') %>
+ 
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <%- include('./theme_assets/header') %>
+    
+    
+          
+          
+          <!-- End Row -->
+          <div class="row">
+            <div class="col">
+              <div class="card-style">
+                <div class="card-content">
+                    <h3><a>Your Servers</a></h4>
+                    <h4><a> </a></h4>
+                  </div>
+                <div class="table-wrapper table-responsive">
+                    <table class="table">
+                        
+                      <thead>
+                        <tr>
+                        </tr><th scope="col"><h6>Name</h6></th>
+                        <th scope="col"><h6>Memory</h6></th>
+                        <th scope="col"><h6>Disk</h6></th>
+                        <th scope="col"><h6>CPU</h6></th>
+                        <th scope="col"><h6>Edit</h6></th>
+                        <th scope="col"><h6>Delete</h6></th>
+                        <th scope="col"><h6>Link</h6></th>
+                        <% if (settings.api.client.allow.renewsuspendsystem.enabled) { %>
+                        <th scope="col"><h6>Renew</h6></th>                                    
+                        <% } %>
+                        <!-- end table row-->
+                      </thead>
+                      <% for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) { %>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p><%= pterodactyl.relationships.servers.data[i].attributes.name.length > 15 ? pterodactyl.relationships.servers.data[i].attributes.name.slice(0, 12) + "..." : pterodactyl.relationships.servers.data[i].attributes.name %></p>
+                                </td>
+                                <td>
+                                    <p><%= pterodactyl.relationships.servers.data[i].attributes.limits.memory %>MB</p>
+                                </td>
+                                <td>
+                                    <p><%= pterodactyl.relationships.servers.data[i].attributes.limits.disk %>MB</p>
+                                </td>
+                                <td>
+                                    <p><%= pterodactyl.relationships.servers.data[i].attributes.limits.cpu %>%</p>
+                                </td>
+                                <td>
+                                    <a href="/servers/edit?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>">
+                                        <button class="btn btn-icon btn-primary" type="button">
+                                            <span class="btn-inner--icon"><i class="fas fa-edit"></i></span>
+                                        </button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/delete?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>">
+                                        <button class="btn btn-icon btn-danger" type="button">
+                                            <span class="btn-inner--icon"><i class="fas fa-trash"></i></span>
+                                        </button>
+                                    </a>
+                                </td>
+                                <% if (settings.api.client.allow.renewsuspendsystem.enabled) { %>
+                                <td>
+                                    <a href="/renew?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>">
+                                        <button class="btn btn-icon btn-warning" type="button">
+                                            <span class="btn-inner--icon"><i class="fas fa-sync-alt"></i></span>
+                                        </button>
+                                    </a>
+                                </td>
+                                  
+                                <% } %>
+                                  <td>
+                                  <a href="<%= settings.pterodactyl.domain %>/server/<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>" target="_blank" rel="noopener noreferrer" class="btn btn-icon btn-success"><i class="fas fa-link"></i></a>
+                                    </td>
+                            </tr>
+                        </tbody>
+                        <% } %>
+                    </table>
+                    <!-- end table -->
+                  </div>
+                <!-- End Chart -->
+              </div>
+            </div>
+            <!-- End Col -->
+            </div>
+
+            <!-- End Col -->
+          </div>
+          <!-- End Row -->
+          
+      <!-- ========== section end ========== -->
+      <%- include('./theme_assets/footer') %>
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="/assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="/assetsnew/js/Chart.min.js"></script>
+    <script src="/assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="/assetsnew/js/moment.min.js"></script>
+    <script src="/assetsnew/js/fullcalendar.js"></script>
+    <script src="/assetsnew/js/jvectormap.min.js"></script>
+    <script src="/assetsnew/js/world-merc.js"></script>
+    <script src="/assetsnew/js/polyfill.js"></script>
+    <script src="/assetsnew/js/main.js"></script>
+
+    
+  </body>
+</html>

@@ -1,0 +1,155 @@
+<header class="header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-5 col-md-5 col-6">
+          <div class="header-left d-flex align-items-center">
+            <div class="menu-toggle-btn mr-20">
+              <button
+                id="menu-toggle"
+                class="main-btn primary-btn btn-hover"
+              >
+                <i class="lni lni-chevron-left me-2"></i> Menu
+              </button>
+            </div>
+            <% if(settings.api.client.coins.enabled == true) { %> 
+              <div
+                class="btn-sm">
+                <i class="fa-sharp fa-solid fa-coins"></i> Coins: <%= coins %> 
+            </div>
+            <% } %>
+            
+              
+          </div>
+          
+          
+        </div>
+        <div class="col-lg-7 col-md-7 col-6">
+          <div class="header-right">
+    
+        
+        
+            <!-- profile start -->
+            <div class="profile-box ml-15">
+              <button
+                class="dropdown-toggle bg-transparent border-0"
+                type="button"
+                id="profile"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <div class="profile-info">
+                  <div class="info">
+                    <h6><%= req.session.userinfo.username%></h6>
+                    <% if(req.session.userinfo.type == "discord" || req.session.userinfo.type == "google") { %> 
+                      <div class="image">
+                        <img
+                        src=<%= userinfo.profilepic %>
+                        />
+                        <span class="status"></span>
+                      </div>
+                    <% } else { %> 
+                      <div class="image">
+                        <img
+                        src='https://img.freepik.com/free-icon/user_318-790139.jpg?w=2000'
+                        />
+                        <span class="status"></span>
+                      </div>
+                    <% } %>
+                  </div>
+                </div>
+                <i class="lni lni-chevron-down"></i>
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="profile"
+              >
+
+                <li>
+                  <a href="/regen"> <i class="fa-solid fa-lock"></i> Reset Password </a>
+                </li>
+                <li>
+                  <a href="/logout"> <i class="lni lni-exit"></i> Log Out </a>
+                </li>
+              </ul>
+            </div>
+
+            
+
+            <!-- profile end -->
+          </div>
+
+        </div>
+      </div>
+      
+    </div>
+  </header>
+  <!-- ========== header end ========== -->
+
+  <% if (req.session.newaccount || req.session.password) { %>
+    <% if (req.session.newaccount) { %>
+    <div class="alert alert-default alert-dismissible fade show" role="alert">
+        <span class="alert-icon"><i class="fas fa-plus-circle"></i></span>
+        <span class="alert-text"><strong>Congratulations!</strong> A new account has been created for
+            you on the Pterodactyl Panel</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="alert-box info-alert">
+        <div class="alert">
+          <p><strong>Congratulations!</strong> A new account has been created for
+            you on the Pterodactyl Panel</p>
+        </div>
+    </div>
+
+    <% } %>
+    <% if (req.session.password) { %>
+    <div class="alert-box info-alert">
+        <div class="alert">
+          <p>
+            Your <% if (!req.session.newaccount) { %>new <% } %>password is
+            <code><%= req.session.password %></code>! Make sure to keep this password in a safe
+            place
+          </p>
+        </div>
+    </div>
+    <% } %>
+    <% } %>
+
+  
+  <!-- ========== section start ========== -->
+  <section class="section">
+    <div class="container-fluid">
+      <!-- ========== title-wrapper start ========== -->
+      <div class="title-wrapper pt-30">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="title mb-30">
+              <h2>Admin Dashboard</h2>
+            </div>
+          </div>
+          <!-- end col -->
+          
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- ========== title-wrapper end ========== -->
+      <%
+                let ram = 0;
+                let disk = 0;
+                let cpu = 0;
+                let servers = pterodactyl.relationships.servers.data.length;
+                for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) {
+                    ram = ram + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.memory == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.memory : 0);
+                    disk = disk + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.disk == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.disk : 0);
+                    cpu = cpu + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.cpu == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.cpu : 0);
+                }
+        %>
+
+      
+
+        
+            
+          

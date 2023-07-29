@@ -1,0 +1,263 @@
+<header class="header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-5 col-md-5 col-6">
+          <div class="header-left d-flex align-items-center">
+            <div class="menu-toggle-btn mr-20">
+              <button
+                id="menu-toggle"
+                class="main-btn primary-btn btn-hover"
+              >
+                <i class="fa-solid fa-chevron-left"></i></i> Menu
+              </button>
+            </div>
+            <% if(settings.api.client.coins.enabled == true) { %> 
+              <div
+                class="btn-sm">
+                <i class="fa-sharp fa-solid fa-coins"></i> Coins: <%= coins %> 
+            </div>
+            <% } %>
+            
+              
+          </div>
+          
+          
+        </div>
+        <div class="col-lg-7 col-md-7 col-6">
+          <div class="header-right">
+    
+        
+        
+            <!-- profile start -->
+            <div class="profile-box ml-15">
+              <button
+                class="dropdown-toggle bg-transparent border-0"
+                type="button"
+                id="profile"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <div class="profile-info">
+                  <div class="info">
+                    <h6><%= req.session.userinfo.username%></h6>
+                    <% if (pterodactyl.root_admin == true) { %>
+                      <h6>Admin</h6>
+                      <% } %>
+                    <% if(req.session.userinfo.type == "discord" || req.session.userinfo.type == "google") { %> 
+                      <div class="image">
+                        <img
+                        src=<%= userinfo.profilepic %>
+                        />
+                        <span class="status"></span>
+                      </div>
+                    <% } else { %> 
+                      <div class="image">
+                        <img
+                        src='https://media.discordapp.net/attachments/1091234776012312599/1129257502396125264/0b3181c93fae8395b8efb6ed7b8f3a17.png?width=153&height=153'
+                        />
+                        <span class="status"></span>
+                      </div>
+                    <% } %>
+                  </div>
+                </div>
+                <i class="lni lni-chevron-down"></i>
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="profile"
+              >
+
+                <li>
+                  <a href="/regen"> <i class="fa-solid fa-lock"></i> Reset Password </a>
+                </li>
+                <li>
+                  <a href="/logout"> <i class="lni lni-exit"></i> Log Out </a>
+                </li>
+              </ul>
+            </div>
+
+            
+
+            <!-- profile end -->
+          </div>
+
+        </div>
+      </div>
+      
+    </div>
+  </header>
+  <!-- ========== header end ========== -->
+
+  <% if (req.session.newaccount || req.session.password) { %>
+    <% if (req.session.newaccount) { %>
+    <div class="alert alert-default alert-dismissible fade show" role="alert">
+        <span class="alert-icon"><i class="fas fa-plus-circle"></i></span>
+        <span class="alert-text"><strong>Congratulations!</strong> A new account has been created for
+            you on the Pterodactyl Panel</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="alert-box info-alert">
+        <div class="alert">
+          <p><strong>Congratulations!</strong> A new account has been created for
+            you on the Pterodactyl Panel</p>
+        </div>
+    </div>
+
+    <% } %>
+    <% if (req.session.password) { %>
+    <div class="alert-box info-alert">
+        <div class="alert">
+          <p>
+            Your <% if (!req.session.newaccount) { %>new <% } %>password is
+            <code><%= req.session.password %></code>! Make sure to keep this password in a safe
+            place
+          </p>
+        </div>
+    </div>
+    <% } %>
+    <% } %>
+
+  
+  <!-- ========== section start ========== -->
+  <section class="section">
+    <div class="container-fluid">
+      <!-- ========== title-wrapper start ========== -->
+      <div class="title-wrapper pt-30">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="title mb-30">
+               <h2 id="greetingMessage">Namaste <%= req.session.userinfo.username %>!</h2>
+            </div>
+          </div>
+          <!-- end col -->
+          
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- ========== title-wrapper end ========== -->
+      <%
+                let ram = 0;
+                let disk = 0;
+                let cpu = 0;
+                let servers = pterodactyl.relationships.servers.data.length;
+                for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) {
+                    ram = ram + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.memory == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.memory : 0);
+                    disk = disk + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.disk == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.disk : 0);
+                    cpu = cpu + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.cpu == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.cpu : 0);
+                }
+        %>
+
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+          <div class="icon-card mb-30">
+            <div class="icon purple">
+                <i class="fa-regular fa-hard-drive"></i>
+            </div>
+            <div class="content">
+              <h6 class="mb-10">Disk</h6>
+              <h3 class="text-bold mb-10"><%= disk %> MB /
+                <%= (packages ? packages.disk : 0) + extraresources.disk %> MB</h3>
+              <p class="text-sm text-success">Fetched From <strong>API</strong></p>
+              
+            </div>
+          </div>
+          <!-- End Icon Cart -->
+        </div>
+        <!-- End Col -->
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+          <div class="icon-card mb-30">
+            <div class="icon success">
+              <i class="fa-solid fa-memory"></i>
+            </div>
+            <div class="content">
+              <h6 class="mb-10">Memory</h6>
+              <h3 class="text-bold mb-10"><%= ram %> MB /
+                <%= (packages ? packages.ram : 0) + extraresources.ram %> MB</h3>
+              <p class="text-sm text-success">Fetched From <strong>API</strong></p>
+            </div>
+          </div>
+          <!-- End Icon Cart -->
+        </div>
+        <!-- End Col -->
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+          <div class="icon-card mb-30">
+            <div class="icon primary">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <div class="content">
+              <h6 class="mb-10">CPU</h6>
+              <h3 class="text-bold mb-10"><%= cpu %>% /
+                <%= (packages ? packages.cpu : 0) + extraresources.cpu %>%</h3>
+              <p class="text-sm text-success">Fetched From <strong>API</strong></p>
+            </div>
+          </div>
+          <!-- End Icon Cart -->
+        </div>
+        <!-- End Col -->
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+          <div class="icon-card mb-30">
+            <div class="icon orange">
+            <i class="fa-solid fa-server"></i>
+            </div>
+            <div class="content">
+              <h6 class="mb-10">Servers</h6>
+              <h3 class="text-bold mb-10"><%= servers %> /
+                <%= (packages ? packages.servers : 0) + extraresources.servers %>
+                server<%= (packages ? packages.servers : 0) + extraresources.servers == 1 ? "" : "s" %>
+              <p class="text-sm text-success">Fetched From <strong>API</strong></p>
+            </div>
+          </div>
+          <!-- End Icon Cart -->
+        </div>
+        <!-- End Col -->
+      </div>
+      <% if (settings.custom_ads.enabled == true) { %>
+       
+        <div class="card-style-2 mb-25">
+          <div class="card-content">
+              <h4><a> Advertisement</a></h4>
+            </div>
+          <div class="card-image">
+            <a href=<%= settings.custom_ads.redirect %>>
+              <img
+                src="<%= (settings.custom_ads.pic) %>"
+              />
+            </a>
+          </div>
+        </div>
+        <% } %>
+        
+            
+          <% if(settings.maintenance.enabled == true) { %> 
+                  <meta http-equiv="refresh" content="0; URL='/wait'" />
+
+            <% } %>
+
+                                                              <script>
+  function updateGreeting() {
+    const greetingElement = document.getElementById("greetingMessage");
+    const currentTime = new Date();
+    const currentHour = currentTime.getHours();
+
+    let greeting;
+    if (currentTime.getSeconds() % 8 === 0) {
+      greeting = "Namaste";
+    } else if (currentHour >= 5 && currentHour < 12) {
+      greeting = "Good Morning";
+    } else if (currentHour >= 12 && currentHour < 17) {
+      greeting = "Good Afternoon";
+    } else if (currentHour >= 17 && currentHour < 20) {
+      greeting = "Good Evening";
+    }
+
+    // Update the greeting message
+    greetingElement.textContent = `${greeting}, <%= req.session.userinfo.username %>!`;
+  }
+
+  // Call the function every 2 seconds
+  setInterval(updateGreeting, 2000);
+</script>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./theme-main/head') %>
+  <body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+    <%- include('./theme_assets/mainnav') %>
+ 
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <%- include('./theme_assets/header') %>
+    
+      <!-- End Row -->
+      <div class="row">
+        <div class="col">
+          <div class="card-style">
+            <div class="card-content">
+                <h3><a>Node Status</a></h4>
+                <h4><a> </a></h4>
+              </div>
+              <div class="table-wrapper table-responsive" id="table-wrapper">
+                <table class="table" id="table">
+                  <thead>
+                    <tr>
+                      <th><h6>Status</h6></th>
+                      <th><h6>Name</h6></th>
+                      <th><h6>Memory</h6></th>
+                      <th><h6>Disk</h6></th>
+                    </tr>
+                    <!-- end table row-->
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
+                <!-- end table -->
+              </div>
+            
+            <!-- End Chart -->
+          </div>
+        </div>
+        <!-- End Col -->
+        </div>
+
+        <!-- End Col -->
+      </div>
+      <!-- End Row -->
+      <div class="offline-message" id="offline-message" style="display: none;">
+        <p>All nodes are online.</p>
+      </div>
+      <%- include('./theme_assets/footer') %>
+    </main>
+  <!-- ========== section end ========== -->
+
+<script>
+  async function idk() {
+    var table = document.getElementById("table");
+    var nodes = [];
+
+    fetch('/api/nodes')
+      .then(response => response.json())
+      .then(json => {
+        for (let i = 0; i < json.length; i++) {
+          nodes.push(json[i]);
+        }
+
+        // Now we have all the nodes in the 'nodes' array
+        // We can update the table and show/hide the offline message based on their status
+        var tableBody = table.getElementsByTagName('tbody')[0];
+
+        for (let i = 0; i < nodes.length; i++) {
+          var row = tableBody.insertRow(0);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
+
+          if (nodes[i].status === 'online') {
+            cell1.innerHTML = `<p><div class="lead"><div class="lead-image"><img src="https://media.discordapp.net/attachments/1132626761885159424/1134758553740132402/cUrv0t00FYQ1GKLuOTvv8qjo1lSDjqZC16IOp3Fb6ijew6Br5m4o16HhDp0GBu_Bw8Y.png?width=409&height=409"/></div><h6> Online</h6></div></p>`;
+          } else {
+            cell1.innerHTML = `<p><div class="lead"><div class="lead-image"><img src="https://media.discordapp.net/attachments/1132626761885159424/1134759401287335976/images-removebg-preview.png?width=144&height=144"/></div><h6> Offline</h6></div></p>`;
+          }
+
+          cell2.innerHTML = `<h6>${nodes[i].name}</h6>`;
+          cell3.innerHTML = `<h6>${nodes[i].memory}</h6>`;
+          cell4.innerHTML = `<h6>${nodes[i].disk}</h6>`;
+        }
+
+        // Check if any node is offline and show/hide the table and offline message accordingly
+        var tableWrapper = document.getElementById("table-wrapper");
+        var offlineMessage = document.getElementById("offline-message");
+
+        if (nodes.some(node => node.status === 'offline')) {
+          tableWrapper.style.display = "block";
+          offlineMessage.style.display = "none";
+        } else {
+          tableWrapper.style.display = "none";
+          offlineMessage.style.display = "block";
+        }
+      });
+  }
+  idk();
+</script>
+
+<!-- ========= All Javascript files linkup ======== -->
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/Chart.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/moment.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/fullcalendar.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/jvectormap.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/world-merc.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/polyfill.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/main.js"></script>
+
+</body>
+</html>

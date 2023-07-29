@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./theme-main/head') %>
+<body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+    <%- include('./theme_assets/mainnav') %>
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+        <!-- ========== header start ========== -->
+        <%- include('./theme_assets/header') %>
+
+        <div class="row">
+            <div class="col">
+                <div class="card-style">
+                    <div class="card-header">
+                        <div class="card-title">Gift Resoures</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center"></div>
+
+                        <div class="input-style-1">
+                            <label>Discord ID</label>
+                            <input type="number" class="form-control" id="InputID" placeholder="Enter ID here">
+                        </div>
+                        <br>
+                        <div class="input-style-1">
+                            <label>CPU</label>
+                            <input type="number" class="form-control" id="InputCPU" placeholder="10">
+                        </div>
+                        <br>
+                        <div class="input-style-1">
+                            <label>RAM</label>
+                            <input type="number" class="form-control" id="InputRAM" placeholder="100">
+                        </div>
+                        <br>
+                        <div class="input-style-1">
+                            <label>Disk</label>
+                            <input type="number" class="form-control" id="InputDisk" placeholder="100">
+                        </div>
+                        <br>
+                        <div class="input-style-1">
+                            <label>Servers</label>
+                            <input type="number" class="form-control" id="InputServers" placeholder="2">
+                        </div>
+                        <br>
+                        <button id="giftButton" onclick="submitGift()" class="main-btn primary-btn btn-hover btn-sm">Gift</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            async function submitGift() {
+                let id = encodeURIComponent(document.getElementById("InputID").value);
+                let ram = encodeURIComponent(document.getElementById("InputRAM").value);
+                let disk = encodeURIComponent(document.getElementById("InputDisk").value);
+                let cpu = encodeURIComponent(document.getElementById("InputCPU").value);
+                let servers = encodeURIComponent(document.getElementById("InputServers").value);
+                let button = document.getElementById("giftButton");
+                button.disabled = true; // disable the button
+                document.location.href = `/giftres?id=${id}&ram=${ram}&disk=${disk}&cpu=${cpu}&servers=${servers}`;
+                // You may need to re-enable the button if there was an error or if the form needs to be submitted again
+            };
+        </script>
+
+        <!-- ========== footer start =========== -->
+        <%- include('./theme_assets/footer') %>
+        <!-- ========== footer end =========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/Chart.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/moment.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/fullcalendar.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/jvectormap.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/world-merc.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/polyfill.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/main.js"></script>
+
+</body>
+</html>

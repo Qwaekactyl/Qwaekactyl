@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./theme-main/head') %>
+  <body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+    <%- include('./theme_assets/mainnav') %>
+ 
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <%- include('./theme_assets/header') %>
+    
+    
+          
+          
+          <!-- End Row -->
+          <div class="row">
+            <div class="col">
+              <div class="card-style">
+                <div class="card-header">
+                  <div class="card-title">Edit Server</div>
+                </div>
+                <div class="card-body">
+                    <% if (req.query.id) { %>
+                        <% if (pterodactyl.relationships.servers.data.filter(name => name.attributes.id == req.query.id).length == 1) {
+                            let serverinfo = pterodactyl.relationships.servers.data.filter(name => name.attributes.id == req.query.id)[0];
+                            let attemptegg = null;
+                            let attemptname = null;
+                            for (let [name, value] of Object.entries(settings.api.client.eggs)) {
+                                if (settings.api.client.eggs[name].info.egg == serverinfo.attributes.egg) {
+                                    attemptegg = settings.api.client.eggs[name];
+                                    attemptname = name;
+                                };
+                            };
+                            let egginfo = attemptegg ? attemptegg.display : "???";
+                        %>      
+                                <div class="text">
+                                <p class="text-medium">
+                                Name: <a><%= serverinfo.attributes.name %></a>
+                                </p>
+                                </div>
+
+                                <div class="text">
+                                    <p class="text-medium">
+                                    Egg: <a><%= egginfo %></a>
+                                    </p>
+                                </div>
+                                
+                                <a> </a>
+                                <div class="input-style-3">
+                                    <input type="text" id="ram" placeholder="Ram"  value="<%= serverinfo.attributes.limits.memory %>"/>
+                                    <span class="icon"><i class="fa-solid fa-memory"></i></i></span>
+                                </div>
+
+                                <div class="input-style-3">
+                                    <input type="text" id="disk" placeholder="Disk"  value="<%= serverinfo.attributes.limits.disk %>"/>
+                                    <span class="icon"><i class="fa-solid fa-hard-drive"></i></i></span>
+                                </div>
+
+                                <div class="input-style-3">
+                                    <input type="text" id="cpu" placeholder="CPU"  value="<%= serverinfo.attributes.limits.cpu %>"/>
+                                    <span class="icon"><i class="fa-solid fa-microchip"></i></i></span>
+                                </div>
+
+                                
+                                <button onclick="submitForm()" class="main-btn btn-sm btn-primary" >Modify</button>
+                                <br>
+                            </div>
+                            <script>
+                                async function submitForm() {
+                                    let ram = encodeURIComponent(document.getElementById("ram").value);
+                                    let disk = encodeURIComponent(document.getElementById("disk").value);
+                                    let cpu = encodeURIComponent(document.getElementById("cpu").value);
+                                    document.location.href = `/modify?id=<%= req.query.id %>&ram=${ram}&disk=${disk}&cpu=${cpu}`;
+                                };
+                            </script>
+                        <% } else { %>
+                            <p style="margin-left: 5%;">Could not find server with the provided ID.</p>
+                        <% } %>
+                    <% } else { %>
+                        <p style="margin-left: 5%;">Missing server ID.</p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+          </div>
+      </div>
+</div>
+                    <!-- end table -->
+                  </div>
+                <!-- End Chart -->
+              </div>
+            </div>
+            <!-- End Col -->
+            
+          <!-- End Row -->
+          
+      <!-- ========== section end ========== -->
+      <%- include('./theme_assets/footer') %>
+      
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+
+    <!-- ========= All Javascript files linkup ======== -->
+     <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/Chart.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/moment.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/fullcalendar.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/jvectormap.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/world-merc.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/polyfill.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/main.js"></script>
+
+    
+  </body>
+</html>

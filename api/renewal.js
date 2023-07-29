@@ -1,4 +1,4 @@
-const settings = require("../settings.json");
+const settings = require("../settings");
 
 module.exports.load = async function(app, db) {
     if (settings.api.client.allow.renewsuspendsystem.enabled == true) {
@@ -26,6 +26,8 @@ module.exports.load = async function(app, db) {
                           headers: { 'Content-Type': 'application/json', "Authorization": `Bearer ${settings.pterodactyl.key}` }
                         }
                     );
+                    let type = "renewal"
+                    await db.set("suspendtype-" + id, type)
                     delete renewalservers[id];
                 }
             }
@@ -82,7 +84,9 @@ module.exports.load = async function(app, db) {
                 };
             };
 
-            let cost = settings.api.client.allow.renewsuspendsystem.cost;
+            let suspendtype = await db.get("suspendtype-" + req.query.id)
+            if(suspendtype == "renewal") {
+                let cost = settings.api.client.allow.renewsuspendsystem.cost;
 
             let usercoins = await db.get("coins-" + req.session.userinfo.id) || 0;
 
@@ -108,6 +112,8 @@ module.exports.load = async function(app, db) {
             );
         
             return res.redirect(theme.settings.redirect.renewserver || "/");
+            }
+            
         });
 
         module.exports.set = async function(id) {

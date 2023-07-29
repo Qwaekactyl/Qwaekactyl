@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="/assetsnew/images/favicon.svg"
+      type="image/x-icon"
+    />
+    <title><%= extra.admin.title.default %></title>
+    <% if (settings.api.arcio.enabled == true) { %>
+    <script async src="https://arc.io/widget.min.js#<%= settings.api.arcio.widgetid %>"></script>
+    <% } %>
+    
+    <script src="https://kit.fontawesome.com/9f45c806ba.js" crossorigin="anonymous"></script>
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel="stylesheet" href="https://cdn.qwaekactyl.xyz/v3//assetsnew/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.qwaekactyl.xyz/v3//assetsnew/css/lineicons.css" />
+    <link rel="stylesheet" href="https://cdn.qwaekactyl.xyz/v3//assetsnew/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="https://cdn.qwaekactyl.xyz/v3//assetsnew/css/fullcalendar.css" />
+    <link rel="stylesheet" href="https://cdn.qwaekactyl.xyz/v3//assetsnew/css/fullcalendar.css" />
+    <link rel="stylesheet" href="https://cdn.qwaekactyl.xyz/v3//assetsnew/css/main.css" />
+  </head>
+  <body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+    <%- include('./admin_assets/mainnav') %>
+ 
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <%- include('./admin_assets/header') %>
+    
+    
+          
+          
+          <!-- End Row -->
+          <div class="row">
+            <div class="col">
+              <div class="card-style">
+                <div class="card-header">
+                  <div class="card-title">Userinfo</div>
+                </div>
+                <div class="card-body">
+                    <div class="input-style-1">
+                        <label>Username</label>
+                        <input type="text" value="null" id="name" readonly/>
+                    </div>
+                    <div class="input-style-1">
+                        <label>ID</label>
+                        <input type="text" value="null" id="userid" readonly/>
+                    </div>
+                    <div class="input-style-1">
+                        <label>UUID</label>
+                        <input type="text" value="null" id="uuid" readonly/>
+                    </div>
+                    <div class="input-style-1">
+                        <label>Email</label>
+                        <input type="text" value="null" id="email" readonly/>
+                    </div>
+                    <div class="input-style-1">
+                        <label>Full Name</label>
+                        <input type="text" value="null" id="fullname" readonly/>
+                    </div>
+                    <div class="input-style-1">
+                        <label>Admin</label>
+                        <input type="text" value="null" id="admin" readonly/>
+                    </div>
+
+                    <div class="input-style-1">
+                      <label>Ram</label>
+                      <input type="text" value="null" id="ram" readonly/>
+                    </div>
+                    <div class="input-style-1">
+                      <label>Disk</label>
+                      <input type="text" value="null" id="disk" readonly/>
+                    </div>
+                    <div class="input-style-1">
+                      <label>Cpu</label>
+                      <input type="text" value="null" id="cpu" readonly/>
+                    </div>
+                    <div class="input-style-1">
+                      <label>Servers</label>
+                      <input type="text" value="null" id="servers" readonly/>
+                    </div>
+      </div>
+</div>
+                  </div>
+              </div>
+            </div>
+      <script>
+        async function get() {
+            const query = new URLSearchParams(window.location.search)
+            fetch('/api/admin/users/details?id=' + parseInt(query.get('id')))
+      .then(response => response.json())
+      .then(json => {
+        document.getElementById('name').value=json.username
+        document.getElementById('userid').value=json.id
+        document.getElementById('email').value=json.email
+        document.getElementById('uuid').value=json.uuid
+        document.getElementById('fullname').value=`${json.first_name} ${json.last_name}`
+        document.getElementById('admin').value=json.admin
+        document.getElementById('ram').value=json.ram
+        document.getElementById('disk').value=json.disk
+        document.getElementById('cpu').value=json.cpu
+        document.getElementById('servers').value=json.servers
+        })
+        }
+        get()
+      </script>
+      <!-- ========== footer start =========== -->
+      <%- include('./theme_assets/footer') %>
+      <!-- ========== footer end =========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/Chart.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/moment.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/fullcalendar.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/jvectormap.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/world-merc.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/polyfill.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/main.js"></script>
+
+    
+  </body>
+</html>

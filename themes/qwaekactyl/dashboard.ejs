@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('./theme-main/head') %>
+  <body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+    <%- include('./theme_assets/mainnav') %>
+ 
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <%- include('./theme_assets/header') %>
+    
+    
+          
+          
+          <!-- End Row -->
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="card-style mb-30">
+                <div class="table-wrapper table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th><h6>Server Name</h6></th>
+                          <th><h6>RAM</h6></th>
+                          <th><h6>Disk Space</h6></th>
+                          <th><h6>CPU%</h6></th>
+                        </tr>
+                        <!-- end table row-->
+                      </thead>
+                      <% for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) { %>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p><%= pterodactyl.relationships.servers.data[i].attributes.name.length > 15 ? pterodactyl.relationships.servers.data[i].attributes.name.slice(0, 12) + "..." : pterodactyl.relationships.servers.data[i].attributes.name %></p>
+                                </td>
+                                <td>
+                                    <p><%= pterodactyl.relationships.servers.data[i].attributes.limits.memory %>MB</p>
+                                </td>
+                                <td>
+                                  <p><%= pterodactyl.relationships.servers.data[i].attributes.limits.disk %>MB</p>
+                                </td>
+                                <td>
+                                    <p><%= pterodactyl.relationships.servers.data[i].attributes.limits.cpu %>%</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <% } %>
+                    </table>
+                    <!-- end table -->
+                  </div>
+                <!-- End Chart -->
+              </div>
+            </div>
+            <!-- End Col -->
+            <div class="col-lg-5">
+              <div class="card-style mb-30">
+                <div
+                  class="
+                    title
+                    d-flex
+                    flex-wrap
+                    align-items-center
+                    justify-content-between row
+                  "
+                >
+                  <div class="left">
+                    <h5 class="text-medium mb-30 mt-4">Information</h5>
+                  </div>
+                    <div class="text-md-center input-style-3 ">
+                        <label>Username</label>
+                        <input id="user" type="text" class="form-control form-control-muted"
+                        value="<%= pterodactyl.username %>" disabled>
+
+                    </div>
+                    <div class="text-md-center input-style-3 ">
+                        <label>Email</label>
+                        <input id="email" type="text" class="form-control form-control-muted"
+                            value="<%= pterodactyl.email %>" disabled>
+
+                    </div>
+                </div>
+                <!-- End Title -->
+              </div>
+            </div>
+            <!-- End Col -->
+            <%- include('./theme_assets/footer') %>
+          </div>
+          <!-- End Row -->
+          
+      <!-- ========== section end ========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+    
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/Chart.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/moment.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/fullcalendar.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/jvectormap.min.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/world-merc.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/polyfill.js"></script>
+    <script src="https://cdn.qwaekactyl.xyz/v3//assetsnew/js/main.js"></script>
+
+    
+  </body>
+</html>

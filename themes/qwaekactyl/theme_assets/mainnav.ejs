@@ -1,0 +1,216 @@
+<script src="https://kit.fontawesome.com/9f45c806ba.js" crossorigin="anonymous"></script>
+
+<aside class="sidebar-nav-wrapper">
+  <div class="navbar-logo">
+    <a href="/">
+      <img src="https://avatars.githubusercontent.com/u/109157827?s=48&v=4" alt="logo" />
+    </a>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li class="nav-item">
+        <a href="/dashboard">
+          <span class="icon">
+            <svg width="22" height="22" viewBox="0 0 22 22">
+              <path
+                d="M17.4167 4.58333V6.41667H13.75V4.58333H17.4167ZM8.25 4.58333V10.0833H4.58333V4.58333H8.25ZM17.4167 11.9167V17.4167H13.75V11.9167H17.4167ZM8.25 15.5833V17.4167H4.58333V15.5833H8.25ZM19.25 2.75H11.9167V8.25H19.25V2.75ZM10.0833 2.75H2.75V11.9167H10.0833V2.75ZM19.25 10.0833H11.9167V19.25H19.25V10.0833ZM10.0833 13.75H2.75V19.25H10.0833V13.75Z"
+              />
+            </svg>
+          </span>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+      <!--<li class="nav-item">
+        <a href="/dashboard">
+          <span class="icon">
+            <i class="fa-solid fa-house"></i>
+          </span>
+          <span class="text">Main</span>
+        </a>
+      </li>-->
+      <li class="nav-item">
+        <a href="/create">
+          <span class="icon">
+            <i class="fa-solid fa-plus"></i>
+          </span>
+          <span class="text">Create a Server</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/servers">
+          <span class="icon">
+            <i class="fa-solid fa-server"></i>
+          </span>
+          <span class="text">Your Servers</span>
+        </a>
+  </li>
+          <li class="nav-item">
+        <a href="/donate">
+          <span class="icon">
+            <i class="fa-solid fa-circle-dollar-to-slot"></i>
+          </span>
+          <span class="text">Donate</span>
+        </a>
+      </li>
+      <% if (settings.api.arcio["afk page"].enabled == true) { %>
+        <li class="nav-item">
+          <a href="/afk">
+            <span class="icon">
+              <i class="fa-solid fa-money-bill"></i>
+            </span>
+            <span class="text">AFK</span>
+          </a>
+        </li>
+      <% } %>
+      <% if (settings.api.client.coins.store.enabled == true) { %>
+        <li class="nav-item">
+          <a href="/store">
+            <span class="icon">
+              <i class="fa-solid fa-store"></i>
+            </span>
+            <span class="text">Store</span>
+          </a>
+        </li>
+      <% } %>
+      <li class="nav-item">
+        <a href="/refer">
+          <span class="icon">
+            <i class="fa-sharp fa-solid fa-user-plus"></i>
+          </span>
+          <span class="text">Referral</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/redeem">
+          <span class="icon">
+            <i class="fa-solid fa-usd"></i>
+          </span>
+          <span class="text">Redeem</span>
+        </a>
+      </li>
+  <% if (settings.giftres.enabled == true) { %>
+      <li class="nav-item">
+       <a class="nav-link" href="/gift">
+                   <span class="icon">
+            <i class="fa-solid fa-gift"></i></span>
+          <span class="nav-link-text">Gift Resources</span>
+       </a>
+     </li>
+    <% } %>
+
+      <% if (pterodactyl.root_admin == true) { %>
+        <li class="nav-item">
+          <a href="/admin">
+            <span class="icon">
+              <i class="fas fa-user-shield text-red"></i>
+            </span>
+            <span class="text">Admin</span>
+          </a>
+        </li>
+      <% } %>
+        
+     <% if (settings.nodes_status.enabled == true) { %>
+        <li class="nav-item">
+          <a href="/status">
+            <span class="icon">
+              <i class="fa-solid fa-clock"></i>
+            </span>
+            <span class="text">Status</span>
+          </a>
+        </li>
+      <% } %>
+
+      <% if (settings.nodes_status.enabled == true) { %>
+        <li class="nav-item">
+          <a href="/nodes">
+            <span class="icon">
+              <i class="fa-solid fa-cloud"></i>
+            </span>
+            <span class="text">Nodes Status</span>
+          </a>
+        </li>
+      <% } %>
+
+
+<% if (settings.socialmedia.instagram.enabled ||
+      settings.socialmedia.twitter.enabled ||
+      settings.socialmedia.facebook.enabled ||
+      settings.socialmedia.trustpilot.enabled ||
+      settings.socialmedia.youtube.enabled ||
+      settings.socialmedia.linkedin.enabled ||
+      settings.socialmedia.discord.enabled) { %>
+   <li class="nav-item nav-item-has-children">
+    <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_social" aria-controls="ddmenu_social" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="icon">
+        <i class="fa-solid fa-users"></i>
+      </span>
+      <span class="text">Social Media</span>
+    </a>
+     
+    <ul id="ddmenu_social" class="collapse dropdown-nav">
+      <% if (settings.socialmedia.instagram.enabled) { %>
+        <li>
+          <a href="<%= settings.socialmedia.instagram.link %>">
+            <i class="fab fa-solid fa-instagram"></i> Instagram
+          </a>
+        </li>
+      <% } %>
+
+      <% if (settings.socialmedia.twitter.enabled) { %>
+        <li>
+          <a href="<%= settings.socialmedia.twitter.link %>">
+            <i class="fab fa-solid fa-twitter"></i> Twitter
+          </a>
+        </li>
+      <% } %>
+
+      <% if (settings.socialmedia.facebook.enabled) { %>
+        <li>
+          <a href="<%= settings.socialmedia.facebook.link %>">
+            <i class="fab fa-solid fa-facebook"></i> Facebook
+          </a>
+        </li>
+      <% } %>
+
+      <% if (settings.socialmedia.trustpilot.enabled) { %>
+        <li>
+          <a href="<%= settings.socialmedia.trustpilot.link %>">
+            <i class="fa fa-t"></i> Trustpilot
+          </a>
+        </li>
+      <% } %>
+
+      <% if (settings.socialmedia.youtube.enabled) { %>
+        <li>
+          <a href="<%= settings.socialmedia.youtube.link %>">
+            <i class="fab fa-solid fa-youtube"></i> YouTube
+          </a>
+        </li>
+      <% } %>
+
+      <% if (settings.socialmedia.linkedin.enabled) { %>
+        <li>
+          <a href="<%= settings.socialmedia.linkedin.link %>">
+            <i class="fab fa-solid fa-linkedin"></i> LinkedIn
+          </a>
+        </li>
+      <% } %>
+
+      <% if (settings.socialmedia.discord.enabled) { %>
+        <li>
+          <a href="<%= settings.socialmedia.discord.link %>">
+            <i class="fab fa-solid fa-discord"></i> Discord
+          </a>
+        </li>
+      <% } %>
+    </ul>
+  </li>
+<% } %>
+
+
+
+
+    </ul>
+  </nav>
+</aside>
+<div class="overlay"></div>

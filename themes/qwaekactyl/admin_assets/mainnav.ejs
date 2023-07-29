@@ -1,0 +1,78 @@
+<script src="https://kit.fontawesome.com/9f45c806ba.js" crossorigin="anonymous"></script>
+
+<aside class="sidebar-nav-wrapper">
+    <div class="navbar-logo">
+      <a href="https://Qwakeactyl.com">
+        <img src="https://avatars.githubusercontent.com/u/109157827?s=48&v=4" alt="logo" />
+      </a>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item">
+          <a href="/dashboard">
+            <span class="icon"><i class="fa-solid fa-backward"></i>
+            </span>
+            <span class="text">Go To Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/admin">
+            <span class="icon"><i class="fas fa-house"></i>
+            </span>
+            <span class="text">Overview</span>
+          </a>
+        </li>
+        <span class="divider"><hr /></span>
+        <li class="nav-item">
+          <a href="/admin/users">
+            <span class="icon"><i class="fas fa-user"></i>
+            </span>
+            <span class="text">Users</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/admin/servers">
+            <span class="icon"><i class="fa-solid fa-server"></i>
+            </span>
+            <span class="text">Servers</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/admin/resources">
+            <span class="icon"><i class="fas fa-coins"></i>
+            </span>
+            <span class="text">Resources</span>
+          </a>
+        </li>
+
+        <% if(settings.nodes_status.enabled == true) { %> 
+          <span class="divider"><hr /></span>
+          <li class="nav-item nav-item-has-children">
+            <a
+              href="#0"
+              class="collapsed"
+              data-bs-toggle="collapse"
+              data-bs-target="#ddmenu_4"
+              aria-controls="ddmenu_4"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="icon">
+                <i class="fa-solid fa-cloud"></i>
+              </span>
+              <span class="text">Nodes</span>
+            </a>
+            <ul id="ddmenu_4" class="collapse dropdown-nav">
+              <li>
+                <a href="/nodes"><i class="fa-solid fa-cloud"></i> Nodes Status </a>
+              </li>
+            </ul>
+          </li>
+          
+        <% } %>
+
+      </ul>
+    </nav>
+
+  </aside>
+  <div class="overlay"></div>
