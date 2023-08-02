@@ -178,7 +178,7 @@ module.exports.load = async function(app, db) {
 
   // After successful registration, send an email
   const emailSubject = "Registration Successful";
-  const emailText = `Hello, you have successfully registered with the email: ${userEmail}!\n\nPowered By Qwaekactyl - qwack atack the link: https://github.com/Qwaekactyl/Qwaekactyl`;
+  const emailText = `Hello, you have successfully registered with the email: ${userEmail}!\n\nPowered By Qwaekactyl`;
 
   const emailApiUrl = `https://api.qwaekactyl.xyz/send_email?to=${encodeURIComponent(
     userEmail
