@@ -1,6 +1,6 @@
 {
   "name": "Qwaekactyl",
-  "version": "3.0",
+  "version": "3.0.0",
   "description": "A Dashboard For Splitting Resources And Servers In Pterodactyl",
   "main": "index.js",
   "scripts": {
