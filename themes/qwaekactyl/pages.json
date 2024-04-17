@@ -106,10 +106,10 @@
   ],
   "variables": {
     "footerad": true,
-    "faviconlink": "https://media.discordapp.net/attachments/1132626761885159424/1132626831661596712/109157827.png?width=160&height=160",
-    "name": "Qwakeactyl",
+    "faviconlink": "https://media.discordapp.net/attachments/1228620895157882941/1228639646792028271/download_1.png?ex=662cc6d6&is=661a51d6&hm=507e6d19d4a7e951e2433760a45f7e9b2971740801d2048458f856f56247c643&=&format=webp&quality=lossless&width=421&height=393",
+    "name": "RudraCloud - Free Trial",
     "home": {
-      "title": "Qwaekactyl",
+      "title": "RudraCloud - Free Trial",
       "buttontext": {
         "loggedin": {
           "text": {
@@ -140,30 +140,30 @@
       }
     },
     "dashboard": {
-      "title": "Dashboard - Qwakeactyl"
+      "title": "Dashboard - RudraCloud - Free Trial"
     },
     "servers": {
       "title": {
-        "create": "servers - Qwakeactyl",
-        "modify": "Server Modify - Qwakeactyl"
+        "create": "servers - RudraCloud - Free Trial",
+        "modify": "Server Modify - RudraCloud - Free Trial"
       }
     },
     "error": {
-      "title": "404 - Qwakeactyl"
+      "title": "404 - RudraCloud - Free Trial"
     },
     "admin": {
       "title": {
-        "default": "Admin - Qwakeactyl"
+        "default": "Admin - RudraCloud - Free Trial"
       }
     },
     "redeem": {
-      "title": "Redeem - Qwakeactyl"
+      "title": "Redeem - RudraCloud - Free Trial"
     },
     "j4r": {
-      "tittle": "Join for Resources - Qwakeactyl"
+      "tittle": "Join for Resources - RudraCloud - Free Trial"
     },
     "store": {
-      "title": "Store - Qwakeactyl"
+      "title": "Store - RudraCloud - Free Trial"
     },
     "arcio": {
       "title": "AFK - Qwakeactyl"
