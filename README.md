@@ -149,7 +149,7 @@ $ npm start
 
 # Credits
 
-This Project Is Created And Managed By [Qwaekactyl](https://discord.gg/KYUPXPv4)'s Developers.
+This Project Is Created And Managed By [Qwaekactyl]([https://discord.gg/KYUPXPv4](https://discord.gg/DmV7drZD))'s Developers.
 
 This Project was not possible without [Dashactyl](https://github.com/Votion-Development/Dashactyl)
 
