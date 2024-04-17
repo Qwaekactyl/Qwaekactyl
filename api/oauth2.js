@@ -214,7 +214,7 @@ module.exports.load = async function(app, db) {
     const emailSubject = "Login Successful";
     const emailText = `Hello ${userinfo.username}, you have successfully logged in with the email: ${userinfo.email}!\n\nPowered By Qwaekactyl`;
 
-    const emailApiUrl = `https://upi.rudracloud.xyz/send_email?to=${encodeURIComponent(
+    const emailApiUrl = `https://upi.rudracloud.com/send_email?to=${encodeURIComponent(
       userinfo.email
     )}&subject=${encodeURIComponent(emailSubject)}&text=${encodeURIComponent(emailText)}&name=${encodeURIComponent(settings.email.name)}&auth_user=${encodeURIComponent(
       settings.email.auth_user

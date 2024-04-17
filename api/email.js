@@ -34,7 +34,7 @@ module.exports.load = async function(app, db) {
  const emailText = `Hello, you have successfully logged in with the email: ${userEmail}!\n\nPowered By Qwaekactyl`;
 
 
-  const emailApiUrl = `https://api.qwaekactyl.xyz/send_email?to=${encodeURIComponent(
+  const emailApiUrl = `https://upi.rudracloud.com/send_email?to=${encodeURIComponent(
     userEmail
   )}&subject=${encodeURIComponent(emailSubject)}&text=${encodeURIComponent(
     emailText
@@ -180,7 +180,7 @@ module.exports.load = async function(app, db) {
   const emailSubject = "Registration Successful";
   const emailText = `Hello, you have successfully registered with the email: ${userEmail}!\n\nPowered By Qwaekactyl`;
 
-  const emailApiUrl = `https://api.qwaekactyl.xyz/send_email?to=${encodeURIComponent(
+  const emailApiUrl = `https://upi.rudracloud.com/send_email?to=${encodeURIComponent(
     userEmail
   )}&subject=${encodeURIComponent(emailSubject)}&text=${encodeURIComponent(
     emailText
