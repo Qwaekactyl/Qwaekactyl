@@ -24,7 +24,7 @@
   "homepage": "https://github.com/Qwaekactyl/Qwaekactyl#readme",
   "dependencies": {
     "@fullcalendar/core": "^6.1.4",
-    "better-sqlite3": "^8.1.0",
+    "better-sqlite3": "^9.2.2",
     "better-sqlite3-session-store": "^0.1.0",
     "body-parser": "^1.20.2",
     "chalk": "^4.1.0",
