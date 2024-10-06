@@ -154,5 +154,5 @@ This Project Is Created And Managed By [Qwaekactyl](https://discord.gg/QNR2Mq3fF
 This Project was not possible without [Dashactyl](https://github.com/Votion-Development/Dashactyl)
 
 # Support
-[Qwaekactyl Support Server]([https://discord.gg/ubVuhS8wjV](https://discord.gg/QNR2Mq3fFf))
+[Qwaekactyl Support Server](https://discord.gg/QNR2Mq3fFf)
 
