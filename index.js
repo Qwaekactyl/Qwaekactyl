@@ -132,7 +132,7 @@ app.use(session({
   
 app.listen(settings.website.port, function() {
 console.log(chalk.green("[Qwaekactyl]") + chalk.white(" Qwaekactyl CP Started "));
-console.log(chalk.green("[Qwaekactyl]") + chalk.white(" Any Issue?? our contact support here :- https://discord.gg/rZWa97Yp2N" ));
+console.log(chalk.green("[Qwaekactyl]") + chalk.white(" Any Issue?? our contact support here :- https://discord.gg/QNR2Mq3fFf" ));
  });
 
 
