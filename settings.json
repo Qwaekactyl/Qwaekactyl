@@ -2,11 +2,11 @@
   "version": "3.0",
   "defaulttheme": "qwaekactyl",
   "website": {
-    "port": 1358
+    "port": 1245
   },
   "pterodactyl": {
-    "domain": "",
-    "key": ""
+    "domain": "http://localhost",
+    "key": "ptla_ZCAv96Hx9eMbKfyL6cDRLFtXUSjQ4J0H0dcm8zXTio2"
   },
 
   "email": {
@@ -18,7 +18,7 @@
     "_comment": "This is needed to setup cuz it will alert the users on Login Activity. Also service= like SMTP"
   },
   "custom_ads": {
-    "enabled": true,
+    "enabled": false,
     "redirect": "https://cp.rudracloud.xyz",
     "pic": "https://media.discordapp.net/attachments/1132626761885159424/1134460142017073202/standard_8.gif?width=374&height=48"
   },
@@ -100,9 +100,9 @@
       },
       "oauth2": {
         "_comment": "Go to https://discord.dev/ and create an application to set these up.",
-        "id": "",
-        "secret": "",
-        "link": "",
+        "id": "1198212449044791296",
+        "secret": "i9gHtws5niBMV9sBT405OtG63FKmZXNk",
+        "link": "http://localhost:8000",
         "callbackpath": "/callback",
         "prompt": true,
 
