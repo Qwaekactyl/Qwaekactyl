@@ -83,7 +83,7 @@ $ sudo apt install -y python3-certbot-nginx
 2. When these packages are installed, You have to add ssl to your domain :- using following commands
 
 ```bash
-$ certbot certonly -d <your domain>
+$ certbot certonly --nginx -d example.com
 ```
 > Now  type 1 and enter to get ssl
 
