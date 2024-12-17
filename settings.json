@@ -1,0 +1,302 @@
+{
+  "version": "3.0",
+  "defaulttheme": "qwaekactyl",
+  "website": {
+    "port": 1358
+  },
+  "pterodactyl": {
+    "domain": "",
+    "key": ""
+  },
+
+  "email": {
+    "name": "Your_Hosting_name",
+    "auth_user": "Your_Email_id",
+    "auth_pass": "Your_pass",
+    "service": "Gmail",
+    "from": "Your_email_id",
+    "_comment": "This is needed to setup cuz it will alert the users on Login Activity. Also service= like SMTP"
+  },
+  "custom_ads": {
+    "enabled": true,
+    "redirect": "https://cp.rudracloud.xyz",
+    "pic": "https://media.discordapp.net/attachments/1132626761885159424/1134460142017073202/standard_8.gif?width=374&height=48"
+  },
+  "nodes_status": {
+    "enabled": true
+  },
+  "status": {
+    "enabled": true,
+    "url": "https://wl.hetrixtools.com/r/96fc16e54a58951ceb91488408941911/"
+  },
+  "maintenance": {
+    "enabled": false
+  },
+  "giftres": {
+    "enabled": true,
+    "note": "this will allow u to use gift rescources."
+  },
+
+  "socialmedia": {
+    "instagram": {
+      "enabled": true,
+      "link": "https://www.instagram.com/your_instagram_link"
+    },
+    "twitter": {
+      "enabled": true,
+      "link": "https://twitter.com/your_twitter_link"
+    },
+    "facebook": {
+      "enabled": true,
+      "link": "https://www.facebook.com/your_facebook_link"
+    },
+    "trustpilot": {
+      "enabled": true,
+      "link": "https://www.trustpilot.com/review/your_trustpilot_link"
+    },
+    "youtube": {
+      "enabled": true,
+      "link": "https://www.youtube.com/user/your_youtube_link"
+    },
+    "linkedin": {
+      "enabled": true,
+      "link": "https://www.linkedin.com/in/your_linkedin_link"
+    },
+    "discord": {
+      "enabled": true,
+      "link": "https://discord.gg/your_discord_invite"
+    }
+
+  },
+
+
+
+  "database": "database.sqlite",
+  "api": {
+    "client": {
+      "manager": {
+        "enabled": true,
+        "code": "Change_to_random"
+      },
+      "passwordgenerator": {
+        "signup": true,
+        "length": 8
+      },
+      "allow": {
+        "newusers": true,
+        "regen": true,
+        "server": {
+          "create": true,
+          "modify": true,
+          "delete": true
+        },
+        "overresourcessuspend": false,
+        "renewsuspendsystem": {
+          "_comment": "This feature requires a restart in order to work. Also, this requires every server to start suspended, or else this feature would not work for some servers.",
+          "enabled": false,
+          "time": 3700,
+          "cost": 10000
+        }
+      },
+      "oauth2": {
+        "_comment": "Go to https://discord.dev/ and create an application to set these up.",
+        "id": "",
+        "secret": "",
+        "link": "",
+        "callbackpath": "/callback",
+        "prompt": true,
+
+        "ip": {
+          "trust x-forwarded-for": false,
+          "block": [],
+
+          "_comment": "duplicate check' is an anti-alt check by IPs.",
+          "duplicate check": false,
+
+          "_comment2": "cookie alt check' is an anti-alt check by cookies.",
+          "cookie alt check": true
+        }
+      },
+      "google": {
+        "enabled": true,
+
+        "_comment1": "you can get these details from https://console.cloud.google.com/",
+        "clientid": "",
+
+        "link": "",
+        "_comment2": "this link is the link of your dashboard example - cp.rudracloud.xyz",
+
+        "clientsecret": ""
+      },
+      "ratelimits": {
+        "enabled": true,
+
+        "trust x-forwarded-for": true,
+
+        "requests": 30,
+        "per second": 60
+      },
+      "apple": {
+        "enabled": true,
+        "_comment": "You can get these details from 'https://developer.apple.com/'.",
+
+        "link": "",
+        "_commen2t": "Redirect URL ;)",
+
+        "clientid": "",
+
+        "clientsecret": ""
+      },
+      "ratelimits": {
+        "enabled": true,
+
+        "trust x-forwarded-for": true,
+
+        "requests": 30,
+        "per second": 60
+      },
+      "packages": {
+        "default": "default",
+        "list": {
+          "default": {
+            "ram": 2024,
+            "disk": 2024,
+            "cpu": 90,
+            "servers": 1
+          }
+        }
+      },
+
+      "locations": {
+        "2": {
+          "name": "US",
+
+          "_comment": "Make 'package' be null to allow anyone with enough resources in their plan to create a server with this location. Also, make the 'package' variable an array, like [], with the location names with quotes to make a user be required to have a plan in order to use the package.",
+          "package": null
+        }
+      },
+      "eggs": {
+        "paper": {
+          "display": "Paper",
+          "minimum": {
+            "ram": 1024,
+            "disk": 1024,
+            "cpu": 70
+          },
+          "maximum": {
+            "ram": null,
+            "disk": null,
+            "cpu": null
+          },
+          "info": {
+            "egg": 2,
+            "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+            "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+            "environment": {
+              "SERVER_JARFILE": "server.jar",
+              "BUILD_NUMBER": "latest"
+            },
+            "feature_limits": {
+              "databases": 1,
+              "backups": 1,
+              "allocation": 1
+            }
+          }
+        },
+        "lavalink": {
+          "display": "Lavalink",
+          "minimum": {
+            "ram": 512,
+            "disk": 512,
+            "cpu": 75
+          },
+          "maximum": {
+            "ram": null,
+            "disk": null,
+            "cpu": null
+          },
+          "info": {
+            "egg": 15,
+            "docker_image": "quay.io/parkervcp/pterodactyl-images:debian_openjdk-13",
+            "startup": "java -jar Lavalink.jar",
+            "environment": {
+              "SERVER_JARFILE": "Lavalink.jar"
+            },
+            "feature_limits": {
+              "databases": 1,
+              "backups": 1
+            }
+          }
+        },
+        "bungeecord": {
+          "display": "Bungeecord",
+          "minimum": {
+            "ram": 512,
+            "disk": 512,
+            "cpu": 75
+          },
+          "maximum": {
+            "ram": null,
+            "disk": null,
+            "cpu": null
+          },
+          "info": {
+            "egg": 1,
+            "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+            "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}",
+            "environment": {
+              "SERVER_JARFILE": "bungeecord.jar",
+              "BUNGEE_VERSION": "latest"
+            },
+            "feature_limits": {
+              "databases": 1,
+              "backups": 1
+            }
+          }
+        }
+      },
+      "coins": {
+        "enabled": true,
+        "store": {
+          "_comment": "The cost and per is not intended to used with 0. This is not intended to sell resources for coins. Make sure coins are enabled too, or else there can be errors.",
+          "enabled": true,
+          "ram": {
+            "cost": 250,
+            "per": 25
+          },
+          "disk": {
+            "cost": 100,
+            "per": 100
+          },
+          "cpu": {
+            "cost": 150,
+            "per": 5
+          },
+          "servers": {
+            "cost": 200,
+            "per": 1
+          }
+        }
+      }
+    },
+    "arcio": {
+      "_comment": "You can make an arc.io widget on https://arc.io. You can get money using arc.io.",
+      "enabled": false,
+      "widgetid": "",
+
+      "afk page": {
+        "_comment2": "Make sure coins are enabled if you choose to enable this option!",
+        "enabled": true,
+
+        "_comment3": "If you change the path, you need to restart for it to take full effect.",
+        "path": "afkwspath",
+
+        "_comment4": "This afk page will give the users [coins variable] coins every [every variable] seconds.",
+        "every": 60,
+
+        "_comment5": "The coins variable is meant to not be under 1. There may be bugs if the coins variable is less than 1.",
+        "coins": 1
+      }
+    }
+  }
+}
