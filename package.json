@@ -46,6 +46,6 @@
     "nodemailer": "^6.9.4",
     "source-map-support": "^0.5.21",
     "stripe": "^12.14.0",
-    "uuid": "^9.0.0"
+    "uuid": "^11.1.0"
   }
 }
