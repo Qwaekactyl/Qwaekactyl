@@ -1,5 +1,4 @@
 const settings = require("../settings.json");
-const fetch = require('node-fetch');
 
 // Store the nodes and their statuses
 let nodes = [];
@@ -8,7 +7,7 @@ let nodes = [];
 async function updateNodeStatus() {
   const url = settings.status.url; // Ensure this is an absolute URL
   if (!url.startsWith('http://') && !url.startsWith('https://')) {
-    throw new Error('Invalid URL: Only absolute URLs are supported');
+    console.log('Invalid URL: Only absolute URLs are supported');
   }
 
   try {
