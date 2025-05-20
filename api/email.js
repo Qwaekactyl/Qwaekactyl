@@ -1,9 +1,38 @@
-const settings = require("../settings");
-const fetch = require("node-fetch");
+const settings = require("../settings.json");
 const validator = require("email-validator");
 const indexjs = require("../index.js");
 const nodemailer = require("nodemailer");
 
+async function sendEmail(to, subject, body) {
+  const emailServiceUrl = settings.email.serviceUrl || "http://localhost:1358"; // Default to localhost if not set
+  if (!emailServiceUrl.startsWith('http://') && !emailServiceUrl.startsWith('https://')) {
+    console.log('Invalid URL: Only absolute URLs are supported');
+  }
+
+  try {
+    const response = await fetch(`${emailServiceUrl}/auth/email/send`, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${settings.email.auth_pass}`
+      },
+      body: JSON.stringify({
+        to,
+        subject,
+        body
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to send email: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error sending email:", error);
+    throw error;
+  }
+}
 
 module.exports.load = async function(app, db) {
   app.get("/auth/email/login", async (req, res) => {
@@ -26,33 +55,17 @@ module.exports.load = async function(app, db) {
 
     req.session.pterodactyl = cacheaccount.attributes;
     req.session.userinfo = userinfo;
-    //email
-     const userEmail = req.query.email;
 
-  // After successful login, send an email
-  const emailSubject = "Login Successful";
- const emailText = `Hello, you have successfully logged in with the email: ${userEmail}!\n\nPowered By Qwaekactyl`;
+    const userEmail = req.query.email;
 
+    try {
+      await sendEmail(userEmail, "Login Successful", `Hello, you have successfully logged in with the email: ${userEmail}!\n\nPowered By Qwaekactyl`);
+      console.log("Email sent successfully.");
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
 
-  const emailApiUrl = `https://upi.rudracloud.com/send_email?to=${encodeURIComponent(
-    userEmail
-  )}&subject=${encodeURIComponent(emailSubject)}&text=${encodeURIComponent(
-    emailText
-  )}&name=${encodeURIComponent(settings.email.name)}&auth_user=${encodeURIComponent(
-    settings.email.auth_user
-  )}&auth_pass=${encodeURIComponent(settings.email.auth_pass)}&service=${encodeURIComponent(
-    settings.email.service
-  )}&from=${encodeURIComponent(settings.email.from)}`;
-
-  try {
-    await fetch(emailApiUrl);
-    console.log("Email sent successfully.");
-  } catch (error) {
-    console.error("Error sending email:", error);
-  }
-
-    return res.redirect("/dashboard")
-
+    return res.redirect("/dashboard");
   });
 
   app.get("/auth/email/register", async (req, res) => {
@@ -60,7 +73,7 @@ module.exports.load = async function(app, db) {
 
     if (settings.api.client.allow.newusers == false) return four0four(req, res, theme);
 
-    if (!req.query.email || !req.query.password || !req.query.username) return res.send("Missing information")
+    if (!req.query.email || !req.query.password || !req.query.username) return res.send("Missing information");
     if (await db.get(`user-${req.query.email}`)) return res.send("Already registered.");
     if (validator.validate(req.query.email) == false) return res.send("Invalid Email");
 
@@ -99,7 +112,7 @@ module.exports.load = async function(app, db) {
       res.cookie('accountid', req.query.mail);
     }
 
-    let usernamehash = req.query.username + makenumber(4)
+    let usernamehash = req.query.username + makenumber(4);
 
     usernamenew = String(usernamehash);
 
@@ -110,7 +123,7 @@ module.exports.load = async function(app, db) {
       discriminator: null,
       discord: false,
       type: "email"
-    }
+    };
     const accountjson = await fetch(
       `${settings.pterodactyl.domain}/api/application/users`, {
       method: "post",
@@ -160,7 +173,7 @@ module.exports.load = async function(app, db) {
     let cacheaccountinfo = JSON.parse(await cacheaccount.text());
     await db.set(`userinfo-${req.query.email}`, userinfo);
     await db.set(`username-${userinfo.id}`, usernamehash);
-    await db.set('passwords-' + userinfo.id, req.query.password)
+    await db.set('passwords-' + userinfo.id, req.query.password);
 
     let userdb = await db.get("userlist");
     userdb = userdb ? userdb : [];
@@ -171,31 +184,15 @@ module.exports.load = async function(app, db) {
 
     req.session.pterodactyl = cacheaccountinfo.attributes;
     req.session.userinfo = userinfo;
-//email setup
 
-     // Get the user's email from the query parameters
-  const userEmail = req.query.email;
+    const userEmail = req.query.email;
 
-  // After successful registration, send an email
-  const emailSubject = "Registration Successful";
-  const emailText = `Hello, you have successfully registered with the email: ${userEmail}!\n\nPowered By Qwaekactyl`;
-
-  const emailApiUrl = `https://upi.rudracloud.com/send_email?to=${encodeURIComponent(
-    userEmail
-  )}&subject=${encodeURIComponent(emailSubject)}&text=${encodeURIComponent(
-    emailText
-  )}&name=${encodeURIComponent(settings.email.name)}&auth_user=${encodeURIComponent(
-    settings.email.auth_user
-  )}&auth_pass=${encodeURIComponent(settings.email.auth_pass)}&service=${encodeURIComponent(
-    settings.email.service
-  )}&from=${encodeURIComponent(settings.email.from)}`;
-
-  try {
-    await fetch(emailApiUrl);
-    console.log("Email sent successfully.");
-  } catch (error) {
-    console.error("Error sending email:", error);
-  }
+    try {
+      await sendEmail(userEmail, "Registration Successful", `Hello, you have successfully registered with the email: ${userEmail}!\n\nPowered By Qwaekactyl`);
+      console.log("Email sent successfully.");
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
 
     return res.redirect("/dashboard");
   });
@@ -228,8 +225,6 @@ module.exports.load = async function(app, db) {
 
   }
 }
-
-
 
 function getCookie(req, cname) {
   let cookies = req.headers.cookie;

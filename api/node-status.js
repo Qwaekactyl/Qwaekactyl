@@ -1,4 +1,4 @@
-const newsettings = require("../settings");
+const settings = require("../settings.json");
 const fetch = require('node-fetch');
 
 // Store the nodes and their statuses
@@ -6,13 +6,18 @@ let nodes = [];
 
 // Function to fetch node statuses and update the 'nodes' array
 async function updateNodeStatus() {
+  const url = settings.status.url; // Ensure this is an absolute URL
+  if (!url.startsWith('http://') && !url.startsWith('https://')) {
+    throw new Error('Invalid URL: Only absolute URLs are supported');
+  }
+
   try {
-    const response = await fetch(newsettings.pterodactyl.domain + "/api/application/nodes", {
+    const response = await fetch(url, {
       "method": "GET",
       "headers": {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${newsettings.pterodactyl.key}`
+        "Authorization": `Bearer ${settings.pterodactyl.key}`
       }
     });
     const json = await response.json();
@@ -26,12 +31,15 @@ async function updateNodeStatus() {
       };
 
       try {
-        const healthResponse = await fetch("https://" + data.attributes.fqdn + ":" + data.attributes.daemon_listen + "/health", {
+        const fqdn = data.attributes.fqdn.startsWith('http') ? data.attributes.fqdn : `https://${data.attributes.fqdn}`;
+        const healthUrl = `${fqdn}:${data.attributes.daemon_listen}/health`;
+
+        const healthResponse = await fetch(healthUrl, {
           "method": "GET",
           "headers": {
             "Accept": "application/json",
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${newsettings.pterodactyl.key}`
+            "Authorization": `Bearer ${settings.pterodactyl.key}`
           }
         });
         if (healthResponse.status >= 500 && healthResponse.status <= 599) {
