@@ -253,9 +253,9 @@ app.all("*", async (req, res) => {
       delete req.session.password;
       if (!req.session.userinfo || !req.session.pterodactyl) {
         if (err) {
-          console.log(chalk.red(`[Qwaekactyl] An error has occured on path ${req._parsedUrl.pathname}:`));
+          console.log(chalk.red(`[Qwaekactyl] An error has occurred on path ${req._parsedUrl.pathname}:`));
           console.log(err);
-          return res.send("An error has occured while attempting to load this page. Please contact an administrator to fix this.");
+          return res.send("An error has occurred while attempting to load this page. Please contact an administrator to fix this.");
         };
         res.status(404);
         return res.send(str);
@@ -270,9 +270,9 @@ app.all("*", async (req, res) => {
       );
       if (await cacheaccount.statusText == "Not Found") {
         if (err) {
-          console.log(chalk.red(`[Qwaekactyl] An error has occured on path ${req._parsedUrl.pathname}:`));
+          console.log(chalk.red(`[Qwaekactyl] An error has occurred on path ${req._parsedUrl.pathname}:`));
           console.log(err);
-          return res.send("An error has occured while attempting to load this page. Please contact an administrator to fix this.");
+          return res.send("An error has occurred while attempting to load this page. Please contact an administrator to fix this.");
         };
         return res.send(str);
       };
@@ -281,9 +281,9 @@ app.all("*", async (req, res) => {
       req.session.pterodactyl = cacheaccountinfo.attributes;
       if (cacheaccountinfo.attributes.root_admin !== true) {
         if (err) {
-          console.log(chalk.red(`[Qwaekactyl] An error has occured on path ${req._parsedUrl.pathname}:`));
+          console.log(chalk.red(`[Qwaekactyl] An error has occurred on path ${req._parsedUrl.pathname}:`));
           console.log(err);
-          return res.send("An error has occured while attempting to load this page. Please contact an administrator to fix this.");
+          return res.send("An error has occurred while attempting to load this page. Please contact an administrator to fix this.");
         };
         return res.send(str);
       };
@@ -296,9 +296,9 @@ app.all("*", async (req, res) => {
         delete req.session.newaccount;
         delete req.session.password;
         if (err) {
-          console.log(`[Qwaekactyl] An error has occured on path ${req._parsedUrl.pathname}:`);
+          console.log(`[Qwaekactyl] An error has occurred on path ${req._parsedUrl.pathname}:`);
           console.log(err);
-          return res.send("An error has occured while attempting to load this page. Please contact an administrator to fix this.");
+          return res.send("An error has occurred while attempting to load this page. Please contact an administrator to fix this.");
         };
         res.status(404);
         res.send(str);
@@ -314,9 +314,9 @@ app.all("*", async (req, res) => {
     delete req.session.newaccount;
     delete req.session.password;
     if (err) {
-      console.log(chalk.red(`[Qwaekactyl] An error has occured on path ${req._parsedUrl.pathname}:`));
+      console.log(chalk.red(`[Qwaekactyl] An error has occurred on path ${req._parsedUrl.pathname}:`));
       console.log(err);
-      return res.send("An error has occured while attempting to load this page. Please contact an administrator to fix this.");
+      return res.send("An error has occurred while attempting to load this page. Please contact an administrator to fix this.");
     };
     res.status(404);
     res.send(str);
